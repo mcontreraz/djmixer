@@ -84,3 +84,26 @@ repositorio público sale ese análisis de comportamiento; la evidencia cruda
 (decompilados, volcados de strings, esquemas del fabricante, proyectos Ghidra)
 **no se publica** y se queda en la máquina de desarrollo. Nunca se copió código
 ajeno.
+
+## El álbum va con la Lite
+
+El humano de este proyecto es un DJ, y su primer lanzamiento se incluye
+completo en la versión Lite — gratis, para todo el mundo, para siempre.
+
+**Relaunch — McBaez (McDiscJockey)** · deep garage / 2-step '90s
+
+- ▶ https://www.youtube.com/watch?v=m7lIbyha2kQ
+- https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g
+- Canal: https://www.youtube.com/@ElReingeniero
+
+El proyecto de software y el proyecto musical son el mismo: las funciones
+deterministas con las que un DJ juzga el software de verdad —beat matching que
+cae en la grilla, scratch sin granulación audible, trim y nivel que aterrizan
+donde la mano espera— son las que se están entrenando. Por eso el álbum va
+dentro: no es un chamariz, es la razón de que exista la herramienta.
+
+## Páginas de funding por idioma
+
+- Español: https://mcontreraz.github.io/djmixer/funding.html
+- English: https://mcontreraz.github.io/djmixer/funding.en.html
+- Português: https://mcontreraz.github.io/djmixer/funding.pt.html
