@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "audio-route (MasterOut + CueOut, estilo Serato)",
+  "type": "object",
+  "required": ["deviceName", "outs"],
+  "properties": {
+    "deviceName": { "type": "string", "example": "VCI-100MKII DJ-Controller" },
+    "outs": {
+      "type": "object",
+      "required": ["master", "cue"],
+      "properties": {
+        "master": { "type": "array", "items": { "type": "integer" }, "example": [0, 1] },
+        "cue": { "type": "array", "items": { "type": "integer" }, "example": [2, 3] }
+      }
+    },
+    "ins": { "type": "object", "properties": { "aux": { "type": "string", "example": "Aux1In (reservado)" } } },
+    "cue": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "PER_CHANNEL_CUE" },
+        "gainCc": { "type": "string", "example": "ch5 CC18" },
+        "mixCc": { "type": "string", "example": "ch5 CC19" }
+      }
+    },
+    "fallback2ch": { "type": "string", "const": "mezcla única a master (comportamiento actual)" }
+  }
+}

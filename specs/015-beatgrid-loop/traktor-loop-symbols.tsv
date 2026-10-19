@@ -1,0 +1,28 @@
+source_line	symbol
+33795	00000001001dfe00 t LoopFetcher::fetchNextBlock(AudioWavePair*&)
+33796	00000001001dfdf0 t LoopFetcher::LoopFetcher(boost::shared_ptr<AudioStream>, traktor::browser::CuePoint)
+33797	00000001001dfb60 t LoopFetcher::LoopFetcher(boost::shared_ptr<AudioStream>, traktor::browser::CuePoint)
+33940	0000000100152e70 t TrackPlayer::onLoopActive(MappedControlValue const&)
+33951	00000001001530f0 t TrackPlayer::onBeatgridOffset(MappedControlValue const&)
+33965	0000000100158370 t TrackPlayer::enablePlayLoopedOnLoad(bool)
+75967	00000001001d1ed0 t AudioDeckStream::setPlayPositionInSamples(double, AudioDeckStream::eChangePositionType)
+75972	00000001001d1f10 t AudioDeckStream::setPlayPositionInSamplesInstantly(double)
+75973	00000001001d20d0 t AudioDeckStream::setPlayPositionInSamplesDelayedWithOffset(double)
+75974	00000001001d2320 t AudioDeckStream::setLoop(double, double, int, bool)
+76408	000000010010b6c0 t UnifiedDeckBase::onLoopActive(MappedControlValue const&)
+76412	000000010010b810 t UnifiedDeckBase::onSetFastLoop(MappedControlValue const&)
+76418	000000010010b790 t UnifiedDeckBase::onIsInActiveLoop(MappedControlValue const&)
+76424	000000010010c290 t UnifiedDeckBase::onBeatjumpStayInLoop(MappedControlValue const&)
+77124	00000001001d2b50 t CachedAudioStream::fetchPlayData(unsigned int, AudioWavePair*, unsigned int, unsigned int*)
+77126	00000001001d2290 t CachedAudioStream::setPlayPosition(int, CachedAudioStream::eCacheType)
+77128	00000001001dc520 t CachedAudioStream::fetchPlayDataInternal(unsigned int, float*, float*, unsigned int*)
+111340	00000001001e0150 t LoopFetcher::getSampleRate() const
+111374	00000001001555a0 t TrackPlayer::hasBeatGrid() const
+111376	00000001001576f0 t TrackPlayer::isLoopActive() const
+111384	00000001001552c0 t TrackPlayer::isQuantizeEnabled() const
+111398	0000000100158320 t TrackPlayer::getBeatgridOffsetInBeats() const
+120101	000000010010b960 t UnifiedDeckBase::isInActiveLoop() const
+120109	0000000100105940 t UnifiedDeckBase::getFastLoopLengthInBeats() const
+120110	000000010010d3e0 t UnifiedDeckBase::isNonIntegralLoopRunning() const
+120114	000000010010d250 t UnifiedDeckBase::isCueLoop() const
+126236	00000001001cce00 t SyncUnit::computeQuantizedBeatPhase(double) const

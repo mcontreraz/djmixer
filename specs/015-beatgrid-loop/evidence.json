@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-18",
+  "baseline_commit": "20cf1c9",
+  "scope": "Review of previously saved REA evidence only; no new decompilation or runtime observation.",
+  "id_note": "LOOP-* are local review IDs, not new REA Evidence IDs.",
+  "evidence": [
+    {
+      "id": "LOOP-T01",
+      "kind": "existing REA artifact identity",
+      "source": "docs/referencia-traktor/traktor-inspect.json",
+      "rea_evidence_id": "ev_5d2115f8863b5b2a6a5f98286a2405f219450878e9a33dcf42e4756950c9a9be",
+      "subject": {
+        "name": "Traktor.app",
+        "digest": {
+          "sha256": "1d9b69e50f1a7ef85c0b46d08cdbe09cfd9e7dc63b21bb1aec4111c03d34846c"
+        },
+        "local_path": "/Applications/Native Instruments/Traktor Pro 3/Traktor.app",
+        "format": "directory",
+        "architecture": null
+      }
+    },
+    {
+      "id": "LOOP-T02",
+      "kind": "existing static symbol inventory",
+      "source": "/tmp/traktor-nm-demangled.txt",
+      "sha256": "af81355efb1c42550e61038a5e06f8754d287a296403dae7f8cff002f573f7aa",
+      "selected_excerpt": "traktor-loop-symbols.tsv",
+      "limitations": "Names/signatures and addresses only; no loop implementation or call graph demonstrated."
+    },
+    {
+      "id": "LOOP-T03",
+      "kind": "existing static string inventory",
+      "source": "docs/referencia-traktor/traktor-strings.txt",
+      "sha256": "b1715049aea3ad9636a31b8afa5aa3ce39591cd7edfcadbebe8344000b7a20a9",
+      "lines": [
+        [
+          671,
+          676
+        ],
+        [
+          722,
+          734
+        ],
+        [
+          984,
+          991
+        ]
+      ],
+      "limitations": "String presence does not establish execution or algorithm."
+    },
+    {
+      "id": "LOOP-S01",
+      "kind": "previously recovered QML lexical index",
+      "source": "docs/referencia-serato/replica/contratos/qml-api.json",
+      "sha256": "f7225efe518a565ac07341914863cd658789c3cf53f1f241d71cbe7477e7df06",
+      "selected_controls": [
+        {
+          "path": "dj_resources_common/files/modules/Common/SeratoSavedLoopsSlot.qml",
+          "recovered_sha256": "d3d114d05bd371247ce0137b1c0ab5534998371b41ec25597ac2e116fd30dc2a",
+          "events": [
+            {
+              "source_line": 30,
+              "message": [
+                "\"load_track\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": null
+            },
+            {
+              "source_line": 76,
+              "message": [
+                "\"loop_slot_select\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 92,
+              "message": [
+                "\"loop_display_slot_clear\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 122,
+              "message": [
+                "\"loop_slot_set\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 129,
+              "message": [
+                "\"loop_slot_set\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 151,
+              "message": [
+                "\"slot_reloop\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 158,
+              "message": [
+                "\"reloop_or_exit\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Ctrl_click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 165,
+              "message": [
+                "\"slot_reloop\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 187,
+              "message": [
+                "\"slot_loop\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 194,
+              "message": [
+                "\"slot_loop\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 228,
+              "message": [
+                "\"slot_loop_lock\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 235,
+              "message": [
+                "\"slot_loop_lock\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 258,
+              "message": [
+                "\"loop_slot_clear\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            },
+            {
+              "source_line": 265,
+              "message": [
+                "\"loop_slot_clear\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "savedLoopsSlot.slotId"
+              ]
+            }
+          ]
+        },
+        {
+          "path": "sdj_variant_resources/files/modules/SDJVariant/SeratoAutoloop.qml",
+          "recovered_sha256": "8e8c332a5a0c50ea6350bab1b034ad1416882e46d5c5948a4e37a079b8c2a5a7",
+          "events": [
+            {
+              "source_line": 55,
+              "message": [
+                "\"shift_auto_loop_range\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "1"
+              ]
+            },
+            {
+              "source_line": 62,
+              "message": [
+                "\"shift_auto_loop_range_feedback\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "1"
+              ]
+            },
+            {
+              "source_line": 107,
+              "message": [
+                "\"auto_loop_specific_length\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "autoloopButton.slotId"
+              ]
+            },
+            {
+              "source_line": 114,
+              "message": [
+                "\"auto_loop_specific_length\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "autoloopButton.slotId"
+              ]
+            },
+            {
+              "source_line": 121,
+              "message": [
+                "\"auto_loop_roll_specific_length\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Alt_click"
+              ],
+              "slot": [
+                "autoloopButton.slotId"
+              ]
+            },
+            {
+              "source_line": 149,
+              "message": [
+                "\"auto_loop_selection\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "autoloopButton.slotId"
+              ]
+            },
+            {
+              "source_line": 184,
+              "message": [
+                "\"shift_auto_loop_range\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Click"
+              ],
+              "slot": [
+                "2"
+              ]
+            },
+            {
+              "source_line": 191,
+              "message": [
+                "\"shift_auto_loop_range_feedback\""
+              ],
+              "type": [
+                "UserIOEvent.EventType_Output"
+              ],
+              "slot": [
+                "2"
+              ]
+            }
+          ]
+        }
+      ],
+      "limitations": "Event wiring only. Backend units and loop audio implementation not established."
+    },
+    {
+      "id": "LOOP-S02",
+      "kind": "previous behavior report, separates DOC/BIN/DESIGN",
+      "source": "docs/referencia-serato/replica/contratos/transporte-y-audio.md",
+      "sha256": "ae813db7856564239d299f4c22604807b2f013ebdd1805b623203477ad6792fb",
+      "sections": [
+        "Cuantización y grid",
+        "Loops, roll, slip y censor"
+      ],
+      "limitations": "The modulo/seamless proposal in this report is original design, not recovered Serato code."
+    },
+    {
+      "id": "LOOP-S03",
+      "kind": "existing native grid/serialization analysis",
+      "source": "docs/referencia-serato/replica/beatgrid-datos/README.md",
+      "sha256": "1153b61c5e1d47a914eec9c0bb413f532e9963b165d84b1a64962b7f31d911f2",
+      "related": [
+        "docs/referencia-serato/replica/beatgrid-datos/serializer-v1.md"
+      ],
+      "limitations": "TempoMap/serialization evidence; does not establish loop seam algorithm."
+    },
+    {
+      "id": "LOOP-S04",
+      "kind": "existing native sync analysis",
+      "source": "docs/referencia-serato/replica/beatsync-native/README.md",
+      "sha256": "faefe55e6a6c0570f7779126102e42874d253719bc941fa2a00802e034312b1c",
+      "limitations": "Sync phase behavior only, no sample-level looping evidence."
+    }
+  ],
+  "unresolved": [
+    "Exact native loop readout and seam correction in both products",
+    "Late-event scheduling and rounding policy",
+    "Loop/Sync behavior for fractional and variable-grid loops",
+    "Unambiguous beat/bar mapping of every Serato autoloop slot"
+  ]
+}
