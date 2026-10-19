@@ -62,6 +62,12 @@ other page ever contradicts it, that document wins.
 | **USDC 500** | A full month with the whole team running |
 | **USDC 2,000** | Several months, plus MIDI hardware and code signing for the public release |
 
+**First goal: USDC 99 — this is the launch key.** The single donation that signs
+and notarizes the macOS binary (Apple Developer Program). Until that account
+exists, the release ships with a Gatekeeper warning and the release issues stay
+blocked. USDC 99 today moves the Lite v1 out the door; the rest of the tranche
+can come after.
+
 **Current milestone target: USDC 500** — enough to ship the Lite v1 end to end:
 
 - About a month of paid model capacity for the agent team (the real
@@ -153,9 +159,9 @@ smaller feature list.
   share, no revenue share, and no promise of any return. You are supporting
   open-source development, full stop.
 - **Tax:** donations may be taxable income for the donor in their jurisdiction
-  (in Chile, the **SUNAT** treats a donation as income subject to the
-  corresponding income tax). Talk to an accountant — this project is not giving
-  tax advice and cannot advise you on yours.
+  (in Chile, the **SII** - Servicio de Impuestos Internos - treats a donation
+  as income subject to the corresponding income tax). Talk to an accountant -
+  this project is not giving tax advice and cannot advise you on yours.
 - **The address is dedicated to this project.** Prefer an address you control
   yourself, separate from anything else, so the on-chain history is auditable.
 - **No custody, no keys, no trading.** The project never holds or moves funds

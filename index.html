@@ -100,7 +100,7 @@
     <p class="lead">
       DJMixer es una aplicación de DJ nativa (C++17 + Qt 6) construida desde cero por un
       equipo de agentes de IA con un humano al mando. No es un wrapper web ni una
-      maqueta: es un motor de audio en tiempo real que no asigna memoria en el hilo de audio.
+      maqueta: es un motor de audio en tiempo real cuyo camino de loop no asigna memoria.
     </p>
     <div>
       <span class="pill green">Lite gratis para siempre</span>
@@ -144,7 +144,7 @@
 
   <section id="specs">
     <h2>Especificaciones técnicas</h2>
-    <p>Lo que hay construido, con su arquitectura. Las 17 specs completas están en
+    <p>Lo que hay construido, con su arquitectura. Las specs completas están en
     <code>specs/</code> de este repo, con su plan, sus tareas y sus contratos.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalle técnico</th></tr>
@@ -256,8 +256,9 @@
   <section>
     <h2>El equipo</h2>
     <p>Un humano (ingeniero de software chileno, amante de la música) y cuatro agentes de IA
-    orquestados con Paperclip: CTO, Coder, QA y Growth. 165 commits, 17 specs, 24 tests
-    registrados, ~17.700 líneas propias.</p>
+    orquestados con Paperclip: CTO, Coder, QA y Growth. Todo el historial, las specs y la suite de
+    pruebas están en el repo; los números vivos están en <code>specs/INDEX.md</code> y en
+    <code>ctest -N</code>, no aquí.</p>
     <p>El repositorio del código es privado hasta la primera release. Lo que es público hoy:
     este sitio, las capturas, las notas de desarrollo y las especificaciones.</p>
   </section>
