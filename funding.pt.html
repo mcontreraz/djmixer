@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apoie o DJMixer — DJMixer</title>
+<meta name="description" content="DJMixer: software de DJ nativo (C++/Qt6) en la liga de Serato y Traktor. La Lite es gratis para todo el mundo, para siempre. Apoya el proyecto con USDC.">
+<meta property="og:title" content="Apoie o DJMixer — DJMixer">
+<meta property="og:image" content="https://mcontreraz.github.io/djmixer/media/03-decks.png">
+<style>
+:root{--bg:#0d0d10;--panel:#16161c;--line:#26262f;--text:#e8e8ee;--muted:#9a9aa8;
+--accent:#ff3b30;--green:#2fa84f;--blue:#2a6fb0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:800;letter-spacing:.16em;font-size:15px}
+.logo span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
+nav a:hover{color:var(--text)}
+.langs{margin-left:16px;border-left:1px solid var(--line);padding-left:14px}
+.langs a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;
+letter-spacing:.08em;margin-left:8px}
+.langs a.on{color:var(--accent)}
+h1{font-size:clamp(28px,4.6vw,44px);line-height:1.12;margin:56px 0 16px;letter-spacing:-.02em}
+h2{font-size:22px;margin:44px 0 12px}
+p{margin:0 0 14px}
+.lead{font-size:18px;color:var(--muted);max-width:680px}
+.donate{background:linear-gradient(180deg,#141a16,#121216);border:1px solid #1e5a3f;
+border-radius:14px;padding:26px;margin:26px 0}
+.addr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;background:#0b0b0e;
+border:1px solid var(--line);border-radius:9px;padding:16px;word-break:break-all;margin:14px 0}
+.btn{display:inline-block;background:var(--green);color:#04160a;font-weight:700;padding:12px 22px;
+border-radius:9px;text-decoration:none;font-size:15px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text);font-weight:500}
+.btn.blue{background:var(--blue);color:#04121f}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+td.amount{font-weight:700;white-space:nowrap;color:#5fd08a}
+.note{color:var(--muted);font-size:14px;border-left:3px solid var(--line);padding-left:14px;margin:18px 0}
+code{background:#0b0b0e;padding:2px 7px;border-radius:5px;font-size:13.5px;
+font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+a{color:#7fb0e0}
+footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 60px;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{margin:0 0 8px;font-size:16px}
+.card p{color:var(--muted);font-size:14.5px;margin:0}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo">DJ <span>·</span> MIXER</div>
+  <nav>
+    <a href="index.en.html">Site</a>
+    <a href="funding.pt.html">Financiamento</a>
+    <div class="langs">
+      <a href="funding.html">ES</a>
+      <a href="funding.en.html">EN</a>
+      <a href="funding.pt.html" class="on">PT</a>
+    </div>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<h1>Apoie o DJMixer</h1>
+<p class="lead">A versão Lite é gratuita para todo mundo, para sempre. O que se pede aqui é o custo de manter a equipe de agentes que a constrói: capacidade de modelos, hardware para testá-la e a assinatura de código para o download não chegar com avisos.</p>
+
+<h2>O compromisso</h2>
+<p>A Lite é lançada gratuita para todo mundo e continua assim: sem preço, sem mensalidade, sem assinatura, sem trial que expire. Existirá uma versão Pro paga para o que um DJ precisa quando cresce (stems, gravação, DVS), nunca para o essencial de misturar. O compromisso está versionado no repositório e prevalece sobre qualquer outro texto.</p>
+
+<h2>O pedido</h2>
+<p>O gargalo real é a capacidade de modelos de IA que a equipe de quatro agentes (CTO, Coder, QA, Growth) consome. Cada decisão de motor, cada estudo de referência e cada iteração de testes custa tokens. É isso que trava o lançamento.</p>
+
+<div class="donate">
+  <h3 style="margin-top:0">Doar com USDC</h3>
+  <p style="color:var(--muted);font-size:15px">Rede Stellar (Soroban), USDC nativo da Circle. A conta é multisig 2-de-6: receber não exige assinatura, então as doações entram na hora. Antes de enviar, confira os 6 primeiros e 6 últimos caracteres e mande primeiro um valor pequeno de teste.</p>
+  <div class="addr">GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7</div>
+  <p style="color:var(--muted);font-size:14px">Issuer (Circle, Stellar): <code>GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN</code></p>
+  <a class="btn" href="https://www.youtube.com/watch?v=m7lIbyha2kQ">▶ YouTube</a>
+  <a class="btn ghost" href="https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g">Spotify</a>
+  <a class="btn ghost" href="https://www.youtube.com/@ElReingeniero">El Reingeniero</a>
+</div>
+
+<h2>Níveis</h2>
+<table>
+  <tr><th>Valor</th><th>Cobre</th></tr>
+  <tr><td class="amount">USDC 20</td><td>Um par de noites de capacidade de modelos.</td></tr>
+  <tr><td class="amount">USDC 100</td><td>Uma semana de carga pesada da equipe.</td></tr>
+  <tr><td class="amount">USDC 500</td><td>Um mês com a equipe inteira rodando.</td></tr>
+  <tr><td class="amount">USDC 2,000</td><td>Vários meses, mais MIDI controller e assinatura de código para o lançamento.</td></tr>
+</table>
+<p class="note"><strong>Meta do primeiro trecho:</strong> USDC 2.000 - o orçamento do lançamento Lite de ponta a ponta: meses de capacidade de modelos, hardware para validar com um DJ real e a assinatura para o download não chegar com o aviso do Gatekeeper.</p>
+
+<div class="grid">
+  <div class="card"><h3>O que o dinheiro paga</h3><p>Capacidade de modelos para a equipe de agentes, um MIDI controller para validar com hardware real e a conta Apple Developer (99 USD/ano) para o download sair assinado e sem o aviso do Gatekeeper.</p></div>
+  <div class="card"><h3>Sem cripto também</h3><p>GitHub Sponsors e Patreon abrem com a primeira doação. A Lite é grátis de qualquer forma: não doar não te coloca numa lista de recursos menor.</p></div>
+  <div class="card"><h3>O álbum vem junto</h3><p>A Lite é lançada com o álbum completo de McBaez, grátis. O projeto de software e o projeto musical são o mesmo.</p></div>
+</div>
+
+<h2>O artista</h2>
+<p>Relaunch, de McBaez (McDiscJockey) - deep garage / 2-step '90s. Uma escuta é uma reprodução; se gostar, é um like. O canal onde isso continua é o El Reingeniero.</p>
+
+<h2>Conformidade</h2>
+<p class="note">Isto é uma doação, não um investimento: não há token, participação ou promessa de retorno. Doações podem ser income tributável para quem doa (no Chile, SUNAT) - cada doador deve consultar seu contador; o projeto não dá orientação tributária. O endereço é exclusivo do projeto.</p>
+
+<p style="margin-top:34px">
+  <a class="btn" href="https://mcontreraz.github.io/djmixer/">Ver o site e as especificações técnicas</a>
+  <a class="btn ghost" style="margin-left:8px" href="https://github.com/mcontreraz/djmixer">Site, capturas e as 17 especificações técnicas</a>
+</p>
+
+<footer><p>DJMixer · software de DJ livre e grátis para sempre · GPL-2.0-or-later · feito por uma equipe de agentes de IA com um humano no comando.</p></footer>
+</div>
+</body>
+</html>

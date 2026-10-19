@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DJMixer — free forever open-source DJ software</title>
+<meta name="description" content="Native DJ software (C++/Qt6) in the league of Serato and Traktor. The Lite edition is free for everyone, forever.">
+<meta property="og:title" content="DJMixer — free forever open-source DJ software">
+<meta property="og:image" content="https://mcontreraz.github.io/djmixer/media/03-decks.png">
+<style>
+  :root{
+    --bg:#0d0d10; --panel:#16161c; --line:#26262f; --text:#e8e8ee;
+    --muted:#9a9aa8; --accent:#ff3b30; --green:#2fa84f; --blue:#2a6fb0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{border-bottom:1px solid var(--line);background:rgba(13,13,16,.9);
+    position:sticky;top:0;backdrop-filter:blur(8px);z-index:10}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:800;letter-spacing:.16em;font-size:15px}
+  .logo span{color:var(--accent)}
+  nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px}
+  nav a:hover{color:var(--text)}
+  .langs{margin-left:18px;border-left:1px solid var(--line);padding-left:16px}
+  .langs a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;
+    letter-spacing:.08em;margin-left:9px}
+  .langs a.on{color:var(--accent)}
+  .album{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:22px 0}
+  .album img{width:190px;height:190px;border-radius:10px;border:1px solid var(--line)}
+  .album h3{margin:0 0 6px;font-size:21px}
+  .album .meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+  .album .btns{margin-top:16px}
+  .album .btns a{font-size:14px;padding:10px 16px}
+  .hero{padding:64px 0 34px}
+  h1{font-size:clamp(30px,5.2vw,52px);line-height:1.1;margin:0 0 18px;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lead{font-size:19px;color:var(--muted);max-width:720px;margin:0 0 28px}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;
+    padding:5px 13px;font-size:13px;color:var(--muted);margin:0 8px 8px 0}
+  .pill.green{border-color:#1e5a3f;color:#5fd08a}
+  .pill.blue{border-color:#1e3a5a;color:#7fb0e0}
+  h2{font-size:26px;margin:56px 0 14px;letter-spacing:-.01em}
+  h3{font-size:17px;margin:26px 0 8px}
+  p{margin:0 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:22px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .card h3{margin-top:0}
+  .card p{color:var(--muted);font-size:15px;margin-bottom:0}
+  .shot{width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0 4px;display:block}
+  .cap{color:var(--muted);font-size:13.5px;margin:0 0 6px}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+  .donate{background:linear-gradient(180deg,#141a16,#121216);border:1px solid #1e5a3f;
+    border-radius:14px;padding:26px;margin:26px 0}
+  .addr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;
+    background:#0b0b0e;border:1px solid var(--line);border-radius:9px;padding:14px;
+    word-break:break-all;margin:12px 0}
+  .btn{display:inline-block;background:var(--green);color:#04160a;font-weight:700;
+    padding:12px 22px;border-radius:9px;text-decoration:none;font-size:15px}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text);font-weight:500}
+  .note{color:var(--muted);font-size:14px;border-left:3px solid var(--line);padding-left:14px;margin:18px 0}
+  code{background:#0b0b0e;padding:2px 7px;border-radius:5px;font-size:13.5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  pre{background:#0b0b0e;border:1px solid var(--line);border-radius:9px;padding:15px;
+    overflow:auto;font-size:13px}
+  footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 0 60px;color:var(--muted);font-size:14px}
+  a{color:#7fb0e0}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo">DJ <span>·</span> MIXER</div>
+  <nav>
+    <a href="#promise">O compromisso</a>
+    <a href="#shots">Assim que parece</a>
+    <a href="#specs">Especificações técnicas</a>
+    <a href="#album">O álbum vem junto com a Lite</a>
+    <a href="#support">Apoie o projeto</a>
+    <a href="funding.en.html" style="color:#5fd08a">Funding ↗</a>
+  </nav>
+  <div class="langs">
+    <a href="index.html">ES</a>
+    <a href="index.en.html">EN</a>
+    <a href="index.pt.html" class="on">PT</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>Software de DJ open source na liga de Serato e Traktor.<br>Gratuito para todo mundo, <em>para sempre</em>.</h1>
+    <p class="lead">O DJMixer é uma aplicação de DJ nativa (C++17 + Qt 6) construída do zero por uma equipe de agentes de IA com um humano no comando. Não é um wrapper web, não é uma maquete: é um motor de áudio em tempo real que não aloca memória na thread de áudio.</p>
+    <div>
+      <span class="pill green">Lite grátis para sempre</span>
+      <span class="pill blue">Open source (GPL-2.0-or-later)</span>
+      <span class="pill">macOS primeiro</span>
+      <span class="pill">2 decks · key lock · beatgrid · MIDI</span>
+    </div>
+  </section>
+
+  <section id="promise">
+    <h2>O compromisso</h2>
+    <div class="card"><p><strong>A versão Lite é lançada gratuita para todo mundo e continua assim.</strong> Sem preço, sem mensalidade, sem assinatura, sem trial que expire. Não é promoção de lançamento: é a razão de existir do projeto - para que qualquer DJ que queira ser DJ comece sem pagar mensalidades nem comprar software caro.</p><p style="margin-bottom:0"><strong>Existirá uma versão Pro paga</strong>, para o que um DJ precisa quando cresce (stems, gravação, DVS, análise harmônica avançada) e nunca para o essencial de misturar.</p></div>
+    <p class="note">O compromisso está versionado no repositório (<code>docs/promise.md</code>) e prevalece sobre qualquer outro texto. O código fonte completo sai com o primeiro binário: é uma exigência da GPL, não promessa de marketing.</p>
+  </section>
+
+  <section id="shots">
+    <h2>Assim que parece</h2>
+    <img class="shot" src="media/03-decks.png" alt="Two decks with a track loaded, detected BPM and key, hot cues, loops and 3-band EQ">
+    <p class="cap">Dois decks com a mesma faixa: 129,26 BPM detectados, tonalidade 5B em Camelot, 8 hot cues por deck, auto-loops sobre o beatgrid, EQ de 3 bandas + filtro + FX por canal e o waveform RGB com os marcadores de beat. Áudio sintético de demonstração.</p>
+    <img class="shot" src="media/01-biblioteca.png" alt="Library with automatic BPM and key analysis per track">
+    <p class="cap">A biblioteca analisa sozinha: BPM e tonalidade de cada faixa, com cache em disco.</p>
+    <img class="shot" src="media/02-synclab.png" alt="SyncLab with the synthetic demo and the downbeat aligned">
+    <p class="cap">SyncLab: o motor de sincronização com o downbeat de cada deck, a fase do compasso e o desvio medido em milissegundos. No demo sintético fica em +0,0 ms.</p>
+  </section>
+
+  <section id="specs">
+    <h2>Especificações técnicas</h2>
+    <p>O que existe construído, e como. As 17 specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
+    <table>
+      <tr><th>Área</th><th>Estado</th><th>Detalhe técnico</th></tr>
+            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem <code>malloc</code>, sem locks, sem tocar a UI. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
+      <tr><td>Decks</td><td>Pronto</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck com sidecar <code>.hotcues</code> persistente.</td></tr>
+      <tr><td>Tempo</td><td>Pronto</td><td>Pitch/tempo, modo vinil, pitch-bend contínuo, key lock (tempo sem mudar o tom).</td></tr>
+      <tr><td>Key lock</td><td>Pronto</td><td>Motor WSOLA próprio + Rubber Band R3 em realtime, com crossfade de entrada e saída.</td></tr>
+      <tr><td>Key</td><td>Pronto</td><td>Detecção de tonalidade com nomenclatura Camelot, cacheada por faixa.</td></tr>
+      <tr><td>Beats</td><td>Em validação</td><td>Detecção de BPM e downbeat, beatgrid, importação de grids do Serato. O detector automático segue em validação contra faixas reais.</td></tr>
+      <tr><td>Loops</td><td>Pronto</td><td>Auto-loops 1/8…16 beats sobre o beatgrid, resize diferido (nunca a quente).</td></tr>
+      <tr><td>Sync</td><td>Pronto</td><td>Correção de fase, compensando a latência audível do key lock. SyncLab para inspecionar o downbeat em ms.</td></tr>
+      <tr><td>Mixer</td><td>Pronto</td><td>EQ de 3 bandas, filtro, FX por canal, isolator, VU master.</td></tr>
+      <tr><td>Waveform</td><td>Pronto</td><td>RGB com detalhe a 200 buckets/s, overview em cor, zoom 2–64 s.</td></tr>
+      <tr><td>Scratch</td><td>Pronto</td><td>Contínuo, sem granulação audível.</td></tr>
+      <tr><td>MIDI</td><td>Pronto</td><td>Mapeamento completo, sensibilidade de jog, pitch-bend.</td></tr>
+      <tr><td>Decodificação</td><td>Pronto</td><td>MP3, FLAC, AAC, MP4/M4A, Opus (AV1+Opus por stream-copy).</td></tr>
+    </table>
+    <p class="note"><strong>O que ainda não funciona está escrito, não escondido.</strong> A detecção automática de beats segue em validação contra faixas reais; o site diz isso na mesma frase em que diz o que funciona.</p>
+  </section>
+
+  <section id="album">
+    <h2>O álbum vem junto com a Lite</h2>
+    <p>O humano por trás deste projeto é um DJ, e o primeiro lançamento dele vem inteiro na versão Lite - grátis, para todo mundo, para sempre. Você instala o software e leva o disco.</p>
+    <div class="album">
+      <img src="media/relaunch.jpg" alt="Relaunch cover art">
+      <div>
+        <h3>Relaunch — McBaez <span style="color:var(--muted);font-weight:400">(McDiscJockey)</span></h3>
+        <p class="meta">Deep garage / 2-step '90s</p>
+        <p style="color:var(--muted);font-size:15px;max-width:520px">O projeto de software e o projeto musical são o mesmo: as funções determinísticas com as quais um DJ julga software de verdade - beat matching que cai na grade, scratch sem granulação, trim e nível que aterram onde a mão espera - são as que estão sendo treinadas. Por isso o álbum vai junto: não é um chamariz de DAYPASS, é a razão de a ferramenta existir.</p>
+        <div class="btns">
+          <a class="btn" href="https://www.youtube.com/watch?v=m7lIbyha2kQ">▶ YouTube</a>
+          <a class="btn ghost" href="https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g">Spotify</a>
+          <a class="btn ghost" href="https://www.youtube.com/@ElReingeniero">El Reingeniero</a>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin:16px 0 0">Se você escuta uma vez, isso é uma reprodução. Se gostar, é um like. E se você é DJ, <strong>El Reingeniero</strong> é o canal onde isso continua.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>Apoie o projeto</h2>
+    <div class="donate">
+      <p style="font-size:18px;margin-bottom:6px"><strong>O gargalo real é a capacidade de modelos de IA.</strong></p>
+      <p>A equipe de engenharia são quatro agentes de IA (CTO, Coder, QA, Growth). Cada decisão de motor, cada estudo de referência e cada iteração de testes custa tokens. É isso que trava o lançamento - e é o que pedimos ajuda para.</p>
+      <h3 style="margin-top:20px">Doe com USDC</h3>
+      <p style="color:var(--muted);font-size:15px;margin-bottom:0">Rede <strong>Stellar (Soroban)</strong> · USDC nativo da Circle. A conta é multisig 2-de-6: receber não exige assinatura, então as doações entram na hora.</p>
+      <div class="addr" id="addr">GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7</div>
+      <p style="color:var(--muted);font-size:14px">Antes de enviar, confira os 6 primeiros e 6 últimos caracteres (<code>GATED25</code> … <code>DC7NO7</code>) e mande primeiro um valor pequeno de teste.</p>
+      <a class="btn" href="funding.en.html">Página de financiamento completa</a>
+      <a class="btn ghost" style="margin-left:8px" href="https://github.com/mcontreraz/djmixer">GitHub</a>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>O que o dinheiro paga</h3><p>Capacidade de modelos para a equipe de agentes, um MIDI controller para validar com hardware real e a conta Apple Developer (99 USD/ano) para o download sair assinado e sem o aviso do Gatekeeper.</p></div>
+      <div class="card"><h3>Sem cripto também</h3><p>GitHub Sponsors e Patreon abrem com a primeira doação. A Lite é grátis de qualquer jeito: não doar não te coloca numa lista de recursos menor.</p></div>
+      <div class="card"><h3>O álbum vem junto</h3><p>A Lite é lançada com o álbum completo de McBaez, grátis. O projeto de software e o projeto musical são o mesmo.</p></div>
+    </div>
+    <p class="note"><strong>Isto é uma doação, não um investimento.</strong> Sem token, sem participação, sem promessa de retorno. Doações podem ser income tributável para quem doa (no Chile, SUNAT) - cada doador deve consultar seu contador; o projeto não dá orientação tributária.</p>
+  </section>
+
+  <section>
+    <h2>A equipe</h2>
+    <p>Um humano (engenheiro de software chileno, amante da música) e quatro agentes de IA orquestrados com Paperclip: CTO, Coder, QA e Growth. 165 commits, 17 specs, 24 testes registrados, ~17.700 linhas próprias.</p>
+    <p>O repositório do código é privado até o primeiro lançamento. O que é público hoje: este site, as capturas, as notas de desenvolvimento e as especificações.</p>
+  </section>
+
+  <footer><p>DJMixer · software de DJ livre e grátis para sempre · GPL-2.0-or-later · feito por uma equipe de agentes de IA com um humano no comando.</p></footer>
+</div>
+</body>
+</html>

@@ -24,6 +24,17 @@
   .logo span{color:var(--accent)}
   nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px}
   nav a:hover{color:var(--text)}
+  .langs{margin-left:18px;border-left:1px solid var(--line);padding-left:16px}
+  .langs a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;
+    letter-spacing:.08em;margin-left:9px}
+  .langs a.on{color:var(--accent)}
+  .album{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:22px 0}
+  .album img{width:190px;height:190px;border-radius:10px;border:1px solid var(--line)}
+  .album h3{margin:0 0 6px;font-size:21px}
+  .album .meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+  .album .btns{margin-top:16px}
+  .album .btns a{font-size:14px;padding:10px 16px}
   .hero{padding:64px 0 34px}
   h1{font-size:clamp(30px,5.2vw,52px);line-height:1.1;margin:0 0 18px;letter-spacing:-.02em}
   h1 em{font-style:normal;color:var(--accent)}
@@ -70,8 +81,15 @@
       <a href="#que-es">Qué es</a>
       <a href="#capturas">Capturas</a>
       <a href="#specs">Specs</a>
+      <a href="#album">El álbum</a>
       <a href="#apoyar">Apoyar</a>
+      <a href="funding.html" style="color:#5fd08a">Funding ↗</a>
     </nav>
+    <div class="langs">
+      <a href="index.html" class="on">ES</a>
+      <a href="index.en.html">EN</a>
+      <a href="index.pt.html">PT</a>
+    </div>
   </div>
 </header>
 
@@ -201,6 +219,38 @@
       (en Chile, SUNAT) — eso lo consulta cada uno con su contador; el proyecto no da
       consejo fiscal.
     </p>
+  </section>
+
+  <section id="album">
+    <h2>El álbum va incluido en la Lite</h2>
+    <p>El humano detrás de este proyecto es un DJ, y su primer lanzamiento se
+    incluye completo en la versión Lite — gratis, para todo el mundo, para
+    siempre. Instalas el software y te llevas el disco.</p>
+    <div class="album">
+      <img src="media/relaunch.jpg" alt="Carátula de Relaunch">
+      <div>
+        <h3>Relaunch — McBaez <span style="color:var(--muted);font-weight:400">(McDiscJockey)</span></h3>
+        <p class="meta">Deep garage / 2-step '90s · primer lanzamiento</p>
+        <p style="color:var(--muted);font-size:15px;max-width:520px">
+          El proyecto de software y el proyecto musical son el mismo: las
+          funciones deterministas que un DJ juzga de verdad —beat matching que
+          cae en la grilla, scratch sin granulación, trim y nivel que aterrizan
+          donde la mano espera— son las que se están entrenando. Por eso el
+          álbum va dentro: no es un regalo de DAYPASS, es la razón de que
+          exista la herramienta.
+        </p>
+        <div class="btns">
+          <a class="btn" href="https://www.youtube.com/watch?v=m7lIbyha2kQ">▶ YouTube</a>
+          <a class="btn ghost" href="https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g">Spotify</a>
+          <a class="btn ghost" href="https://www.youtube.com/@ElReingeniero">Canal El Reingeniero</a>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin:16px 0 0">
+          Si lo escuchas una vez, es una reproducción. Si te gusta, es un like.
+          Y si eres DJ, el canal <strong>El Reingeniero</strong> es donde esto
+          se sigue: suscríbete para no perderte nada.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section>
