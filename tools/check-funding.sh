@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# check-funding.sh — gate de publicación para FUNDING.md
+# check-funding.sh — gate de publicación
 #
-# Comprueba que la página de apoyo esté lista para anunciarse:
+# Sin argumentos: comprueba que la página de apoyo (FUNDING.md) esté lista
+# para anunciarse:
 #   1. que no queden placeholders,
 #   2. que la dirección USDC sea válida (Stellar strkey con checksum CRC16 o
 #      EVM 0x + 40 hex, según la red publicada),
@@ -10,12 +11,26 @@
 #   4. que las vías sin cripto estén presentes,
 #   5. que el texto de la promesa no se contradiga ni prometa fecha del Pro.
 #
+# Con `--draft <fichero>`: comprueba el copy que se va a publicar fuera del
+# repo contra la lista unica de claims prohibidos (`tools/claims-prohibidas.txt`).
+# El chequeo es sobre el texto exacto que se manda.
+#
 # Uso:  ./tools/check-funding.sh
+#       ./tools/check-funding.sh --draft docs/announcement/moltbook/01-algo.md
 # Salida: 0 = listo para publicar · 1 = falta algo (lista qué falta)
 
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+if [ "${1:-}" = "--draft" ]; then
+  if [ -z "${2:-}" ]; then
+    printf 'uso: check-funding.sh --draft <fichero>\n' >&2
+    exit 2
+  fi
+  exec python3 "$ROOT/tools/check_claims.py" --cuerpo "$2"
+fi
+
 FILE="${1:-$ROOT/FUNDING.md}"
 PROMISE="$ROOT/docs/promise.md"
 

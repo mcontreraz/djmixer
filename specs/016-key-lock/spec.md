@@ -236,6 +236,11 @@ comprueba y pasa) o **abierto** (no hay oráculo automatizado que lo cubra).
   contenido se desliza ~30 ms durante la transición (tropiezo). Los oráculos
   C1 (sin deslizamiento) y C4 (fase de sync) están definidos en
   `research.md` y ambos **fallan hoy**.
+  **Fila de evidencia**: lo medido, lo no escuchado y la fecha de este
+  criterio viven en `evidence/keylock-toggle-crossfade.evidence` (no publicado), citada
+  aquí como evidencia:keylock-toggle-crossfade. La regla de esa fila (quien
+  escribe, los plazos y qué pasa cuando caduca) está en
+  la evidencia de QA (../../docs/qa-evidencia.md, no publicado).
 - **SC-004** (key de fixtures): arpegios/acordes sintéticos con fundamental
   conocida se clasifican en el Camelot esperado (Do mayor→`8B`, La menor→`8A`,
   más una muestra por cada modo si el fixture lo permite); fixture "sin tonalidad

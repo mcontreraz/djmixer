@@ -114,25 +114,39 @@ Only the networks listed with a live address can receive. The USDC on a
 different chain is a different asset, and a wrong-network transfer can be
 unrecoverable.
 
-**Address:**
+**Address + memo (the two go together):**
 
 ```
 Stellar (Soroban):  GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7
+Memo:               4WG9VNC4HF9H1TD4V5AJAN7XB4
 ```
 
-The Stellar account is a 2-of-6 multi-signature account, so every outgoing
-transfer needs two of the signers to approve. Receiving needs no signature, so
-donations arrive instantly and unattended.
+The deposit goes to the project's AirTM custody account, which is how the
+holder receives Stellar USDC. **Crediting is per memo**: a transfer that does
+not carry the memo above may not be credited to the project until support
+intervenes, so send both values from this sheet — or scan the QR, which
+carries them together (SEP-7).
 
-**Before you send — check these four things:**
+![Donation QR — address + memo (SEP-7)](donate-qr.png)
+
+<details><summary>QR address-only (wallets that don't parse SEP-7 — you then
+type the memo from the sheet by hand)</summary>
+
+![Donation QR address-only](donate-qr-address.png)
+
+</details>
+
+**Before you send — check these five things:**
 
 1. First 6 characters of the address match the ones published here
    (`GATED2…`).
 2. Last 6 characters of the address match the ones published here
    (`…DC7NO7`).
-3. You are on Stellar and the asset is USDC issued by the Circle issuer shown
+3. The **memo field is filled with the project's memo** — an empty or wrong
+   memo delays the credit.
+4. You are on Stellar and the asset is USDC issued by the Circle issuer shown
    above.
-4. Send a small test amount first, confirm it arrived, then send the rest.
+5. Send a small test amount first, confirm it arrived, then send the rest.
 
 > Only send on the network you intend; sending USDC on the wrong network can
 > result in permanent loss of funds. Donations that are sent to a wrong

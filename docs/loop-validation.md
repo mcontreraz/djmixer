@@ -23,13 +23,13 @@ Mixer::dataCallback (hilo de audio miniaudio)
        │    ├─ scratch → renderScratchRange()
        │    │    ├─ ma_decoder_seek_to_pcm_frame   // seek
        │    │    ├─ ma_decoder_read_pcm_frames      // I/O
-       │    │    ├─ m_src.insert / m_src.erase      // alloc/free
+       │    │    ├─ m_src.append (ring)         // sin alloc
        │    │    └─ QDateTime::currentMSecsSinceEpoch()
        │    └─ normal → per-frame ensureSourceFor()
        │         ├─ ma_decoder_read_pcm_frames      // I/O
-       │         ├─ m_src.insert                    // alloc
+       │         ├─ m_src.append (ring)             // sin alloc
        │         ├─ EOF → ma_decoder_seek_to_pcm_frame(0)  // seek
-       │         └─ discardConsumed() → m_src.erase // free
+       │         └─ discardConsumed() → m_src.discardBefore // O(1)
        └─ mix
 ```
 
@@ -45,7 +45,7 @@ Mixer::dataCallback (hilo de audio miniaudio)
 | `deck.cpp:947,958,963` (no publicado) | seek/read/insert | I/O + alloc en audio |
 | `deck.cpp:981` (no publicado) | `QDateTime::currentMSecsSinceEpoch` | syscall en audio |
 | `deck.cpp:1107,1112` (no publicado) | read/insert | I/O + alloc en audio |
-| `deck.cpp:1127` (no publicado) | `m_src.erase` | free en audio |
+| `deck.cpp:1127` (no publicado) | `m_src.erase` | free en audio (corregido: ring, DJM-31) |
 | `deck.cpp:784` (no publicado) | EOF → `seek(0)` | seek en audio |
 
 ### Deuda RT residual (no resuelta por 015 en su totalidad)
@@ -61,7 +61,10 @@ Deuda residual puntual:
 1. `processPendingLoad()` sigue haciendo decoder init/uninit + mutex en audio.
 2. El refill de reproducción normal (`ensureSourceFor`) sigue haciendo
    `ma_decoder_read_pcm_frames` + `m_src.insert` por bloque.
-3. `discardConsumed` sigue liberando historial con `m_src.erase` en audio.
+3. ~~`discardConsumed` sigue liberando historial con `m_src.erase` en audio.~~
+   **Resuelto (DJM-31):** el buffer de PCM es un ring de capacidad fija
+   (`pcmring.h` (no publicado)): descartar la historia es avanzar un índice (O(1), sin
+   mover un byte) y el append no reserva memoria.
 4. El scratch sigue haciendo seek/read/alloc/QDateTime en audio.
 
 ## 3. Handoff streaming↔loop (diseño adoptado)
@@ -167,6 +170,9 @@ Instrucciones para el operador:
 4. Repetir con material percusivo y con una discontinuidad deliberada
    (fixture rampa/DC de `loop_audio_test`) para confirmar la costura ≥20 dB.
 5. Registrar aquí el resultado y la fecha.
+6. El resultado se escribe como una **fila de evidencia**
+   (`evidence/<id>.evidence` (no publicado)), no como prosa: los campos, quien escribe
+   y la caducidad están en la evidencia de QA (qa-evidencia.md, no publicado).
 
 ## 9. Revisión FR → tests (F6 / T030)
 
@@ -239,3 +245,36 @@ Comportamiento adoptado (observable):
 - OUT = IN + L beats → el wrap cae exactamente en la retícula: beat-seamless.
 - El encogimiento (4→2, 8→4) con la cabeza más allá del OUT nuevo se difiere
   al wrap natural (sin clip); el IN no cambia nunca en un resize.
+
+## El wrap del loop: la cola del fundido vive en la ventana (DJM-35/DJM-40)
+
+El fundido anti-clic del wrap no corta: **mezcla** la cola del loop (el
+material más allá del OUT, que sigue sonando) con la cabeza (el material desde
+el IN). Para eso el fundido lee hasta `crossfadeFrames(D)` muestras más allá
+del OUT — 48 frames (1 ms) como máximo, acotado a ≤1/16 del período.
+
+Dos cosas tienen que cumplirse para que el wrap no meta un clic:
+
+1. **La ventana residente tiene que guardar esa cola.** El deck pedía la
+   ventana con 8 frames de guard después del OUT, y el fundido lee hasta 48:
+   la lectura de la cola se salía de la ventana.
+2. **Lo que no está en la ventana se lee del BORDE, no del principio.** El
+   fallback devolvía el primer frame de la ventana, así que la cola del
+   fundido se congelaba en un valor ajeno al material: un salto de ~0.19-0.36
+   en cada vuelta, y el motor de stretch lo devolvía como un tic de fase.
+
+Medido con el fixture de QA (seno de 480 Hz, loop de 4 beats a 120 BPM, rate
+1.2, `keylock_loop_click_test.cpp` (no publicado)):
+
+| escenario | antes | después |
+|---|---|---|
+| loop + KEY (path del motor) | 19 saltos, máx 0.171 | **0** |
+| loop sin KEY (path directo) | 28 saltos, máx 0.210 | **0** |
+| play + KEY (sin wrap) | 7 saltos, máx 0.299 | 7 saltos (sin wrap: es del motor) |
+
+Lo que queda en el path de play es del motor (no del loop) y no lo arregla
+esta sección: es un artefacto puntual del stretcher, no del wrap.
+
+Gates: `loop_audio_test.cpp` (no publicado) (el wrap mezcla la cola real; sin cola el
+fundido cae al borde, no al primer frame) y `loop_wrap_click_test.cpp` (no publicado)
+(el path de loop no mete salto y la envolvente no se hunde en el wrap).

@@ -56,10 +56,13 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 60px;colo
 """
 
 ADDR = "GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7"
+# Memo de la hoja de deposito AirTM del dueno: sin el memo, el deposito
+# puede no acreditarse y queda en reclamo de soporte.
+MEMO = "4WG9VNC4HF9H1TD4V5AJAN7XB4"
 ISSUER = "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
 YT = "https://www.youtube.com/watch?v=m7lIbyha2kQ"
 SP = "https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g"
-CH = "https://www.youtube.com/@ElReingeniero"
+CH = "https://www.youtube.com/@McDiscJockey"
 
 T = {
  "es": {
@@ -71,7 +74,8 @@ T = {
   "ask_h": "El pedido",
   "ask": "El cuello de botella real es la capacidad de modelos de IA que consume el equipo de cuatro agentes (CTO, Coder, QA, Growth). Cada decisión de motor, cada estudio de referencia y cada iteración de tests cuesta tokens. Eso es lo que frena la release.",
   "addr_h": "Donar con USDC",
-  "addr_p": "Red Stellar (Soroban), USDC nativo de Circle. La cuenta es multisig 2-de-6: recibir no requiere firma, así que las donaciones entran al instante. Antes de enviar, comprueba los 6 primeros y los 6 últimos caracteres y manda primero un monto pequeño de prueba.",
+  "addr_p": "Red Stellar (Soroban), USDC nativo de Circle. El depósito cae en el wallet de custodia AirTM del proyecto y se acredita por memo: envía dirección y memo juntos (o escanea el QR SEP-7). Un depósito sin el memo puede no acreditarse: manda primero un monto pequeño de prueba.",
+  "memo_p": "Memo de la hoja de depósito (obligatorio para que la donación se acredite):",
   "levels_h": "Niveles",
   "c1h": "Qué paga el dinero", "c1": "Capacidad de modelos para el equipo de agentes, un MIDI controller para validar con hardware real y la cuenta de Apple Developer (99 USD/año) para que la descarga salga firmada y sin el aviso de Gatekeeper.",
   "c2h": "Sin cripto también", "c2": "GitHub Sponsors y Patreon se abren con la primera donations. La Lite es gratis igual: no donar no te pone en una lista de features más pequeña.",
@@ -79,7 +83,7 @@ T = {
   "comp_h": "Cumplimiento",
   "comp": "Esto es una donación, no una inversión: no hay token, ni participación, ni promesa de retorno. Las donaciones pueden ser ingreso imponible para quien dona (en Chile, el SII): eso lo consulta cada uno con su contador, el proyecto no da consejo fiscal. La dirección es de uso exclusivo del proyecto.",
   "track_h": "El artista",
-  "track": "Relaunch, de McBaez (McDiscJockey) — deep garage / 2-step '90s. Si lo escuchas una vez, es una reproducción; si te gusta, un like. El canal donde se sigue todo esto es El Reingeniero.",
+  "track": "Relaunch, de McBaez (McDiscJockey) — deep garage / 2-step '90s. Si lo escuchas una vez, es una reproducción; si te gusta, un like. El canal donde se sigue todo esto es McDiscJockey.",
   "cta": "Leer el sitio y las especificaciones",
   "more": "Sitio, capturas y las 17 especificaciones técnicas",
   "foot": "DJMixer · software de DJ libre y gratis para siempre · GPL-2.0-or-later · construido por un equipo de agentes de IA con un humano al mando.",
@@ -93,7 +97,8 @@ T = {
   "ask_h": "The ask",
   "ask": "The real bottleneck is the AI model capacity that the team of four agents (CTO, Coder, QA, Growth) consumes. Every engine decision, every reference study and every test iteration costs tokens. That is what gates the release.",
   "addr_h": "Donate with USDC",
-  "addr_p": "Stellar (Soroban) network, Circle-native USDC. The account is a 2-of-6 multisig: receiving needs no signature, so donations arrive unattended. Before sending, check the first 6 and last 6 characters and send a small test amount first.",
+  "addr_p": "Stellar (Soroban) network, Circle-native USDC. The deposit lands in the project AirTM custody wallet and is credited per memo: send address and memo together (or scan the SEP-7 QR). A transfer without the memo may not be credited: send a small test amount first.",
+  "memo_p": "Memo of the deposit sheet (required for the donation to be credited):",
   "levels_h": "Levels",
   "c1h": "What the money pays for", "c1": "Model capacity for the agent team, a MIDI controller to validate with real hardware, and the Apple Developer account (99 USD/year) so the download is signed and nobody gets a Gatekeeper warning.",
   "c2h": "No crypto needed", "c2": "GitHub Sponsors and Patreon open with the first donations. The Lite is free either way: not donating does not put you on a smaller feature list.",
@@ -101,7 +106,7 @@ T = {
   "comp_h": "Compliance",
   "comp": "This is a donation, not an investment: no token, no equity, no promise of a return. Donations may be taxable income for the donor (in Chile, the SII) - each donor should check with their own accountant; the project gives no tax advice. The address is dedicated to the project.",
   "track_h": "The artist",
-  "track": "Relaunch by McBaez (McDiscJockey) - deep garage / 2-step '90s. One listen is a play; if you like it, a like. The channel where all of this continues is El Reingeniero.",
+  "track": "Relaunch by McBaez (McDiscJockey) - deep garage / 2-step '90s. One listen is a play; if you like it, a like. The channel where all of this continues is McDiscJockey.",
   "cta": "Read the site and the technical specs",
   "more": "Site, screenshots and the 17 technical specifications",
   "foot": "DJMixer · free and forever open-source DJ software · GPL-2.0-or-later · built by a team of AI agents with one human in charge.",
@@ -115,7 +120,8 @@ T = {
   "ask_h": "O pedido",
   "ask": "O gargalo real é a capacidade de modelos de IA que a equipe de quatro agentes (CTO, Coder, QA, Growth) consome. Cada decisão de motor, cada estudo de referência e cada iteração de testes custa tokens. É isso que trava o lançamento.",
   "addr_h": "Doar com USDC",
-  "addr_p": "Rede Stellar (Soroban), USDC nativo da Circle. A conta é multisig 2-de-6: receber não exige assinatura, então as doações entram na hora. Antes de enviar, confira os 6 primeiros e 6 últimos caracteres e mande primeiro um valor pequeno de teste.",
+  "addr_p": "Rede Stellar (Soroban), USDC nativo da Circle. O depósito cai no wallet de custódia AirTM do projeto e é creditado por memo: envie endereço e memo juntos (ou abra o QR SEP-7). Um depósito sem o memo pode não ser creditado: mande primeiro um valor pequeno de teste.",
+  "memo_p": "Memo da folha de depósito (obrigatório para a doação ser creditada):",
   "levels_h": "Níveis",
   "c1h": "O que o dinheiro paga", "c1": "Capacidade de modelos para a equipe de agentes, um MIDI controller para validar com hardware real e a conta Apple Developer (99 USD/ano) para o download sair assinado e sem o aviso do Gatekeeper.",
   "c2h": "Sem cripto também", "c2": "GitHub Sponsors e Patreon abrem com a primeira doação. A Lite é grátis de qualquer forma: não doar não te coloca numa lista de recursos menor.",
@@ -123,7 +129,7 @@ T = {
   "comp_h": "Conformidade",
   "comp": "Isto é uma doação, não um investimento: não há token, participação ou promessa de retorno. Doações podem ser income tributável para quem doa (no Chile, o SII) - cada doador deve consultar seu contador; o projeto não dá orientação tributária. O endereço é exclusivo do projeto.",
   "track_h": "O artista",
-  "track": "Relaunch, de McBaez (McDiscJockey) - deep garage / 2-step '90s. Uma escuta é uma reprodução; se gostar, é um like. O canal onde isso continua é o El Reingeniero.",
+  "track": "Relaunch, de McBaez (McDiscJockey) - deep garage / 2-step '90s. Uma escuta é uma reprodução; se gostar, é um like. O canal onde isso continua é o McDiscJockey.",
   "cta": "Ver o site e as especificações técnicas",
   "more": "Site, capturas e as 17 especificações técnicas",
   "foot": "DJMixer · software de DJ livre e grátis para sempre · GPL-2.0-or-later · feito por uma equipe de agentes de IA com um humano no comando.",
@@ -169,10 +175,16 @@ TPL = """<!DOCTYPE html>
   <h3 style="margin-top:0">{addr_h}</h3>
   <p style="color:var(--muted);font-size:15px">{addr_p}</p>
   <div class="addr">{addr}</div>
+  <p style="color:var(--muted);font-size:14px">{memo_p}</p>
+  <div class="addr">{memo}</div>
+  <div style="display:flex;gap:16px;margin:14px 0;align-items:flex-start;flex-wrap:wrap">
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr.png" alt="QR donacion: direccion + memo (SEP-7)" width="170" height="170" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">direccion + memo (SEP-7)</p></div>
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr-address.png" alt="QR solo direccion" width="120" height="120" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">solo direccion (luego anota el memo)</p></div>
+  </div>
   <p style="color:var(--muted);font-size:14px">Issuer (Circle, Stellar): <code>{issuer}</code></p>
   <a class="btn" href="{yt}">▶ YouTube</a>
   <a class="btn ghost" href="{sp}">Spotify</a>
-  <a class="btn ghost" href="{ch}">El Reingeniero</a>
+  <a class="btn ghost" href="{ch}">McDiscJockey</a>
 </div>
 
 <h2>{levels_h}</h2>
@@ -216,9 +228,9 @@ COMMON = {
  "l3": {"es": "Un mes con el equipo completo corriendo.", "en": "A full month with the whole team running.", "pt": "Um mês com a equipe inteira rodando."},
  "l4": {"es": "Varios meses, más MIDI controller y la firma de código para la release.", "en": "Several months, plus a MIDI controller and code signing for the release.", "pt": "Vários meses, mais MIDI controller e assinatura de código para o lançamento."},
  "goal_h": {"es": "Objetivo del primer tramo", "en": "First milestone target", "pt": "Meta do primeiro trecho"},
- "goal": {"es": "USDC 2.000 — el presupuesto de la release Lite de punta a punta: meses de capacidad de modelos, hardware para validar con un DJ real y la firma para que la descarga no salga con el aviso de Gatekeeper.",
-         "en": "USDC 2,000 - the budget for the Lite release end to end: months of model capacity, hardware to validate with a real DJ, and signing so the download does not arrive with a Gatekeeper warning.",
-         "pt": "USDC 2.000 - o orçamento do lançamento Lite de ponta a ponta: meses de capacidade de modelos, hardware para validar com um DJ real e a assinatura para o download não chegar com o aviso do Gatekeeper."},
+ "goal": {"es": "USDC 500 — un mes de capacidad del equipo, la firma para que la descarga no salga con el aviso de Gatekeeper y el dominio. El primer unlocking son USDC 99: la cuenta de Apple Developer, que es lo que de verdad tiene la release bloqueada. USDC 2.000 es el siguiente escalon (varios meses mas hardware de referencia).",
+         "en": "USDC 500 - one month of team capacity, signing so the download does not arrive with a Gatekeeper warning, and the domain. The first unlock is USDC 99: the Apple Developer account, which is what actually has the release blocked. USDC 2,000 is the next step up (several months plus reference hardware).",
+         "pt": "USDC 500 - um mês de capacidade da equipe, a assinatura para o download não chegar com o aviso do Gatekeeper e o domínio. O primeiro desbloqueio são USDC 99: a conta Apple Developer, que é o que realmente tem o lançamento travado. USDC 2.000 é o próximo degrau (vários meses mais hardware de referência)."},
  "site": {"es": "Sitio", "en": "Site", "pt": "Site"},
  "funding": {"es": "Financiación", "en": "Funding", "pt": "Financiamento"},
 }
@@ -231,7 +243,7 @@ for lang, t in T.items():
         lang=t["lang"], css=CSS, h1=t["h1"], lead=t["lead"], code=t["code"],
         promise_h=t["promise_h"], promise=t["promise"],
         ask_h=t["ask_h"], ask=t["ask"],
-        addr_h=t["addr_h"], addr_p=t["addr_p"], addr=ADDR, issuer=ISSUER,
+        addr_h=t["addr_h"], addr_p=t["addr_p"], memo_p=t["memo_p"], addr=ADDR, memo=MEMO, issuer=ISSUER,
         yt=YT, sp=SP, ch=CH,
         levels_h=t["levels_h"], amount_h=c("amount_h"), covers_h=c("covers_h"),
         l1=c("l1"), l2=c("l2"), l3=c("l3"), l4=c("l4"),

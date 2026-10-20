@@ -122,19 +122,19 @@
     <p>O que existe construído, e como. As specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalhe técnico</th></tr>
-            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem locks e sem tocar a UI. O caminho de loop não aloca memória; o caminho geral de playback realoca o buffer quando muda o número de amostras. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
-      <tr><td>Decks</td><td>Pronto</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck com sidecar <code>.hotcues</code> persistente.</td></tr>
-      <tr><td>Tempo</td><td>Pronto</td><td>Pitch/tempo, modo vinil, pitch-bend contínuo, key lock (tempo sem mudar o tom).</td></tr>
-      <tr><td>Key lock</td><td>Pronto</td><td>Motor Rubber Band (GPL-2.0-or-later) em realtime, com crossfade de entrada e saída. O protótipo de WSOLA próprio foi descartado.</td></tr>
-      <tr><td>Key</td><td>Pronto</td><td>Detecção de tonalidade com nomenclatura Camelot, cacheada por faixa.</td></tr>
-      <tr><td>Beats</td><td>Em validação</td><td>Detecção de BPM e downbeat, beatgrid, importação de grids do Serato. O detector automático segue em validação contra faixas reais.</td></tr>
-      <tr><td>Loops</td><td>Pronto</td><td>Auto-loops 1/8…16 beats sobre o beatgrid, resize diferido (nunca a quente).</td></tr>
-      <tr><td>Sync</td><td>Pronto</td><td>Correção de fase, compensando a latência audível do key lock. SyncLab para inspecionar o downbeat em ms.</td></tr>
-      <tr><td>Mixer</td><td>Pronto</td><td>EQ de 3 bandas, filtro, FX por canal, isolator, VU master.</td></tr>
-      <tr><td>Waveform</td><td>Pronto</td><td>RGB com detalhe a 200 buckets/s, overview em cor, zoom 2–64 s.</td></tr>
-      <tr><td>Scratch</td><td>Pronto</td><td>Contínuo, sem granulação audível.</td></tr>
-      <tr><td>MIDI</td><td>Pronto</td><td>Mapeamento completo, sensibilidade de jog, pitch-bend.</td></tr>
-      <tr><td>Decodificação</td><td>Pronto</td><td>MP3, FLAC, AAC, MP4/M4A, Opus (AV1+Opus por stream-copy).</td></tr>
+            <tr><td>Engine de áudio</td><td>Listo</td><td>Thread de callback sem locks e sem tocar a UI. O caminho de loop não aloca memória; o caminho geral de playback realoca o buffer quando muda o número de amostras. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
+      <tr><td>Decks</td><td>Listo</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck com sidecar <code>.hotcues</code> persistente.</td></tr>
+      <tr><td>Tempo</td><td>Listo</td><td>Pitch/tempo (±8/16/32 %) com pitch-bend contínuo, scratch estilo vinil e key lock (tempo sem mudar o tom).</td></tr>
+      <tr><td>Key lock</td><td>Listo</td><td>Motor Rubber Band (GPL-2.0-or-later) em realtime para transientes mistos, com crossfade de entrada e saída para que a transição não clique. O protótipo de WSOLA próprio foi descartado.</td></tr>
+      <tr><td>Key</td><td>Listo</td><td>Detecção de tonalidade com nomenclatura Camelot, cacheada por faixa.</td></tr>
+      <tr><td>Beats</td><td>Em validação</td><td>Detecção de BPM e downbeat, beatgrid, leitura do blob BeatGrid que a faixa já traz na própria tag (MP3 GEOB / M4A). O detector automático segue em validação contra faixas reais.</td></tr>
+      <tr><td>Loops</td><td>Listo</td><td>Auto-loops 1/8…16 beats sobre o beatgrid, resize diferido (nunca a quente).</td></tr>
+      <tr><td>Sync</td><td>Listo</td><td>Correção de fase, compensando a latência audível do key lock. SyncLab para inspecionar o downbeat em ms.</td></tr>
+      <tr><td>Mixer</td><td>Listo</td><td>EQ de 3 bandas, filtro, FX por canal, VU master.</td></tr>
+      <tr><td>Waveform</td><td>Listo</td><td>RGB com detalhe a 200 buckets/s, overview em cor, zoom 2–64 s.</td></tr>
+      <tr><td>Scratch</td><td>Listo</td><td>Contínuo, sem granulação audível.</td></tr>
+      <tr><td>MIDI</td><td>Listo</td><td>Mapeamento completo, sensibilidade de jog, pitch-bend.</td></tr>
+      <tr><td>Decodificação</td><td>Listo</td><td>MP3, FLAC, AAC, MP4/M4A, Opus (AV1+Opus por stream-copy).</td></tr>
     </table>
     <p class="note"><strong>O que ainda não funciona está escrito, não escondido.</strong> A detecção automática de beats segue em validação contra faixas reais; o site diz isso na mesma frase em que diz o que funciona.</p>
   </section>

@@ -1,6 +1,6 @@
 # Implementation Plan: Scratch
 
-**Branch**: `006-scratch` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+**Branch**: `006-scratch` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/006-scratch/spec.md`
 
@@ -68,6 +68,6 @@ src/
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), [contracts/](contracts), [quickstart.md](quickstart.md)
