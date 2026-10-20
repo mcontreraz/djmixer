@@ -1,15 +1,15 @@
-# Gate de exposicion del repo publico.
+# Las citas del repo publico no pueden estar muertas.
 #
-# Este repositorio es el SITIO: landing, paginas de funding, capturas y el QR.
-# No es el codigo, ni las specs, ni las notas de desarrollo (decision del
-# dueno, 2026-10-20). El codigo y el diseno viven en el repositorio privado
-# hasta la primera release, y el source completo sale con el primer binario
-# porque es lo que exige la GPL-2.0-or-later.
+# Este repo no tiene codigo: es el sitio, las capturas, las notas de
+# desarrollo y las specs. Una cita a `src/...` o a `tests/...` es una
+# referencia que el lector no puede abrir, y un enlace a un fichero que no
+# esta aqui es un enlace roto. El render (`tools/publica-docs.py`, en el repo
+# de codigo) deja el arbol publicado sin esas referencias; esta workflow
+# vigila que nadie las vuelva a meter editando el repo publico a mano.
 #
-# Esta workflow vigila que nadie los meta de vuelta editando el repo publico a
-# mano: el mismo script corre en local (tools/check_public_repo.sh) antes de
-# cada push, y aqui en cada push y pull request.
-name: Exposición del repo público
+# La herramienta la publica el render, asi que esta siempre al dia con la
+# del repo de codigo.
+name: Rutas de documentos
 
 on:
   push:
@@ -21,9 +21,12 @@ permissions:
   contents: read
 
 jobs:
-  check-public-repo:
+  check-doc-paths:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+
     steps:
       - uses: actions/checkout@v4
-      - name: Solo landing, funding, capturas y QR
-        run: ./tools/check_public_repo.sh .
+
+      - name: Comprobar las rutas citadas en los documentos publicados
+        run: python3 tools/check_doc_paths.py .

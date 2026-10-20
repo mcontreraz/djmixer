@@ -1,18 +1,23 @@
 # DJMixer
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Software de DJ nativo en la liga de Serato y Traktor. La versión Lite es gratis
 para todo el mundo, para siempre.**
 
 Este repositorio es el **sitio público** del proyecto: la página de financiación,
-las capturas de la app y el compromiso de la Lite. El código fuente, las notas
-de desarrollo y las especificaciones técnicas viven en un repositorio privado
-hasta la primera release; el source completo se publica con el primer binario,
-porque es lo que exige la licencia GPL-2.0-or-later.
+las capturas de la app, las notas de desarrollo y las especificaciones técnicas.
+El código fuente está en un repositorio privado hasta la primera release; el
+source completo se publica con el primer binario, porque es lo que exige la
+licencia GPL-2.0-or-later.
 
 - 🌐 **Sitio:** https://mcontreraz.github.io/djmixer
 - 💛 **Apoyar el proyecto:** [`FUNDING.md`](FUNDING.md) · USDC en Stellar
-- 📜 **El compromiso (canónico):** versionado en el repositorio del proyecto (privado hasta la primera release)
-- 📓 **Notas de desarrollo y especificaciones técnicas:** en el repositorio del proyecto (privado hasta la primera release)
+- 📜 **El compromiso (canónico):** `promise.md` (no publicado) (no publicado)
+- 📓 **Notas de desarrollo:** `devlog.md` (no publicado) (no publicado)
+- 📐 **Especificaciones:** `specs/INDEX.md` (no publicado)
 
 ![Dos decks con una pista cargada, BPM y tonalidad detectados, hot cues, loops y EQ de tres bandas](media/03-decks.png)
 
@@ -95,10 +100,11 @@ completo en la versión Lite — gratis, para todo el mundo, para siempre.
 - Canal: https://www.youtube.com/@McDiscJockey
 
 El proyecto de software y el proyecto musical son el mismo: las funciones
-deterministas con las que un DJ juzga el software de verdad —beat matching que
-cae en la grilla, scratch sin granulación audible, trim y nivel que aterrizan
-donde la mano espera— son las que se están entrenando. Por eso el álbum va
-dentro: no es un chamariz, es la razón de que exista la herramienta.
+deterministas con las que un DJ juzga el software de verdad —loops que caen
+exactamente en la grilla que la app está usando, scratch sin granulación
+audible, trim y nivel que aterrizan donde la mano espera— son las que se están
+entrenando. Por eso el álbum va dentro: no es un chamariz, es la razón de que
+exista la herramienta.
 
 ## Páginas de funding por idioma
 
