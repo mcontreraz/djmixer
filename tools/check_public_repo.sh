@@ -102,6 +102,35 @@ for f in index.html index.en.html index.pt.html funding.html funding.en.html fun
   fi
 done
 
+printf '\n[6] la autoridad tributaria chilena se llama SII, no SUNAT\n'
+# SUNAT es la de Peru (Servicio Nacional de Administracion Tributaria); la de
+# Chile es el SII (Servicio de Impuestos Internos). La nota fiscal del sitio la
+# nombra para que el donante sepa a quien preguntar, asi que equivocarse de
+# pais no es un detalle: manda al donante al organismo equivocado. Pasó: las
+# tres landings de `docs/publico/` decian SUNAT para Chile mientras las hojas de
+# funding ya decian SII, y nadie lo vio porque el gate no miraba ese dato.
+impuestos=0
+for f in index.html index.en.html index.pt.html funding.html funding.en.html \
+         funding.pt.html README.md FUNDING.md; do
+  git ls-files --error-unmatch "$f" >/dev/null 2>&1 || continue
+  if grep -qi "SUNAT" "$f" 2>/dev/null; then
+    bad "$f nombra SUNAT (es la autoridad de Peru; la de Chile es el SII)"
+    impuestos=1
+  fi
+done
+[ "$impuestos" -eq 0 ] && ok "el material publico no confunde la autoridad tributaria"
+# Y no basta con callarlo: donde se habla del impuesto, tiene que decir SII.
+menciona_sii=0
+for f in index.html index.en.html index.pt.html funding.html funding.en.html funding.pt.html; do
+  git ls-files --error-unmatch "$f" >/dev/null 2>&1 || continue
+  grep -qi "SII" "$f" 2>/dev/null && menciona_sii=1
+done
+if [ "$menciona_sii" -eq 1 ]; then
+  ok "el material publico nombra al SII"
+else
+  bad "el material publico no nombra al SII: la nota fiscal tiene que decir a quien preguntar"
+fi
+
 printf '\n'
 if [ "$fail" -eq 0 ]; then
   printf 'RESULTADO: el repo publico solo contiene landing, funding, capturas y el QR.\n'
