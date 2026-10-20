@@ -1,5 +1,9 @@
 # El compromiso de DJMixer
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 Fecha: 2026-10-19 · Documento normativo del proyecto (no es código, no es
 consejo legal).
 
@@ -33,11 +37,11 @@ En la Lite, de forma permanente y sin condiciones:
 Es decir: **lo esencial de mezclar, siempre gratis.** Si una función básica
 pudiera cobrarse, el proyecto habría fallado su objetivo.
 
-Esta lista no es una aspiración: cada punto existe hoy en `src/` y está
+Esta lista no es una aspiración: cada punto existe hoy en `src/` (no publicado) y está
 cubierto por la suite de pruebas del repo (`ctest --test-dir build
 --output-on-failure`). El número exacto de pruebas cambia con cada commit, y
-por eso el conteo vive en el [README](../README.md) y no en este documento:
-aquí va la promesa, que no envejece.
+por eso no vive en este documento (en el repositorio de código vive en el
+README): aquí va la promesa, que no envejece.
 
 ### Garantías técnicas del compromiso
 

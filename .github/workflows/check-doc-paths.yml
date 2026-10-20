@@ -1,0 +1,32 @@
+# Las citas del repo publico no pueden estar muertas.
+#
+# Este repo no tiene codigo: es el sitio, las capturas, las notas de
+# desarrollo y las specs. Una cita a `src/...` o a `tests/...` es una
+# referencia que el lector no puede abrir, y un enlace a un fichero que no
+# esta aqui es un enlace roto. El render (`tools/publica-docs.py`, en el repo
+# de codigo) deja el arbol publicado sin esas referencias; esta workflow
+# vigila que nadie las vuelva a meter editando el repo publico a mano.
+#
+# La herramienta la publica el render, asi que esta siempre al dia con la
+# del repo de codigo.
+name: Rutas de documentos
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-doc-paths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Comprobar las rutas citadas en los documentos publicados
+        run: python3 tools/check_doc_paths.py .

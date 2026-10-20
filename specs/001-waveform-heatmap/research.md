@@ -1,5 +1,9 @@
 # Research: Waveform Heatmap
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 ## Decisión 1: Dónde corre el análisis
 
 - **Decision**: `QThread` worker dedicado (`WaveformAnalyzer`), un job por deck con
@@ -12,7 +16,7 @@
 
 ## Decisión 2: Cómo se decodifica
 
-- **Decision**: `ma_decoder` independiente en el worker (mismo `third_party/miniaudio.h`).
+- **Decision**: `ma_decoder` independiente en el worker (mismo `miniaudio.h` (no publicado)).
 - **Rationale**: cero dependencias nuevas (constitución IV); el Deck sigue con su
   propio decoder de streaming sin interferencias.
 - **Alternatives considered**: FFmpeg/QtMultimedia (rechazados: peso y permisos nuevos).

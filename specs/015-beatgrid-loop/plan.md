@@ -1,5 +1,9 @@
 # Implementation Plan: Loops exactos por beatgrid
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Feature**: `015-beatgrid-loop` · **Fecha**: 2026-10-18 · [Spec](spec.md)
 **Estado**: Plan preparado; ninguna fase de implementación ejecutada.
 
@@ -78,8 +82,8 @@ para el renderer. El decoder del worker es exclusivo: no compartir un decoder
 mutable con el callback. El trabajo de decode/seek/reserve/resize/destrucción
 queda en ese worker. No reutilizar `ensureSourceFor()` en cada vuelta.
 
-Propuesta de archivos: `src/looptransport.h/.cpp` para matemáticas/estado;
-`src/looppcmcache.h/.cpp` para ventanas y publicación. La implementación puede
+Propuesta de archivos: `looptransport.h/.cpp` (no publicado) para matemáticas/estado;
+`looppcmcache.h/.cpp` (no publicado) para ventanas y publicación. La implementación puede
 integrarlos con el buffer existente, manteniendo los contratos y pruebas.
 
 - Presupuesto **64 MiB PCM por deck**, con un pool de ventanas fijables y una

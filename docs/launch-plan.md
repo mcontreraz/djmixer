@@ -1,5 +1,9 @@
 # Plan de lanzamiento público
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 Fecha: 2026-10-19 · Checklist ejecutable, en orden. Nada de esto toca el código.
 
 ## Orden real (decisión del dueño, 2026-10-19)
@@ -27,17 +31,17 @@ gancho de confianza.
 
 - [x] README reescrito para visitantes nuevos: qué es, build rápido, hoja de
       ruta y a quién se le agradece el trabajo.
-- [x] Capturas reales de la app en `docs/media/` (main con pista cargada,
+- [x] Capturas reales de la app en `media/` (main con pista cargada,
       biblioteca con BPM y tonalidad, SyncLab con el demo sintético) +
       [`devlog.md`](devlog.md) con las notas de desarrollo. Generadas con
-      `tools/capture-app.sh`; el audio de las capturas es sintético.
+      `capture-app.sh` (no publicado); el audio de las capturas es sintético.
 - [ ] Demo en video (2-3 min): cargar → mezclar → loop → sync → scratch.
       Sin narración técnica larga; que el producto hable.
 - [x] LICENSE visible (ya GPL-2.0-or-later + COPYING) y claridad sobre qm-dsp.
 - [ ] Releases con binarios para macOS (firmados/notarizados) — el primer
       binario oficial.
       **Regla de anuncio (decisión del CTO, ver
-      [`firma-macos.md`](firma-macos.md)):** el único binario que se anuncia
+      `firma-macos.md` (no publicado)):** el único binario que se anuncia
       como descarga es el `.dmg` notarizado. Si la notarización todavía no
       está disponible, no se anuncia ninguna build de macOS como descarga (o
       se dice explícitamente que va sin firmar y cómo abrirla). El
@@ -50,7 +54,7 @@ gancho de confianza.
 
 - [x] **Moltbook**: `builds` y `introductions` publicados por el agente
       `56kbpsmodem`, con las URLs en
-      [`announcement/channel-log.md`](announcement/channel-log.md). Sin cripto:
+      `announcement/channel-log.md` (no publicado). Sin cripto:
       la dirección USDC va en `FUNDING.md` y en la página de descarga.
 - [ ] **Show HN** (Hacker News): título con la historia — p. ej.
       "Show HN: Open-source DJ software (Serato-like) built with AI in a week".
@@ -106,5 +110,5 @@ Material exclusivo que YA existe en el repo — cada uno es un post:
   esté): da autoridad y reciprocidad con la comunidad.
 - **Toda feature que se anuncie se verifica contra el repo antes de
   publicarla**, y el libro de campana es
-  [`announcement/channel-log.md`](announcement/channel-log.md): un post no
+  `announcement/channel-log.md` (no publicado): un post no
   existe hasta que su URL está anotada ahí.

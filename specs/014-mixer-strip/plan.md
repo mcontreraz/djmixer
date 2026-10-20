@@ -1,5 +1,11 @@
 # Plan de implementación: Franja MIXER completa (EQ + Filtro + Gain)
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Spec**: `specs/014-mixer-strip/spec.md` · **Rama**: `014-mixer-strip`
 
 ## Contexto (estado actual)
@@ -11,7 +17,7 @@
   HI/MID/LOW en `MixerStrip.qml` (T006–T008 de 013, pendientes).
 - **Filtro**: sin implementar. `Biquad::lowpass/highpass` ya existen en
   `audioformat.h` (RBJ). El diseño base ya está acordado en
-  `docs/referencia-traktor/EQ-FILTER.md` §4: knob bipolar (centro off,
+  `referencia-traktor/EQ-FILTER.md` (no publicado) (referencia local, **no publicada**) §4: knob bipolar (centro off,
   izquierda LP, derecha HP, resonancia), modelos Z/Xone/Ladder fuera de
   alcance v1.
 - **Gain**: `m_channelGain` fijo 0.8 en `Deck` (atomic, aplicado en
@@ -23,7 +29,7 @@
 
 ## Diseño DSP
 
-### 1. Filtro de canal — `Deck` (`src/deck.h/.cpp`)
+### 1. Filtro de canal — `Deck` (`deck.h/.cpp` (no publicado))
 
 - Estado UI→audio: `std::atomic<float> m_filterAmount{0.0f}` (−1..+1);
   Q_PROPERTY `filterAmount` + slot `setFilterAmount(double)` + notify.
@@ -83,7 +89,7 @@
 
 ### 4. Tests
 
-- **`tests/filter_dsp_test.cpp`** (nuevo ctest `filter_dsp`):
+- **`filter_dsp_test.cpp` (no publicado)** (nuevo ctest `filter_dsp`):
   - Respuesta: seno 50 Hz + 10 kHz por el filtro con `amount = ±1` →
     atenuaciones (SC-001).
   - Bypass bit-exacto con `amount = 0` (SC-001).
@@ -103,14 +109,14 @@
     docs quedan como referencia de calibración (frecuencias, rangos, tests).
 0.2 `Deck`: props `eqLow/eqMid/eqHigh` (±12 dB, atómicos) + `applyEq` en la
     cadena post-resample con suavizado por bloque y bypass bit-exacto.
-0.3 `tests/eq_dsp_test.cpp`: respuesta de las 3 bandas + identidad + barrido
+0.3 `eq_dsp_test.cpp` (no publicado): respuesta de las 3 bandas + identidad + barrido
     sin clicks (reimplementado; las aserciones de la spec 013 como guía).
 
 ### Fase 1 — DSP (filtro + gain)
 
 1. `Deck`: `filterAmount`/`channelGain` props + setters (atómicos).
 2. `Deck::render`: `applyFilter` (LP+HP suavizado) post-EQ + ramp de gain.
-3. `tests/filter_dsp_test.cpp` + registro en `CMakeLists.txt`.
+3. `filter_dsp_test.cpp` (no publicado) + registro en `CMakeLists.txt`.
 4. `ctest` verde antes de tocar UI.
 
 ### Fase 2 — UI (Knob + MixerStrip)

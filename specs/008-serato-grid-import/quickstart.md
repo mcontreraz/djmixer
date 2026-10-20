@@ -1,8 +1,18 @@
 # Quickstart: Serato Grid Import
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature**: `008-serato-grid-import`
 
 ## 1. Verificar el oráculo (sin compilar nada)
+
+Los scripts de esta sección son **material local, no publicado**: no están en
+el repo público, así que en un clon limpio estos comandos no existen. Sirven
+como registro del método; el oráculo que manda es el test del repo.
 
 ```sh
 python3 docs/referencia-serato/replica/beatgrid-datos/verify_blob.py

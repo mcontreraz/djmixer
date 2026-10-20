@@ -92,7 +92,7 @@
 <div class="wrap">
   <section class="hero">
     <h1>Software de DJ open source na liga de Serato e Traktor.<br>Gratuito para todo mundo, <em>para sempre</em>.</h1>
-    <p class="lead">O DJMixer é uma aplicação de DJ nativa (C++17 + Qt 6) construída do zero por uma equipe de agentes de IA com um humano no comando. Não é um wrapper web, não é uma maquete: é um motor de áudio em tempo real que não aloca memória na thread de áudio.</p>
+    <p class="lead">O DJMixer é uma aplicação de DJ nativa (C++17 + Qt 6) construída do zero por uma equipe de agentes de IA com um humano no comando. Não é um wrapper web, não é uma maquete: é um motor de áudio em tempo real cujo caminho de loop não aloca memória.</p>
     <div>
       <span class="pill green">Lite grátis para sempre</span>
       <span class="pill blue">Open source (GPL-2.0-or-later)</span>
@@ -119,13 +119,13 @@
 
   <section id="specs">
     <h2>Especificações técnicas</h2>
-    <p>O que existe construído, e como. As 17 specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
+    <p>O que existe construído, e como. As specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalhe técnico</th></tr>
-            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem <code>malloc</code>, sem locks, sem tocar a UI. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
+            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem locks e sem tocar a UI. O caminho de loop não aloca memória; o caminho geral de playback realoca o buffer quando muda o número de amostras. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Pronto</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck com sidecar <code>.hotcues</code> persistente.</td></tr>
       <tr><td>Tempo</td><td>Pronto</td><td>Pitch/tempo, modo vinil, pitch-bend contínuo, key lock (tempo sem mudar o tom).</td></tr>
-      <tr><td>Key lock</td><td>Pronto</td><td>Motor WSOLA próprio + Rubber Band R3 em realtime, com crossfade de entrada e saída.</td></tr>
+      <tr><td>Key lock</td><td>Pronto</td><td>Motor Rubber Band (GPL-2.0-or-later) em realtime, com crossfade de entrada e saída. O protótipo de WSOLA próprio foi descartado.</td></tr>
       <tr><td>Key</td><td>Pronto</td><td>Detecção de tonalidade com nomenclatura Camelot, cacheada por faixa.</td></tr>
       <tr><td>Beats</td><td>Em validação</td><td>Detecção de BPM e downbeat, beatgrid, importação de grids do Serato. O detector automático segue em validação contra faixas reais.</td></tr>
       <tr><td>Loops</td><td>Pronto</td><td>Auto-loops 1/8…16 beats sobre o beatgrid, resize diferido (nunca a quente).</td></tr>
@@ -180,7 +180,7 @@
 
   <section>
     <h2>A equipe</h2>
-    <p>Um humano (engenheiro de software chileno, amante da música) e quatro agentes de IA orquestrados com Paperclip: CTO, Coder, QA e Growth. 165 commits, 17 specs, 24 testes registrados, ~17.700 linhas próprias.</p>
+    <p>Um humano (engenheiro de software chileno, amante da música) e quatro agentes de IA orquestrados com Paperclip: CTO, Coder, QA e Growth. Todo o histórico, as specs e a suíte de testes estão no repositório; os números vivos estão em <code>specs/INDEX.md</code> e <code>ctest -N</code>.</p>
     <p>O repositório do código é privado até o primeiro lançamento. O que é público hoje: este site, as capturas, as notas de desenvolvimento e as especificações.</p>
   </section>
 

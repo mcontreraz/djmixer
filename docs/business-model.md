@@ -1,5 +1,9 @@
 # Modelo de negocio: Lite gratis forever + Pro de pago
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 Fecha: 2026-10-19 · Documento de estrategia (no es código, no es consejo legal).
 
 ## Visión
@@ -23,11 +27,11 @@ tonalidad, loops, hot cues y beatgrid son de la Lite. La lista exacta está en
   beats (DetectionFunction, DownBeat, TempoTrackV2) **y también la detección de
   tonalidad**: el análisis de key con notación Camelot usa el módulo
   `dsp/keydetection/GetKeyMode` de qm-dsp, no código propio. Se compila entero
-  (`CMakeLists.txt`: `third_party/qm-dsp/**`) y está en uso activo en
-  `src/qmbeatgrid.cpp`, `src/waveformanalyzer.cpp` y `src/keyanalyzer.cpp`.
+  (`CMakeLists.txt`: `qm-dsp/**` (no publicado)) y está en uso activo en
+  `qmbeatgrid.cpp` (no publicado), `waveformanalyzer.cpp` (no publicado) y `keyanalyzer.cpp` (no publicado).
 - El binario actual incorpora **Rubber Band (GPL-2.0-or-later)** — es el motor
   del key lock y **el único** que se despacha hoy (`CMakeLists.txt`:
-  `PkgConfig::RUBBERBAND`; `src/deck.h`: `RubberBandStretcher`; `src/deck.cpp`:
+  `PkgConfig::RUBBERBAND`; `deck.h` (no publicado): `RubberBandStretcher`; `deck.cpp` (no publicado):
   construcción, `setTimeRatio` y proceso). El repo no fija versión de librería
   (la API `RubberBandStretcher` es la misma en 3.x y 4.x), así que aquí se
   nombra el motor, no un número de release.
@@ -64,9 +68,11 @@ Requisito innegociable: **el árbol del Pro debe estar 100% libre de GPL**.
   - Key analysis: chroma propio + perfil Krumhansl, porque hoy el motor es el
     módulo de key detection de qm-dsp (`GetKeyMode`), no código propio.
   - Time-stretch: sustituir el motor actual **Rubber Band (GPL)** por uno
-    permisivo. Ya hay un prototipo en la rama `004-beat-sync`
-    (`specs/013-keylock/`, `third_party/signalsmith-stretch`, MIT) que **no
-    está en `main`**: la alternativa probada es **Signalsmith Stretch (MIT)**;
+    permisivo. Hay un prototipo en la rama `004-beat-sync` (spec
+    `specs/013-keylock/`, motor en `signalsmith-stretch` (no publicado), MIT),
+    **fuera de `main`**: ninguna de esas rutas existe en la rama trunk, así
+    que no se encuentran en el repo público. La alternativa probada es
+    **Signalsmith Stretch (MIT)**;
     SoundTouch (LGPL, linkeado dinámicamente) queda como plan B.
 - El key lock **no se des-GPL comprando una licencia comercial de Rubber
   Band**: la ruta del Pro *sustituye* el motor, no lo licencia. Con licencia

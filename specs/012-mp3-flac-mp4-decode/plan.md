@@ -1,13 +1,17 @@
 # Plan 012 — Decodificación MP3 / FLAC / MP4
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 No se buscó nada en bibliotecas: el archivo esencial es el miniaudio embebido
-(`third_party/miniaudio.h`), que documentó el CD de formato y una API exacta
+(`miniaudio.h` (no publicado)), que documentó el CD de formato y una API exacta
 de backends custom (`ma_decoding_backend_vtable` + base de `ma_data_source`).
 Ese es el flujo que se usa.
 
 ## Componentes
 
-1. `src/mp4decoder.{h,cpp}`:
+1. `mp4decoder.{h,cpp}` (no publicado):
    - namespace `decode::attach(ma_decoder_config&)` — una función breve que
      recibe cualquier `ma_decoder_config` y le conecta los backends custom.
    - struct `Mp4File` con `ma_data_source_base` como primer miembro.
@@ -43,6 +47,6 @@ Ese es el flujo que se usa.
 
 Con los rips de YouTube (AV1+Opus) ExtAudioFile no abren: transcondenación-on-demand
 más rápida vía stream-copy `ffmpeg -c:a copy` a `.opus` (0.4 s) y decodificación directas
-con libopusfile — backend custom `src/opusdecoder.cpp` (48k nativo, fold-down estéreo,
+con libopusfile — backend custom `opusdecoder.cpp` (no publicado) (48k nativo, fold-down estéreo,
 seek op_pcm_seek). Registro combinado: `decode::attachCustomDecoders` incluye
 ambas vtables (mp4 AudioToolbox + opus opusfile). Vorbis .ogg se rechaza.

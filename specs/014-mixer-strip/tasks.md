@@ -1,5 +1,9 @@
 # Tareas: Franja MIXER completa (EQ + Filtro + Gain)
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Spec**: `specs/014-mixer-strip/spec.md` · **Plan**: `specs/014-mixer-strip/plan.md`
 
 ## Fase 0 — EQ propio (referencia: DSP del otro agente)
@@ -8,18 +12,18 @@
       (identidad exacta en 0 dB)
 - [ ] T002 `Deck`: `eqLow/eqMid/eqHigh` + `applyEq` post-resample con
       suavizado y bypass bit-exacto
-- [ ] T003 `tests/eq_dsp_test.cpp` reimplementado (respuesta, identidad,
+- [ ] T003 `eq_dsp_test.cpp` (no publicado) reimplementado (respuesta, identidad,
       barrido sin clicks)
 
 ## Fase 1 — DSP (filtro + gain)
 
 - [ ] T004 `Deck`: `filterAmount` (−1..+1) y `channelGain` (0..2) — Q_PROPERTY,
-      setters atómicos + notify (`src/deck.h/.cpp`)
+      setters atómicos + notify (`deck.h/.cpp` (no publicado))
 - [ ] T005 `Deck::applyFilter`: LP+HP suavizado post-EQ (cutoff log por signo,
       Q 1.0, bypass |amount|<0.5%, ramp de coeficientes por muestra)
 - [ ] T006 `Deck::render`: cadena EQ → filtro → meter → gain (ramp corto del
       gain por bloque)
-- [ ] T007 `tests/filter_dsp_test.cpp` (ctest `filter_dsp`): respuesta LP/HP,
+- [ ] T007 `filter_dsp_test.cpp` (no publicado) (ctest `filter_dsp`): respuesta LP/HP,
       bypass bit-exacto, barrido sin clicks, gain 0/2×
 - [ ] T008 `ctest` verde (suite completa) antes de tocar UI
 

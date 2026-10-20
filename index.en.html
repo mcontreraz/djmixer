@@ -92,7 +92,7 @@
 <div class="wrap">
   <section class="hero">
     <h1>Open-source DJ software in the league of Serato and Traktor.<br>Free for everyone, <em>forever</em>.</h1>
-    <p class="lead">DJMixer is a native DJ application (C++17 + Qt 6) built from scratch by a team of AI agents with one human in charge. Not a web wrapper, not a mockup: a real-time audio engine that does not allocate memory in the audio thread.</p>
+    <p class="lead">DJMixer is a native DJ application (C++17 + Qt 6) built from scratch by a team of AI agents with one human in charge. Not a web wrapper, not a mockup: a real-time audio engine whose loop render path allocates nothing.</p>
     <div>
       <span class="pill green">Lite free forever</span>
       <span class="pill blue">Open source (GPL-2.0-or-later)</span>
@@ -122,10 +122,10 @@
     <p>What is built, and how. The 17 complete specs are in <code>specs/</code>, with their plan, tasks and contracts.</p>
     <table>
       <tr><th>Area</th><th>State</th><th>Technical detail</th></tr>
-            <tr><td>Engine</td><td>Done</td><td>Callback thread with no <code>malloc</code>, no locks, no UI access. PCM cache, seqlock, SPSC queues. 48 kHz.</td></tr>
+            <tr><td>Engine</td><td>Done</td><td>Callback thread with no locks and no UI access. The loop path does not allocate; the general playback path reallocates the buffer when the sample count changes. PCM cache, seqlock, SPSC queues. 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Done</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues per deck with a persistent <code>.hotcues</code> sidecar.</td></tr>
       <tr><td>Tempo</td><td>Done</td><td>Pitch/tempo, vinyl mode, continuous pitch-bend, key lock (tempo without changing pitch).</td></tr>
-      <tr><td>Key lock</td><td>Done</td><td>Own WSOLA engine + Rubber Band R3 in realtime, with input and output crossfade.</td></tr>
+      <tr><td>Key lock</td><td>Done</td><td>Rubber Band engine (GPL-2.0-or-later) in realtime, with input and output crossfade. The own WSOLA prototype was discarded.</td></tr>
       <tr><td>Key</td><td>Done</td><td>Key detection in Camelot notation, cached per track.</td></tr>
       <tr><td>Beats</td><td>Being validated</td><td>BPM and downbeat detection, beatgrid, Serato grid import. The automatic detector is still being validated against real tracks.</td></tr>
       <tr><td>Loops</td><td>Done</td><td>Auto-loops 1/8…16 beats on the beatgrid, deferred resize (never hot).</td></tr>
@@ -180,7 +180,7 @@
 
   <section>
     <h2>The team</h2>
-    <p>One human (a Chilean software engineer, music lover) and four AI agents orchestrated with Paperclip: CTO, Coder, QA and Growth. 165 commits, 17 specs, 24 registered tests, ~17,700 lines of our own code.</p>
+    <p>One human (a Chilean software engineer, music lover) and four AI agents orchestrated with Paperclip: CTO, Coder, QA and Growth. The whole history, the specs and the test suite are in the repository; the live numbers are in <code>specs/INDEX.md</code> and <code>ctest -N</code>, not here.</p>
     <p>The source repository is private until the first release. What is public today: this site, the screenshots, the dev notes and the specifications.</p>
   </section>
 

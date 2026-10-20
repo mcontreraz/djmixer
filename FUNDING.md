@@ -32,9 +32,9 @@ loading a track, mixing, looping, cueing and syncing are Lite features, forever.
 
 **Código fuente:** se publica completo junto con el primer binario
 (obligación de GPL-2.0-or-later). **El repositorio del código fuente es
-privado hasta la primera release**; este repositorio es el sitio público:
-la página de financiación, las capturas, las notas de desarrollo y las
-especificaciones técnicas.
+privado hasta la primera release**; el repositorio público es el sitio del
+proyecto: la página de financiación, las capturas, las notas de desarrollo y
+las especificaciones técnicas.
 
 ## The promise
 
@@ -54,6 +54,12 @@ The full commitment is versioned in [`docs/promise.md`](docs/promise.md). If any
 other page ever contradicts it, that document wins.
 
 ## Sponsor levels
+
+**First goal: USDC 99 — this is the launch key.** The single donation that
+signs and notarizes the macOS binary (Apple Developer Program). Until the
+Apple Developer account exists, the release ships with a Gatekeeper warning
+and four release issues stay blocked. USDC 99 today moves the Lite v1 out the
+door; the rest of the milestone can come after.
 
 | Amount | What it covers |
 |---|---|
@@ -153,9 +159,9 @@ smaller feature list.
   share, no revenue share, and no promise of any return. You are supporting
   open-source development, full stop.
 - **Tax:** donations may be taxable income for the donor in their jurisdiction
-  (in Chile, the **SUNAT** treats a donation as income subject to the
-  corresponding income tax). Talk to an accountant — this project is not giving
-  tax advice and cannot advise you on yours.
+  (in Chile, the **SII** — Servicio de Impuestos Internos — treats a donation
+  as income subject to the corresponding income tax). Talk to an accountant —
+  this project is not giving tax advice and cannot advise you on yours.
 - **The address is dedicated to this project.** Prefer an address you control
   yourself, separate from anything else, so the on-chain history is auditable.
 - **No custody, no keys, no trading.** The project never holds or moves funds

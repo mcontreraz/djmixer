@@ -1,18 +1,24 @@
 # Tasks: Serato Grid Import
 
-**Feature**: `008-serato-grid-import` | **Spec**: [spec.md](./spec.md) | **Plan**: [plan.md](./plan.md)
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
+**Feature**: `008-serato-grid-import` | **Spec**: [spec.md](spec.md) | **Plan**: [plan.md](plan.md)
 
 ## Phase 1: Setup
 
-- [x] T001 Crear `src/seratogrid.h/.cpp` vacíos con `SeratoGrid::parse()` stub (retorna `ok=false`) + wiring en CMake
-- [x] T002 Añadir al autotest (`src/main.cpp`) un caso `serato-grid` que corre `parse()` sobre fixture y reporta PASS/FAIL sin romper el resto
+- [x] T001 Crear `seratogrid.h/.cpp` (no publicado) vacíos con `SeratoGrid::parse()` stub (retorna `ok=false`) + wiring en CMake
+- [x] T002 Añadir al autotest (`main.cpp` (no publicado)) un caso `serato-grid` que corre `parse()` sobre fixture y reporta PASS/FAIL sin romper el resto
 
 ## Phase 2: Foundational (bloquea US1/US2/US3)
 
 - [x] T003 Implementar lector payload v1 (cabecera, N BE+syncsafe, records 8 B, terminal, tail 0-2 B) según `serializer-v1.md`
 - [x] T004 Implementar validador (tiempos crecientes, BPM>0 finito, ≤128 marcadores, N=0 → inválido)
 - [x] T005 Verificar T003-T004 contra oráculo: los 12 casos de `verify_blob.py` reproducidos en C++ dan idéntico veredicto
-- [x] T006 Bump sidecar a v8 (`locked:u8` + `source:u8`, lector v7+v8) en `src/waveformcache.*`
+- [x] T006 Bump sidecar a v8 (`locked:u8` + `source:u8`, lector v7+v8) en `waveformcache.*` (no publicado)
 
 ## Phase 3: US1 — MP3 con grid Serato (P1)
 
@@ -37,8 +43,8 @@
 
 ## Phase 6: Polish
 
-- [x] T019 Limpiar instrumentación/debug del feature; `specs/008-*/checklists` al día
-- [ ] T020 Commit en español con la feature + actualizar `docs/` si cambia el formato sidecar
+- [x] T019 Limpiar instrumentación/debug del feature; `008-*/checklists` (no publicado) al día
+- [ ] T020 Commit en español con la feature + actualizar `docs/` (no publicado) si cambia el formato sidecar
 
 ## Dependencies
 

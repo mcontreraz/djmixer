@@ -1,5 +1,11 @@
 # Data Model: Serato Grid Import
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature**: `008-serato-grid-import` | **Date**: 2026-10-13
 
 ## SeratoGridPayload (solo lectura, efímera)

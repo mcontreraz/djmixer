@@ -1,5 +1,11 @@
 # Research: revisión de REA existente para loops
 
+> **Material de referencia local, no publicado.** Las rutas
+> `referencia-*/` (no publicado) y los nombres de fichero sueltos de ese material que se
+> citan aquí viven **solo en la máquina de desarrollo**: no están en el repo
+> público. Lo que se publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Fecha**: 2026-10-18 · **Base local**: `20cf1c9`.
 Se reutilizaron informes, inventarios e índices ya generados. No se reabrieron
 los binarios, no se corrieron decompilaciones ni se observaron nuevas ejecuciones.
@@ -21,16 +27,26 @@ identifica el artefacto Traktor, no su algoritmo de loop.
 | LOOP-S03 | TempoMap, conversiones beats/ticks/seconds, marcadores y serializer BeatGrid v1 | Se requiere mapa musical, no solo BPM nominal. No identifica el algoritmo de transición sonora |
 | LOOP-S04 | Análisis nativo de SyncLogic y fases beat/compás | Usar la unidad musical correcta; no convertir Quantize ni el umbral de estado 1/64 en fórmula de loop |
 
-Fuentes:
-- [Identidad Traktor](../../docs/referencia-traktor/traktor-inspect.json),
+Fuentes (los informes REA son **referencia local, no publicada**; el símbolo
+seleccionado sí está en el repo):
+
+- Identidad Traktor (grafo de dylibs, local no publicado:
+  `referencia-traktor/traktor-inspect.json` (no publicado)),
   [símbolos seleccionados del análisis previo](traktor-loop-symbols.tsv) y
-  [strings](../../docs/referencia-traktor/traktor-strings.txt).
-- [Índice QML de Serato](../../docs/referencia-serato/replica/contratos/qml-api.json)
-  e [interpretación de eventos](../../docs/referencia-serato/replica/contratos/interfaz-y-eventos.md).
-- [Contrato de transporte](../../docs/referencia-serato/replica/contratos/transporte-y-audio.md),
-  [grid/TempoMap](../../docs/referencia-serato/replica/beatgrid-datos/README.md),
-  [serializer](../../docs/referencia-serato/replica/beatgrid-datos/serializer-v1.md) y
-  [sync nativo](../../docs/referencia-serato/replica/beatsync-native/README.md).
+  volcado de cadenas (local no publicado:
+  `referencia-traktor/traktor-strings.txt` (no publicado)).
+- Índice QML de Serato (local no publicado:
+  `referencia-serato/replica/contratos/qml-api.json` (no publicado)) e interpretación de
+  eventos (local no publicado:
+  `referencia-serato/replica/contratos/interfaz-y-eventos.md` (no publicado)).
+- Contrato de transporte (local no publicado:
+  `referencia-serato/replica/contratos/transporte-y-audio.md` (no publicado)), grid y
+  TempoMap (local no publicado:
+  `referencia-serato/replica/beatgrid-datos/README.md` (no publicado)), serializer
+  (local no publicado:
+  `referencia-serato/replica/beatgrid-datos/serializer-v1.md` (no publicado)) y sync
+  nativo (local no publicado:
+  `referencia-serato/replica/beatsync-native/README.md` (no publicado)).
 
 El informe de transporte cita los manuales públicos de Auto Loop y Quantize,
 consultados en la investigación anterior. Aquí se revisó ese informe guardado;
@@ -58,14 +74,14 @@ ventana anti-click ni política de sincronización.
 
 | Fuente en `20cf1c9` | Hallazgo | Consecuencia |
 |---|---|---|
-| `src/beatgrid.h:45,81` | `beatAt`/`timeAt` soportan intervalos variables | Derivar IN y OUT por la inversa, congelar revisión |
-| `src/deck.cpp:782` | Cursor double e interpolación por muestra | Integrar wrap aquí, antes de EOF |
-| `src/deck.cpp:562,695,701` | Seek trunca a entero, reposiciona decoder y limpia caché | Prohibido usar seek para cada vuelta |
-| `src/deck.cpp:1140,1157`, `src/deck.h:264` | Refill con I/O/insert y descarte de historial ~5.5 s | 16 beats a 120 BPM = 8 s: pin de PCM obligatorio |
-| `src/deck.cpp:821` | Detector recibe bloque como tiempo continuo | Segmentar o suspender durante loop |
-| `src/mixer.cpp:305`, `src/syncalign.h:20` | Fase derivada de posición audible | Loops fraccionales, y 1/2 beats en fase de compás, crean error artificial |
-| `src/audiosync.h:19` | Mailbox SPSC con ownership | Patrón útil; no usarlo como cola de toggles que se puedan perder |
-| `src/DeckPanel.qml:258`, `src/midicontroller.cpp:368` | UI deshabilitada, acciones MIDI reservadas | Motor y contratos primero; activar UI después |
+| `beatgrid.h:45,81` (no publicado) | `beatAt`/`timeAt` soportan intervalos variables | Derivar IN y OUT por la inversa, congelar revisión |
+| `deck.cpp:782` (no publicado) | Cursor double e interpolación por muestra | Integrar wrap aquí, antes de EOF |
+| `deck.cpp:562,695,701` (no publicado) | Seek trunca a entero, reposiciona decoder y limpia caché | Prohibido usar seek para cada vuelta |
+| `deck.cpp:1140,1157` (no publicado), `deck.h:264` (no publicado) | Refill con I/O/insert y descarte de historial ~5.5 s | 16 beats a 120 BPM = 8 s: pin de PCM obligatorio |
+| `deck.cpp:821` (no publicado) | Detector recibe bloque como tiempo continuo | Segmentar o suspender durante loop |
+| `mixer.cpp:305` (no publicado), `syncalign.h:20` (no publicado) | Fase derivada de posición audible | Loops fraccionales, y 1/2 beats en fase de compás, crean error artificial |
+| `audiosync.h:19` (no publicado) | Mailbox SPSC con ownership | Patrón útil; no usarlo como cola de toggles que se puedan perder |
+| `DeckPanel.qml:258` (no publicado), `midicontroller.cpp:368` (no publicado) | UI deshabilitada, acciones MIDI reservadas | Motor y contratos primero; activar UI después |
 
 La constitución exige cero I/O/alloc/locks en audio. El motor actual aún tiene
 esa deuda; esta feature no puede declarar que todo el callback ya es seguro.

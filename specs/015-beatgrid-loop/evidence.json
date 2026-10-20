@@ -4,6 +4,7 @@
   "baseline_commit": "20cf1c9",
   "scope": "Review of previously saved REA evidence only; no new decompilation or runtime observation.",
   "id_note": "LOOP-* are local review IDs, not new REA Evidence IDs.",
+  "source_note": "The 'source' paths below point at the local reverse-engineering material, which is NOT published in this public repo (see docs/referencia-local.md). They identify where the evidence lived on the development machine; they are not files a reader can open here.",
   "evidence": [
     {
       "id": "LOOP-T01",

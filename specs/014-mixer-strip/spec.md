@@ -1,5 +1,11 @@
 # Feature Specification: Franja MIXER completa (EQ + Filtro + Gain, layout mockup)
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature Branch**: `014-mixer-strip`
 
 **Created**: 2026-10-18
@@ -8,7 +14,8 @@
 
 **Input**: mockup visual del mixer (imagen del usuario) + trabajo previo: EQ de 3
 bandas (spec 013, DSP commiteado, UI pendiente) y filtro de canal (docs
-`referencia-traktor/EQ-FILTER.md`, fuera de alcance de 013).
+`referencia-traktor/EQ-FILTER.md`, referencia local **no publicada**, fuera de
+alcance de 013).
 
 ## Resumen
 

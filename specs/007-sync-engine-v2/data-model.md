@@ -1,5 +1,11 @@
 # Data Model: Sync Engine v2
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 ## SyncState (por deck, existe en `SyncEngine`; se recalibra)
 
 | Campo | Tipo | Reglas |

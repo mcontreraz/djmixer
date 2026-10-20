@@ -1,10 +1,14 @@
 # Tasks: Real-time Beat Detector + Zapateo
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Input**: spec.md, plan.md, research.md, data-model.md, contracts/, quickstart.md
 
 ## Fase 1: Detector
 
-- [ ] T001 `src/beatdetector.h/.cpp`: `BeatDetector` (lowpass, hop, flujo, umbral adaptativo, refractory, `lastBeatPosition` atómico)
+- [ ] T001 `beatdetector.h/.cpp` (no publicado): `BeatDetector` (lowpass, hop, flujo, umbral adaptativo, refractory, `lastBeatPosition` atómico)
 - [ ] T002 `Deck`: instanciar `BeatDetector` y alimentarlo en `render()` (suma mono del buffer)
 - [ ] T003 Exponer `Deck::lastBeatPosition()` y `Q_PROPERTY`
 

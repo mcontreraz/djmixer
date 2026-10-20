@@ -100,7 +100,7 @@
     <p class="lead">
       DJMixer es una aplicación de DJ nativa (C++17 + Qt 6) construida desde cero por un
       equipo de agentes de IA con un humano al mando. No es un wrapper web ni una
-      maqueta: es un motor de audio en tiempo real que no asigna memoria en el hilo de audio.
+      maqueta: es un motor de audio en tiempo real cuyo camino de loop no asigna memoria.
     </p>
     <div>
       <span class="pill green">Lite gratis para siempre</span>
@@ -144,14 +144,14 @@
 
   <section id="specs">
     <h2>Especificaciones técnicas</h2>
-    <p>Lo que hay construido, con su arquitectura. Las 17 specs completas están en
+    <p>Lo que hay construido, con su arquitectura. Las specs completas están en
     <code>specs/</code> de este repo, con su plan, sus tareas y sus contratos.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalle técnico</th></tr>
-      <tr><td>Motor de audio</td><td>Listo</td><td>Hilo de callback sin <code>malloc</code>, sin locks y sin tocar la UI. Cache de PCM, seqlock, colas SPSC. Salida 48 kHz.</td></tr>
+      <tr><td>Motor de audio</td><td>Listo</td><td>Hilo de callback sin locks y sin tocar la UI. El camino de loop no asigna memoria; el path general de playback reasigna el buffer cuando cambia el número de muestras. Cache de PCM, seqlock, colas SPSC. Salida 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Listo</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck con sidecar <code>.hotcues</code> persistente.</td></tr>
       <tr><td>Tempo</td><td>Listo</td><td>Pitch/tempo, modo vinilo, pitch-bend continuo, key lock (tempo sin cambiar el tono).</td></tr>
-      <tr><td>Key lock</td><td>Listo</td><td>Motor WSOLA propio (stage 1) + Rubber Band R3 en realtime para transients mixtos, con crossfade de entrada y salida para que la transición no haga clic.</td></tr>
+      <tr><td>Key lock</td><td>Listo</td><td>Motor Rubber Band (GPL-2.0-or-later) en realtime para transients mixtos, con crossfade de entrada y salida para que la transición no haga clic. El prototipo de WSOLA propio se descartó.</td></tr>
       <tr><td>Tonalidad</td><td>Listo</td><td>Detección de tonalidad con nomenclatura Camelot, cacheada por pista.</td></tr>
       <tr><td>Beats</td><td>En validación</td><td>Detección de BPM y downbeat, beatgrid, importación de grids de Serato. El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes.</td></tr>
       <tr><td>Loops</td><td>Listo</td><td>Auto-loops 1/8…16 beats sobre el beatgrid, resize diferido (nunca en caliente) para que no haya click ni hueco.</td></tr>
@@ -256,8 +256,9 @@
   <section>
     <h2>El equipo</h2>
     <p>Un humano (ingeniero de software chileno, amante de la música) y cuatro agentes de IA
-    orquestados con Paperclip: CTO, Coder, QA y Growth. 165 commits, 17 specs, 24 tests
-    registrados, ~17.700 líneas propias.</p>
+    orquestados con Paperclip: CTO, Coder, QA y Growth. Todo el historial, las specs y la suite de
+    pruebas están en el repo; los números vivos están en <code>specs/INDEX.md</code> y en
+    <code>ctest -N</code>, no aquí.</p>
     <p>El repositorio del código es privado hasta la primera release. Lo que es público hoy:
     este sitio, las capturas, las notas de desarrollo y las especificaciones.</p>
   </section>

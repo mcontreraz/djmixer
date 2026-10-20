@@ -1,6 +1,10 @@
 # Implementation Plan: Real-time Beat Detector + Zapateo
 
-**Branch**: `009-beat-detector` | **Date**: 2026-10-14 | **Spec**: [spec.md](./spec.md)
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
+**Branch**: `009-beat-detector` | **Date**: 2026-10-14 | **Spec**: [spec.md](spec.md)
 
 ## Summary
 
@@ -13,7 +17,7 @@ reporta el **zapateo** (desfase) en ms, independiente de la beatgrid.
 
 **Language/Version**: C++17 + Qt 6.5 (QML). Sin dependencias nuevas.
 
-**Primary Dependencies**: miniaudio (ya en `third_party/`) para el audio; el
+**Primary Dependencies**: miniaudio (ya en `third_party/` (no publicado)) para el audio; el
 detector es aritmética simple sobre el buffer mono/mezclado.
 
 **Storage**: nada persistente; el detector es estado volátil por deck.

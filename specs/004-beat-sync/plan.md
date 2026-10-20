@@ -1,9 +1,15 @@
 # Implementation Plan: Beat Sync
 
-**Branch**: `004-beat-sync` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
 
-**Input**: Feature specification + referencias `docs/referencia-serato/beat-sync/` (resumen +
-funciones decompiladas de Serato). La detección de BPM (003) ya entrega el `BeatGrid`.
+**Branch**: `004-beat-sync` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
+
+**Input**: Feature specification + referencias `referencia-serato/beat-sync/` (no publicado) (resumen +
+funciones decompiladas de Serato) — referencia local, **no publicada**. La detección de BPM (003) ya entrega el `BeatGrid`.
 
 ## Summary
 
@@ -75,11 +81,11 @@ CMakeLists.txt           # + syncengine.cpp
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), [contracts/](contracts), [quickstart.md](quickstart.md)
 
-### Phase 2: Tasks → [tasks.md](./tasks.md)
+### Phase 2: Tasks → [tasks.md](tasks.md)
 
 ## Riesgos y decisiones abiertas
 

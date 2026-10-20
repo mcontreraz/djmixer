@@ -13,7 +13,7 @@ licencia GPL-2.0-or-later.
 - 💛 **Apoyar el proyecto:** [`FUNDING.md`](FUNDING.md) · USDC en Stellar
 - 📜 **El compromiso (canónico):** [`docs/promise.md`](docs/promise.md)
 - 📓 **Notas de desarrollo:** [`docs/devlog.md`](docs/devlog.md)
-- 📐 **Especificaciones:** [`specs/INDEX.md`](specs/INDEX.md) · 17 specs
+- 📐 **Especificaciones:** [`specs/INDEX.md`](specs/INDEX.md)
 
 ![Dos decks con una pista cargada, BPM y tonalidad detectados, hot cues, loops y EQ de tres bandas](media/03-decks.png)
 
@@ -34,10 +34,10 @@ Aplicación de DJ **nativa** (C++17 + Qt 6 / QML), no un wrapper web:
 
 | Área | Estado | Detalle |
 |---|---|---|
-| Motor de audio | Listo | Hilo de callback sin `malloc`, sin locks, sin tocar la UI. Cache de PCM, seqlock, colas SPSC. 48 kHz. |
+| Motor de audio | Listo | Hilo de callback sin locks y sin tocar la UI. El camino de loop no asigna memoria; el path general de playback reasigna el buffer cuando cambia el número de muestras. Cache de PCM, seqlock, colas SPSC. 48 kHz. |
 | Decks | Listo | 2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck con sidecar persistente |
 | Tempo | Listo | Pitch/tempo, modo vinilo, pitch-bend continuo |
-| Key lock | Listo | Motor WSOLA propio + Rubber Band R3 en realtime, con crossfade para que la transición no haga clic |
+| Key lock | Listo | Motor Rubber Band (GPL-2.0-or-later) en tiempo real, con crossfade de entrada y salida para que la transición no haga clic |
 | Tonalidad | Listo | Detección con nomenclatura Camelot, cacheada por pista |
 | Beats | **En validación** | Detección de BPM y downbeat, beatgrid, importación de grids de Serato. El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes |
 | Loops | Listo | Auto-loops 1/8…16 beats sobre el beatgrid, resize diferido: sin click ni hueco |
@@ -51,8 +51,7 @@ Aplicación de DJ **nativa** (C++17 + Qt 6 / QML), no un wrapper web:
 ## El equipo
 
 Un humano (ingeniero de software chileno, amante de la música) y cuatro agentes de
-IA orquestados con Paperclip: **CTO, Coder, QA y Growth**. 165 commits, 17 specs,
-24 tests registrados, ~17.700 líneas propias.
+IA orquestados con Paperclip: **CTO, Coder, QA y Growth**.
 
 ## Apoyar
 
@@ -67,7 +66,7 @@ iteración de tests cuesta tokens.
   y la cuenta de Apple Developer (99 USD/año) para que la descarga salga firmada
 
 **Es una donación, no una inversión**: no hay token, ni participación, ni promesa
-de retorno. Puede ser ingreso imponible para quien dona (en Chile, SUNAT).
+de retorno. Puede ser ingreso imponible para quien dona (en Chile, SII).
 
 Detalle completo y verificación de la dirección: [`FUNDING.md`](FUNDING.md).
 
