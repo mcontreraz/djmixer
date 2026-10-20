@@ -1,23 +1,20 @@
 # DJMixer
 
-> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
-> pueden abrir aqui: el repositorio de codigo se publica completo junto
-> con el primer binario (obligacion de GPL-2.0-or-later).
-
 **Software de DJ nativo en la liga de Serato y Traktor. La versión Lite es gratis
 para todo el mundo, para siempre.**
 
-Este repositorio es el **sitio público** del proyecto: la página de financiación,
-las capturas de la app, las notas de desarrollo y las especificaciones técnicas.
-El código fuente está en un repositorio privado hasta la primera release; el
-source completo se publica con el primer binario, porque es lo que exige la
-licencia GPL-2.0-or-later.
+Este repositorio es el **sitio público** del proyecto: la landing, las páginas
+de financiación, las capturas de la app y el QR para donar. El diseño (las
+especificaciones), las notas de desarrollo y el código fuente viven en el
+repositorio de código, que es privado hasta la primera release; el source
+completo se publica con el primer binario, porque es lo que exige la licencia
+GPL-2.0-or-later.
 
 - 🌐 **Sitio:** https://mcontreraz.github.io/djmixer
 - 💛 **Apoyar el proyecto:** [`FUNDING.md`](FUNDING.md) · USDC en Stellar
-- 📜 **El compromiso (canónico):** `promise.md` (no publicado) (no publicado)
-- 📓 **Notas de desarrollo:** `devlog.md` (no publicado) (no publicado)
-- 📐 **Especificaciones:** `specs/INDEX.md` (no publicado)
+- 📜 **El compromiso:** el de esta página —la Lite es gratis para todo el
+  mundo, para siempre—. La versión normativa del compromiso, las
+  especificaciones y las notas de desarrollo salen con el primer binario.
 
 ![Dos decks con una pista cargada, BPM y tonalidad detectados, hot cues, loops y EQ de tres bandas](media/03-decks.png)
 
@@ -43,7 +40,7 @@ Aplicación de DJ **nativa** (C++17 + Qt 6 / QML), no un wrapper web:
 | Tempo | Listo | Pitch/tempo (±8/16/32 %) con pitch-bend continuo, scratch estilo vinilo |
 | Key lock | Listo | Motor Rubber Band (GPL-2.0-or-later) en tiempo real, con crossfade de entrada y salida para que la transición no haga clic |
 | Tonalidad | Listo | Detección con nomenclatura Camelot, cacheada por pista |
-| Beats | **En validación** | Detección de BPM y downbeat, beatgrid, y lectura del blob BeatGrid de Serato que el tema ya trae en su propio tag (MP3 GEOB / M4A). El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes |
+| Beats | **En validación** | Detección de BPM y downbeat, beatgrid, y lectura del blob BeatGrid de Serato que el tema ya trae en su propio tag (MP3 GEOB / M4A). El detector automático se sigue validando contra pistas reales y el proyecto lo dice en todas partes |
 | Loops | Listo | Auto-loops 1/8…16 beats sobre el beatgrid, resize diferido: sin click ni hueco |
 | Sync | Listo | Corrección de fase, compensando la latencia audible del key lock |
 | Mezcla | Listo | EQ de 3 bandas, filtro, FX por canal, VU master |
@@ -83,9 +80,8 @@ binario distribuido, como exige la licencia.
 
 El proyecto estudia el **comportamiento observable** de los productos de
 referencia y documenta los hallazgos con cita de la documentación oficial. Al
-repositorio público sale ese análisis de comportamiento; la evidencia cruda
-(decompilados, volcados de strings, esquemas del fabricante, proyectos Ghidra)
-**no se publica** y se queda en la máquina de desarrollo. Nunca se copió código
+repositorio público sale ese análisis de comportamiento; la **evidencia local no
+publicada** no sale y se queda en la máquina de desarrollo. Nunca se copió código
 ajeno.
 
 ## El álbum va con la Lite

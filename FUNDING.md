@@ -1,9 +1,5 @@
 # Support DJMixer — Help keep the Lite free forever
 
-> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
-> pueden abrir aqui: el repositorio de codigo se publica completo junto
-> con el primer binario (obligacion de GPL-2.0-or-later).
-
 > **Free forever is the product, not a trial.** DJMixer's Lite edition will never
 > ask anyone for a subscription. This page exists to pay for the AI capacity and
 > the tools that let a very small team ship it.
@@ -54,8 +50,9 @@ and priority support are the candidates under discussion with the community —
 and never the essentials of mixing. The basics stay in the Lite, free,
 permanently. No date is announced for the Pro.
 
-The full commitment is versioned in `promise.md` (no publicado) (promise.md, no publicado). If any
-other page ever contradicts it, that document wins.
+The full commitment is versioned in the project promise document, which ships
+with the first binary together with the source. If any other page ever
+contradicts it, that document wins.
 
 ## Sponsor levels
 
@@ -188,10 +185,9 @@ smaller feature list.
 ## Why open source?
 
 Because GPL-2.0 is what makes the promise credible: anyone can read the
-source, build it, fork it, and ship it. The plan is documented in
-`business-model.md` (no publicado) (business-model.md, no publicado) (Lite free forever → paid
-Pro, built from a de-GPL'd core) and the launch sequence in
-`launch-plan.md` (no publicado) (launch-plan.md, no publicado).
+source, build it, fork it, and ship it. The plan (Lite free forever → paid
+Pro, built from a de-GPL'd core) and the launch sequence are written down in
+the project documents, which ship with the first binary.
 
 ## Transparency
 
@@ -211,5 +207,5 @@ it. If a feature is not working, the issue tracker says so.
 It verifies that there are no placeholders left, that the published address
 carries a valid checksum (Stellar strkey CRC16-XModem today, EVM `0x` when
 those networks get their own address), that the "not an investment / tax / no
-tax advice" block is intact, and that the promise wording still matches
-`promise.md` (no publicado) (promise.md, no publicado).
+tax advice" block is intact, and that the promise wording still matches the
+project promise document.

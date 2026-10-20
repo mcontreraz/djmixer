@@ -49,21 +49,46 @@ for f in index.html index.en.html index.pt.html funding.html funding.en.html \
   fi
 done
 
-printf '\n[3] enlaces a material que no existe en el repo publico\n'
-enlaces_muertos=0
+printf '\n[3] citas a material que no existe en el repo publico\n'
+# Una cita a material privado vale en cualquier forma: un enlace, un atributo
+# href/src, una mencion en <code> o un nombre entre acentos graves. Con solo
+# mirar los atributos href/src se dejaba pasar lo que mas duele: el texto que
+# promete una especificacion o un documento que ya no se publica, que es
+# exactamente el fallo que tenia el repo publico (la pagina viva prometia una
+# `specs/` que devolvia 404).
+PRIVADO_RE='^(docs|specs|src|tests|third_party|build|dist|prototype-web|assets)/'
+citas_muertos=0
 for f in $(git ls-files '*.html' '*.md'); do
-  for ref in $(grep -oE '(href|src)="[^"#]+"' "$f" 2>/dev/null |
-               sed -E 's/.*="//;s/"$//' | grep -vE '^(https?:|mailto:|/|#)'); do
-    case "$ref" in
-      docs/*|specs/*|src/*|tests/*|third_party/*|build/*|dist/*|prototype-web/*|assets/*)
-        bad "$f cita '$ref', que no existe en el repo publico"
-        enlaces_muertos=1 ;;
-    esac
+  # enlaces markdown, atributos html, contenido de <code> y texto entre
+  # acentos graves, todo en una sola pasada.
+  for ref in $(grep -oE '\]\([^)]+\)|(href|src)="[^"#]+"|<code>[^<]*</code>|`[^`]+`' "$f" 2>/dev/null |
+               sed -E 's/^\]\(//; s/^(href|src)="//; s/^<code>//; s/<\/code>$//; s/^`//; s/`$//; s/"$//; s/)$//' |
+               grep -vE '^(https?:|mailto:|/|#)'); do
+    ref_limpio="${ref#./}"
+    ref_limpio="${ref_limpio#../}"
+    if [[ "$ref_limpio" =~ $PRIVADO_RE ]]; then
+      bad "$f cita '$ref', que no existe en el repo publico"
+      citas_muertos=1
+    fi
   done
 done
-[ "$enlaces_muertos" -eq 0 ] && ok "ningun enlace a material privado"
+[ "$citas_muertos" -eq 0 ] && ok "ninguna cita a material privado"
 
-printf '\n[4] la direccion de donacion y el memo viven en la hoja de funding\n'
+printf '\n[4] el metodo de analisis y los simbolos del fabricante no se nombran\n'
+# Decision del board (2026-10-20): el material publicable dice "evidencia local
+# no publicada" / "comportamiento observado" / "referencia local". Nombrar el
+# metodo o los simbolos internos debilita la posicion clean-room del proyecto
+# ("solo comportamiento, nunca codigo copiado") y no aporta nada al lector.
+for term in 'decompil' 'Ghidra' 'desensambl' 'volcado de strings' 'string dump' \
+            'SyncUnit' 'canPhaseSync' 'setSyncMaster' 'FUN_[0-9a-f]'; do
+  if git ls-files '*.html' '*.md' | xargs grep -l -i -E "$term" 2>/dev/null | head -1 | grep -q .; then
+    bad "el arbol publico nombra '$term' (metodo de analisis o simbolo del fabricante)"
+    citas_muertos=1
+  fi
+done
+[ "$citas_muertos" -eq 0 ] && ok "ni el metodo de analisis ni los simbolos del fabricante"
+
+printf '\n[5] la direccion de donacion y el memo viven en la hoja de funding\n'
 if grep -q "GATED25" FUNDING.md 2>/dev/null; then
   ok "FUNDING.md tiene la direccion y el memo (la hoja de deposito)"
 else

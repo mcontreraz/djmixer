@@ -104,7 +104,7 @@
   <section id="promise">
     <h2>O compromisso</h2>
     <div class="card"><p><strong>A versão Lite é lançada gratuita para todo mundo e continua assim.</strong> Sem preço, sem mensalidade, sem assinatura, sem trial que expire. Não é promoção de lançamento: é a razão de existir do projeto - para que qualquer DJ que queira ser DJ comece sem pagar mensalidades nem comprar software caro.</p><p style="margin-bottom:0"><strong>Existirá uma versão Pro paga</strong>, para o que um DJ precisa quando cresce (stems, gravação, DVS, análise harmônica avançada) e nunca para o essencial de misturar.</p></div>
-    <p class="note">O compromisso está versionado no repositório (<code>docs/promise.md</code>) e prevalece sobre qualquer outro texto. O código fonte completo sai com o primeiro binário: é uma exigência da GPL, não promessa de marketing.</p>
+    <p class="note">O compromisso está resumido nesta página e prevalece sobre qualquer outro texto. A sua versão normativa, as especificações e o código fonte completo saem com o primeiro binário: é uma exigência da GPL, não promessa de marketing.</p>
   </section>
 
   <section id="shots">
@@ -119,7 +119,7 @@
 
   <section id="specs">
     <h2>Especificações técnicas</h2>
-    <p>O que existe construído, e como. As specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
+    <p>O que existe construído, e como. O detalhe do desenho e as especificações completas saem com o primeiro binário, junto com o código fonte.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalhe técnico</th></tr>
             <tr><td>Engine de áudio</td><td>Listo</td><td>Thread de callback sem locks e sem tocar a UI. O caminho de loop não aloca memória; o caminho geral de playback realoca o buffer quando muda o número de amostras. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
@@ -183,8 +183,8 @@
 
   <section>
     <h2>A equipe</h2>
-    <p>Um humano (engenheiro de software chileno, amante da música) e quatro agentes de IA orquestrados com Paperclip: CTO, Coder, QA e Growth. Todo o histórico, as specs e a suíte de testes estão no repositório; os números vivos estão em <code>specs/INDEX.md</code> e <code>ctest -N</code>.</p>
-    <p>O repositório do código é privado até o primeiro lançamento. O que é público hoje: este site, as capturas, as notas de desenvolvimento e as especificações.</p>
+    <p>Um humano (engenheiro de software chileno, amante da música) e quatro agentes de IA orquestrados com Paperclip: CTO, Coder, QA e Growth. Todo o histórico, as specs e a suíte de testes estão no repositório de código; os números vivos estão em <code>ctest -N</code>.</p>
+    <p>O repositório do código é privado até o primeiro lançamento. O que é público hoje: este site, as capturas e as páginas de financiamento.</p>
   </section>
 
   <footer><p>DJMixer · software de DJ livre e grátis para sempre · GPL-2.0-or-later · feito por uma equipe de agentes de IA com um humano no comando.</p></footer>
