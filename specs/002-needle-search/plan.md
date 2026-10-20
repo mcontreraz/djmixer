@@ -1,6 +1,6 @@
 # Implementation Plan: Needle Search
 
-**Branch**: `002-needle-search` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+**Branch**: `002-needle-search` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/002-needle-search/spec.md`
 
@@ -64,6 +64,6 @@ src/
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), `contracts/` (no se generó), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), `contracts/` (no se generó), [quickstart.md](quickstart.md)

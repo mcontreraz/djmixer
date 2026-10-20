@@ -124,13 +124,13 @@
       <tr><th>Area</th><th>State</th><th>Technical detail</th></tr>
             <tr><td>Engine</td><td>Done</td><td>Callback thread with no locks and no UI access. The loop path does not allocate; the general playback path reallocates the buffer when the sample count changes. PCM cache, seqlock, SPSC queues. 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Done</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues per deck with a persistent <code>.hotcues</code> sidecar.</td></tr>
-      <tr><td>Tempo</td><td>Done</td><td>Pitch/tempo, vinyl mode, continuous pitch-bend, key lock (tempo without changing pitch).</td></tr>
+      <tr><td>Tempo</td><td>Done</td><td>Pitch/tempo (±8/16/32 %) with continuous pitch-bend, vinyl-style scratch, and key lock (tempo without changing pitch).</td></tr>
       <tr><td>Key lock</td><td>Done</td><td>Rubber Band engine (GPL-2.0-or-later) in realtime, with input and output crossfade. The own WSOLA prototype was discarded.</td></tr>
       <tr><td>Key</td><td>Done</td><td>Key detection in Camelot notation, cached per track.</td></tr>
-      <tr><td>Beats</td><td>Being validated</td><td>BPM and downbeat detection, beatgrid, Serato grid import. The automatic detector is still being validated against real tracks.</td></tr>
+      <tr><td>Beats</td><td>Being validated</td><td>BPM and downbeat detection, beatgrid, and reading the Serato BeatGrid blob a tagged track already carries in its own metadata (MP3 GEOB / M4A). The automatic detector is still being validated against real tracks.</td></tr>
       <tr><td>Loops</td><td>Done</td><td>Auto-loops 1/8…16 beats on the beatgrid, deferred resize (never hot).</td></tr>
       <tr><td>Sync</td><td>Done</td><td>Phase correction, compensating the audible latency of the key lock. SyncLab to inspect the downbeat in ms.</td></tr>
-      <tr><td>Mixer</td><td>Done</td><td>3-band EQ, filter, FX per channel, isolator, master VU.</td></tr>
+      <tr><td>Mixer</td><td>Done</td><td>3-band EQ, filter, FX per channel, master VU.</td></tr>
       <tr><td>Waveform</td><td>Done</td><td>RGB with detail at 200 buckets/s, colour overview, 2–64 s zoom.</td></tr>
       <tr><td>Scratch</td><td>Done</td><td>Continuous, without audible granulation.</td></tr>
       <tr><td>MIDI</td><td>Done</td><td>Full mapping, jog sensitivity, pitch-bend.</td></tr>

@@ -36,13 +36,13 @@ Aplicación de DJ **nativa** (C++17 + Qt 6 / QML), no un wrapper web:
 |---|---|---|
 | Motor de audio | Listo | Hilo de callback sin locks y sin tocar la UI. El camino de loop no asigna memoria; el path general de playback reasigna el buffer cuando cambia el número de muestras. Cache de PCM, seqlock, colas SPSC. 48 kHz. |
 | Decks | Listo | 2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck con sidecar persistente |
-| Tempo | Listo | Pitch/tempo, modo vinilo, pitch-bend continuo |
+| Tempo | Listo | Pitch/tempo (±8/16/32 %) con pitch-bend continuo, scratch estilo vinilo |
 | Key lock | Listo | Motor Rubber Band (GPL-2.0-or-later) en tiempo real, con crossfade de entrada y salida para que la transición no haga clic |
 | Tonalidad | Listo | Detección con nomenclatura Camelot, cacheada por pista |
-| Beats | **En validación** | Detección de BPM y downbeat, beatgrid, importación de grids de Serato. El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes |
+| Beats | **En validación** | Detección de BPM y downbeat, beatgrid, y lectura del blob BeatGrid de Serato que el tema ya trae en su propio tag (MP3 GEOB / M4A). El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes |
 | Loops | Listo | Auto-loops 1/8…16 beats sobre el beatgrid, resize diferido: sin click ni hueco |
 | Sync | Listo | Corrección de fase, compensando la latencia audible del key lock |
-| Mezcla | Listo | EQ de 3 bandas, filtro, FX por canal, aislador, VU master |
+| Mezcla | Listo | EQ de 3 bandas, filtro, FX por canal, VU master |
 | Waveform | Listo | RGB con detalle a 200 buckets/s, overview en color, zoom 2–64 s |
 | Scratch | Listo | Continuo, sin granulación audible |
 | MIDI | Listo | Mapeo completo, sensibilidad de jog, pitch-bend |

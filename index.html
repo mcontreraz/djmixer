@@ -150,13 +150,13 @@
       <tr><th>Área</th><th>Estado</th><th>Detalle técnico</th></tr>
       <tr><td>Motor de audio</td><td>Listo</td><td>Hilo de callback sin locks y sin tocar la UI. El camino de loop no asigna memoria; el path general de playback reasigna el buffer cuando cambia el número de muestras. Cache de PCM, seqlock, colas SPSC. Salida 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Listo</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck con sidecar <code>.hotcues</code> persistente.</td></tr>
-      <tr><td>Tempo</td><td>Listo</td><td>Pitch/tempo, modo vinilo, pitch-bend continuo, key lock (tempo sin cambiar el tono).</td></tr>
+      <tr><td>Tempo</td><td>Listo</td><td>Pitch/tempo (±8/16/32 %) con pitch-bend continuo, scratch estilo vinilo y key lock (tempo sin cambiar el tono).</td></tr>
       <tr><td>Key lock</td><td>Listo</td><td>Motor Rubber Band (GPL-2.0-or-later) en realtime para transients mixtos, con crossfade de entrada y salida para que la transición no haga clic. El prototipo de WSOLA propio se descartó.</td></tr>
       <tr><td>Tonalidad</td><td>Listo</td><td>Detección de tonalidad con nomenclatura Camelot, cacheada por pista.</td></tr>
-      <tr><td>Beats</td><td>En validación</td><td>Detección de BPM y downbeat, beatgrid, importación de grids de Serato. El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes.</td></tr>
+      <tr><td>Beats</td><td>En validación</td><td>Detección de BPM y downbeat, beatgrid, y lectura del blob BeatGrid de Serato que el tema ya trae en su propio tag (MP3 GEOB / M4A). El detector automático se sigue validando contra pistas reales y el repo lo dice en todas partes.</td></tr>
       <tr><td>Loops</td><td>Listo</td><td>Auto-loops 1/8…16 beats sobre el beatgrid, resize diferido (nunca en caliente) para que no haya click ni hueco.</td></tr>
       <tr><td>Sync</td><td>Listo</td><td>Motor con corrección de fase, compensando la latencia audible del key lock. SyncLab para inspeccionar el downbeat en ms.</td></tr>
-      <tr><td>Mezcla</td><td>Listo</td><td>EQ de 3 bandas, filtro, FX por canal, aislador, VU master.</td></tr>
+      <tr><td>Mezcla</td><td>Listo</td><td>EQ de 3 bandas, filtro, FX por canal, VU master.</td></tr>
       <tr><td>Waveform</td><td>Listo</td><td>RGB con detalle a 200 buckets/s, overview en color, zoom 2–64 s.</td></tr>
       <tr><td>Scratch</td><td>Listo</td><td>Continuo, sin granulación audible.</td></tr>
       <tr><td>MIDI</td><td>Listo</td><td>Mapeo completo, sensibilidad de jog, pitch-bend.</td></tr>

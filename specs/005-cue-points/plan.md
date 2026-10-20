@@ -1,6 +1,6 @@
 # Implementation Plan: Cue Points (CDJ)
 
-**Branch**: `005-cue-points` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+**Branch**: `005-cue-points` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/005-cue-points/spec.md`
 
@@ -71,6 +71,6 @@ src/
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), [contracts/](contracts), [quickstart.md](quickstart.md)
