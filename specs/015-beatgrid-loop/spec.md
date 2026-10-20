@@ -5,6 +5,9 @@
 **Base revisada**: `20cf1c9` · **Rama de implementación propuesta**: `015-beatgrid-loop`
 **Solicitud**: «deja un sdd feature loop revisa como lo hace traktor y serato en rea porque tienen el seamless loop exacto por beatgrid».
 
+> Nota: la cita es literal de la solicitud original. La evidencia a la que se refiere vive **solo en la maquina de desarrollo** y **no se publica**: ni el codigo del fabricante, ni sus simbolos internos, ni el metodo de analisis. Lo que se publica es el comportamiento observado y la documentacion publica del producto.
+
+
 ## Objetivo y alcance
 
 Activar loops musicales en ambos decks, con los botones existentes de **1/8,
