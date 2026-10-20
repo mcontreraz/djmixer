@@ -51,7 +51,7 @@ siguiente (`004-beat-sync`), no parte de esta.
   no se tocan. El BeatGrid vuelve por señal queued.
 - **II. Verification by Execution**: PASS — autotest (BPM determinista + equidistancia de beats +
   degradación) y captura.
-- **III. Clean-Room**: PASS — onsets + autocorrelación propios; el decompilado de Serato solo
+- **III. Clean-Room**: PASS — onsets + autocorrelación propios; la referencia interna del fabricante solo
   informa *qué* (BPM + beats + octava), no *cómo*.
 - **IV. Simplicity**: PASS — BPM sin dependencias (autocorrelación). **TagLib es la única dep nueva**
   y se justifica: leer título/artista/key de tags ID3/FLAC a mano es frágil (muchos frame types);

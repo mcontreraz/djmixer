@@ -1,4 +1,4 @@
-# Research: revisión de REA existente para loops
+# Research: revisión de la referencia existente para loops
 
 > **Material de referencia local, no publicado.** Las rutas
 > `referencia-*/` (no publicado) y los nombres de fichero sueltos de ese material que se
@@ -8,18 +8,19 @@
 
 **Fecha**: 2026-10-18 · **Base local**: `20cf1c9`.
 Se reutilizaron informes, inventarios e índices ya generados. No se reabrieron
-los binarios, no se corrieron decompilaciones ni se observaron nuevas ejecuciones.
+los binarios del fabricante, no se hizo analisis nuevo de binario ni se observaron nuevas
+ejecuciones.
 
 ## Evidencia y alcance
 
 Los IDs `LOOP-*` del [manifest](evidence.json) identifican esta revisión local;
-no se presentan como nuevos Evidence IDs de REA. Se conservan hashes, rutas y
-líneas para volver a las fuentes. El único Evidence ID REA citado directamente
+no se presentan como nuevos identificadores de evidencia. Se conservan hashes, rutas y
+líneas para volver a las fuentes. El único identificador de evidencia citado directamente
 identifica el artefacto Traktor, no su algoritmo de loop.
 
 | ID | Observación verificable | Conclusión permitida y límite |
 |---|---|---|
-| LOOP-T01 | REA `ev_5d2115f8863b5b2a6a5f98286a2405f219450878e9a33dcf42e4756950c9a9be`, bundle Traktor Pro 3, SHA en manifest | Identidad del target del análisis previo; inspección estática |
+| LOOP-T01 | referencia `ev_5d2115f8863b5b2a6a5f98286a2405f219450878e9a33dcf42e4756950c9a9be`, bundle Traktor Pro 3, SHA en manifest | Identidad del target del análisis previo; inspección estática |
 | LOOP-T02 | Inventario guardado `nm -C`: `AudioDeckStream::setLoop(double,double,int,bool)` en `0x1001d2320`; posición en samples double; `getFastLoopLengthInBeats`, `isNonIntegralLoopRunning`; fetch de caché | Existen interfaces separadas de loop, posición, longitudes musicales y lectura de caché. Nombres/tipos no prueban fórmula, unidades de cada argumento ni flujo de llamadas |
 | LOOP-T03 | Strings `loop.set.in/out/auto/auto_with_size`, `loop.active`, `loop.is_in_active_loop`; referencias a caches de hotcue | Superficie de control y estados distintos. No prueban qué caché usa el loop |
 | LOOP-S01 | Índice QML recuperado: `SeratoAutoloop.qml` líneas 107/114 Output/Click `auto_loop_specific_length`, 121 Alt-click `auto_loop_roll_specific_length`; `SeratoSavedLoopsSlot.qml` 151/158/187 reloop/exit/slot_loop | Auto Loop, Roll y saved loops tienen contratos diferenciados; feedback no es un comando. No establece el código C++ del loop |
@@ -27,7 +28,7 @@ identifica el artefacto Traktor, no su algoritmo de loop.
 | LOOP-S03 | TempoMap, conversiones beats/ticks/seconds, marcadores y serializer BeatGrid v1 | Se requiere mapa musical, no solo BPM nominal. No identifica el algoritmo de transición sonora |
 | LOOP-S04 | Análisis nativo de SyncLogic y fases beat/compás | Usar la unidad musical correcta; no convertir Quantize ni el umbral de estado 1/64 en fórmula de loop |
 
-Fuentes (los informes REA son **referencia local, no publicada**; el símbolo
+Fuentes (los informes son **referencia local, no publicada**; el símbolo
 seleccionado sí está en el repo):
 
 - Identidad Traktor (grafo de dylibs, local no publicado:
@@ -105,7 +106,7 @@ caché y handoff explícitos. La auditoría de RT debe enumerar la deuda residua
 |---|---|---|
 | ¿Qué controles expone cada app? | Respondida parcialmente con símbolos/QML | Semántica runtime exacta y slots no cubiertos |
 | ¿Grid variable y unidades? | Modelo temporal establecido; unidades de Auto Loop parcialmente resueltas | No heredar bars/beats ambiguos; API propia explícita |
-| ¿Cómo hacen el wrap y evitan clicks? | No resuelta por el material guardado | Decompilación dirigida/medición futura si se exige paridad exacta |
+| ¿Cómo hacen el wrap y evitan clicks? | No resuelta por el material guardado | Analisis dirigido o medicion futura si se exige paridad exacta |
 | ¿Cómo conviven microloops y sync? | Sync recuperado, interacción con loop no demostrada | Ensayos comparativos futuros; contrato propio definido |
 | ¿Cómo implementarlo aquí? | Diseño listo para implementación | Tareas y pruebas pendientes, no se modificó el motor |
 

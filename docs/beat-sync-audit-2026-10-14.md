@@ -20,9 +20,9 @@
 - La grilla detectada conserva sus timestamps; la limpieza solo elimina subdivisiones con evidencia de ambos vecinos. Caché v9 rechaza detecciones antiguas y conserva las importadas Serato v8.
 - El indicador de lock depende del error medido. El autotest histórico mide posiciones del mismo bloque y ya no fuerza el error a cero.
 
-## Referencias REA reutilizadas y límites
+## Referencias tecnicas reutilizadas y límites
 
-> **Material de referencia local, no publicado.** Los artefactos REA que se
+> **Material de referencia local, no publicado.** Los artefactos de referencia que se
 > nombran abajo viven en `referencia-serato/` (no publicado) y `referencia-traktor/` (no publicado)
 > **solo en la máquina de desarrollo**: no forman parte del repo público (ver
 > referencia local (referencia-local.md, no publicado)). Se citan para dejar trazabilidad
@@ -30,11 +30,11 @@
 
 La revisión reutilizó los artefactos guardados; no abrió ni ejecutó Serato/Traktor:
 
-- Rutas distintas para Simple/Smart y conversión del error a desplazamiento temporal (decompilación local no publicada, `referencia-serato/replica/beatsync-native/FUN_100420cdc.c`).
-- Ciclo 4/2/8 según la octava (decompilación local no publicada, `referencia-serato/replica/beatsync-native/FUN_1010c1c4c.c`).
+- Rutas distintas para Simple/Smart y conversión del error a desplazamiento temporal (evidencia local no publicada; el simbolo interno de la funcion del fabricante no se publica).
+- Ciclo 4/2/8 según la octava (evidencia local no publicada; el simbolo interno de la funcion del fabricante no se publica).
 - Las secciones de octava y limitaciones fijan umbrales 4/3 y 2/3; la frecuencia de tick y la precisión de audio **no medidas** (notas locales no publicadas, `referencia-serato/replica/beatsync-native/README.md`).
-- El offset va envuelto por un período parametrizable; la decompilación es incompleta (fichero local no publicado, `referencia-traktor/decompiled/SyncUnit_computePhaseSyncOffsetInBeats.c`). No demuestra por sí sola PLL, ausencia de seeks o implementación exacta del reloj.
-- En la búsqueda local de `docs` y `specs` no apareció código ni un análisis REA de Mixxx, solo atribuciones. No se afirma equivalencia con esos tres productos.
+- El offset va envuelto por un período parametrizable; la evidencia local es incompleta (no se publica, y tampoco los simbolos internos del fabricante). No demuestra por sí sola PLL, ausencia de seeks o implementación exacta del reloj.
+- En la búsqueda local de `docs` y `specs` no apareció código ni un análisis del binario de Mixxx, solo atribuciones. No se afirma equivalencia con esos tres productos.
 
 La ejecución por bloque es una decisión de diseño propia validada en este motor; no se presenta como implementación recuperada de un binario propietario.
 

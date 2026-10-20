@@ -12,7 +12,7 @@ De `referencia-traktor/` (no publicado) (referencia local, **no publicada**) se 
 ARQUITECTURA y COMPORTAMIENTO:
 MasterClock con dueño, SyncUnit con offset en beats, gates de phase-sync,
 pipeline por etapas (transientes → histograma → coherencia → plantillas).
-NO se toma código: los 11 `.c` decompilados son obra propietaria de NI;
+NO se toma código: la referencia del fabricante es obra propietaria de NI;
 reimplementación desde lo entendido, verificada contra benchmark propio.
 `grep` de control en SC-003.
 

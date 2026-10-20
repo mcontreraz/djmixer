@@ -8,7 +8,7 @@
 
 **Feature**: `011-vestax-vci100mk2-midi-audio` | **Date**: 2026-10-15
 
-## R0. Cómo lo hace Serato (evidencia REA, solo lectura)
+## R0. Cómo lo hace Serato (evidencia de referencia, solo lectura)
 
 - `referencia-serato/replica/hardware-fx/README.md` (no publicado) (referencia local, **no publicada**)
   HW-04: 3 capas

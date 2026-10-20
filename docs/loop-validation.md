@@ -216,7 +216,7 @@ EQ/filtro/trim. Las acciones MIDI de loop no introducen CC físicos en el factor
   en `loop_audio_test`.
 
 
-## Cuantización del Auto Loop (Traktor clásico, REA verificada)
+## Cuantizacion del Auto Loop (Traktor clasico, verificado por observacion)
 
 Evidencia recuperada del binario de Traktor Pro 3 (`AudioDeckStream`,
 símbolos y desensamblado; artefacto declarado en

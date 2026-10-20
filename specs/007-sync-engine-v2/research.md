@@ -10,7 +10,7 @@
 
 - **Decision**: deadband 0.01, proporcional k=0.7 con tope ±5%, tope de delta
   por tick 0.02, train-wreck >0.2 a +5% fijo. Eliminar toda mención al umbral-sin-fuente
-  (sin fuente en REA ni en Mixxx).
+  (sin fuente en la referencia ni en Mixxx).
 - **Rationale**: números de `calcSyncAdjustment` (Mixxx `bpmcontrol.cpp`),
   probados a escala. Reimplementación limpia, no copia.
 - **Alternatives considered**: mantener kp=0.2 + umbral-sin-fuente (rechazado: sin origen).
@@ -28,7 +28,7 @@
 
 - **Decision**: sin Q solo tempo (sin fase); con Q, fase. El bend manual se
   absorbe como offset en vez de pelear con el PLL.
-- **Rationale**: ambos mundos lo exigen (`SetQuantizeEnabled` en REA;
+- **Rationale**: ambos mundos lo exigen (`SetQuantizeEnabled` en la referencia;
   `calcSyncAdjustment` en Mixxx). El pill Q existente se cablea aquí.
 - **Alternatives considered**: gate invertido o siempre-fase (rechazados).
 

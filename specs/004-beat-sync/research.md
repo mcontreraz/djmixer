@@ -20,7 +20,7 @@
 - **Decision**: `rateTempo = primaryEffectiveBpm / slaveBpm`, con plegado de octava: si el cociente
   cae fuera de [0.5, 2.0], se pliega ×2/×0.5 hasta quedar en ese rango (o se elige el múltiplo más
   cercano a 1.0). `primaryEffectiveBpm = primaryBpm × (1 + primaryPitch)`.
-- **Rationale**: replica la equivalencia de octava de Serato (`FUN_100501df0` normaliza ×2/×0.5).
+- **Rationale**: replica la equivalencia de octava observada (normaliza ×2/×0.5).
 - **Alternatives**: ignorar octava (rechazado: 70 vs 140 se tratarían como tempos distintos).
 
 ## Decisión 3: Phase-lock (Beat Sync)
@@ -45,7 +45,7 @@
 
 - **Decision**: estado por deck `Off/Armed/Tempo/Beat`; modo global `Off/Simple/Smart`. `Armed`
   entra al dar Play. `Smart` ≈ `Simple` en el MVP (downbeat = F4b).
-- **Rationale**: replica `FUN_100524bf4` (3 modos) y el modelo de estados documentado.
+- **Rationale**: replica los 3 modos observados y el modelo de estados documentado.
 - **Alternatives**: solo on/off (rechazado: no cubre Armed ni la distinción tempo/beat).
 
 ## Decisión 6: Referencia de fase

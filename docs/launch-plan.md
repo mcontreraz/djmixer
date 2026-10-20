@@ -86,7 +86,7 @@ Material exclusivo que YA existe en el repo — cada uno es un post:
    prototipo de WSOLA que se descartó (benchmarks de timepitch-bench).
 4. Arquitectura RT: el camino de loop no asigna memoria (cache de PCM en
    worker, seqlock, SPSC de capacidad fija) y qué es lo que sí reasigna.
-5. REA de Serato/Traktor como método de diseño (clean-room, solo
+5. Estudio de comportamiento de Serato/Traktor como metodo de diseno (clean-room, solo
    comportamiento observable).
 
 ## Métricas de éxito (objetivos mínimos)

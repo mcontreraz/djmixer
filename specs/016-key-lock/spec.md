@@ -4,7 +4,7 @@
 **Estado**: Implementada (motor Rubber Band); gates F4 pendientes
 **Base revisada**: `04e8de0` (motor) · **Rama**: `main`
 **Solicitud**: «Key Lock (pitch fijo al cambiar tempo) + análisis de tonalidad
-(Camelot), revisando cómo lo hace Serato en la REA ya guardada».
+(Camelot), revisando cómo lo hace Serato en la referencia ya guardada».
 
 > **Reconciliada con el código (2026-10-19).** El motor que se despacha es
 > **Rubber Band** (GPL-2.0-or-later), no el WSOLA propio que era el plan
@@ -29,7 +29,7 @@ material percusivo a ratios extremos. "Key detectado" es una estimación
 (Chromagram + correlación), no un dato de verdad absoluta; se distingue de la
 key del tag.
 
-Se revisaron las cadenas REA de Serato DJ Pro 4.0.10.213 (material de
+Se revisaron las cadenas de Serato DJ Pro 4.0.10.213 (material de
 referencia local, no publicado — ver
 referencia local (../../docs/referencia-local.md, no publicado)).
 [Research](research.md) separa observaciones, inferencias y decisiones propias.

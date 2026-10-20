@@ -17,7 +17,7 @@ analizado. “Seamless” exige dos verificaciones distintas: continuidad tempor
 sin huecos y tratamiento audible de una discontinuidad entre extremos. Un beat
 correcto no garantiza que las amplitudes de inicio y final coincidan.
 
-Se revisaron los REA ya guardados de Traktor Pro 3 y Serato DJ Pro 4.0.10.213.
+Se revisaron las referencias ya guardadas de Traktor Pro 3 y Serato DJ Pro 4.0.10.213.
 [Research](research.md) separa observaciones, inferencias y decisiones propias.
 No se afirma haber recuperado ni medido el algoritmo propietario de empalme.
 

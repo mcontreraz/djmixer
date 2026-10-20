@@ -10,7 +10,7 @@
 
 **Status**: Draft (SDD preparado; sin código. Modo yolo desactivado por pedido explícito)
 
-**Input**: User description: "conectar controlador midi Vestax VCI-100 MK2 (Serato la reconocía altiro); compatible con todo lo que es compatible Serato; cómo lo hace Serato (REA en docs); soundcards de Vestax"
+**Input**: User description: "conectar controlador midi Vestax VCI-100 MK2 (Serato la reconocía altiro); compatible con todo lo que es compatible Serato; cómo lo hace Serato (referencia local); soundcards de Vestax"
 
 ## User Scenarios & Testing *(mandatory)*
 

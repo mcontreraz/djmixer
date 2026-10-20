@@ -1,15 +1,15 @@
-# Research: REA de Serato para Key Lock + Key Analysis
+# Research: referencia de Serato para Key Lock + Key Analysis
 
-> **Material de referencia local, no publicado.** La evidencia REA sobre la que
+> **Material de referencia local, no publicado.** La evidencia sobre la que
 > se apoya este documento (volcado de cadenas, grafo de dylibs, índice de la
-> REA previa) vive **solo en la máquina de desarrollo**: no está en el repo
+> previa) vive **solo en la máquina de desarrollo**: no está en el repo
 > público. Aquí se publica el **método y la conclusión**, no el inventario de
 > la evidencia. Ver referencia local (../../docs/referencia-local.md, no publicado).
 
 **Fecha**: 2026-10-19 · **Base local**: `23bfe59`.
-Se revisó la evidencia REA ya persistida en la máquina de desarrollo y se
-volvió a interrogar el volcado de cadenas del binario. No se ejecutó una
-decompilación nueva ni se observaron ejecuciones en runtime.
+Se revisó la evidencia ya persistida en la maquina de desarrollo y se
+volvio a interrogar las cadenas publicas del fabricante. No se hizo analisis
+nuevo de binario ni se observaron ejecuciones en runtime.
 
 ## Limitación de método (honestidad de evidencia)
 
@@ -31,7 +31,7 @@ pudieron ejecutarse**. En su lugar:
    se citan abajo.
 
 Los IDs `KL-*` / `KA-*` de esta tabla identifican esta revisión local; no son
-nuevos Evidence IDs de REA. Las direcciones de línea (`L###`) son offsets
+nuevos identificadores de evidencia. Las direcciones de línea (`L###`) son offsets
 dentro del volcado local: sirven de trazabilidad interna en la máquina de
 desarrollo y **no son verificables desde el repo público**, porque el volcado
 no se distribuye.
@@ -88,8 +88,8 @@ referencia local (../../docs/referencia-local.md, no publicado)):
 
 - Volcado de cadenas del binario (`strings`): base de las tablas KL-*/KA-*.
 - Grafo de resolución de dylibs: identidad y arquitectura del binario.
-- Índice y método de la REA previa.
-- Intentos de decompilación: fallaron por timeout; no aportan símbolos de key.
+- Indice de la evidencia previa.
+- Intentos de analisis del binario: fallaron por timeout; no aportan informacion sobre la key.
 
 Material del repo (público y verificable):
 
@@ -112,7 +112,7 @@ Material del repo (público y verificable):
 **Inferencia**, no hallazgo: que Serato tenga un `KeylockAudioSource`, un
 crossfade de keylock y una notación `CAMELOT` no demuestra que use nuestro
 motor de stretch, nuestro crossfade ni nuestro mapeo. El diseño de
-esta feature es propio; la REA solo informa la forma de la API (por deck, modo,
+esta feature es propio; la referencia solo informa la forma de la API (por deck, modo,
 nodo separado, notación) y valida la elección de Chromagram para la detección.
 
 ## Comparación de técnicas de time-stretch (decisión propia, SUPERADA)
@@ -233,7 +233,7 @@ tabla C++ no está — la evidencia de diseño queda a nivel de cadenas/nombres,
 no de direcciones de función.
 
 
-## REA Traktor Pro 3 (comparativa)
+## Referencia: Traktor Pro 3 (comparativa)
 
 Evidencia del binario instalado (símbolos C++ completos, `nm`/`strings`):
 

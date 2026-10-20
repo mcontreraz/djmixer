@@ -37,7 +37,7 @@ el worker de análisis no se toca); seek existente intacto para needle.
 
 - **I. Audio-Thread Safety**: PASS — `grabbed/handPos/spinVel` atómicos; el render solo lee; historial acotado (5.5 s ≈ 2 MB/deck).
 - **II. Verification by Execution**: PASS — autotest de ida/vuelta/spin + captura.
-- **III. Clean-Room**: PASS — física DJ estándar; de REA solo consta que no hay intel de scratch (nombres Slip/ScratchBank).
+- **III. Clean-Room**: PASS — física DJ estándar; de la referencia solo consta que no hay intel de scratch (nombres Slip/ScratchBank).
 - **IV. Simplicity**: PASS — una rama más en `render()` + helper de rango; sin libs.
 - **V. Bilingual Clarity**: PASS.
 

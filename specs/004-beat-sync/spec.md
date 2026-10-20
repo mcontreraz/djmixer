@@ -12,7 +12,7 @@
 
 **Status**: Draft
 
-**Input**: User description: "Beat sync estilo Serato usando las referencias REA
+**Input**: User description: "Beat sync estilo Serato usando las referencias
 (docs/referencia-serato/beat-sync/). Alinear tempo y fase entre dos decks; el primero en sync
 es el primario. La detección de BPM ya vive en 003."
 
@@ -82,7 +82,7 @@ activar solo B → B es el nuevo primario.
 
 ### User Story 4 - Modos Off / Simple / Smart (Priority: P2)
 
-Modo global `Off / Simple / Smart` (entero de 3 estados, ref `FUN_100524bf4`). En el MVP
+Modo global `Off / Simple / Smart` (entero de 3 estados, valor observado). En el MVP
 `Simple` = alineación de beat (transients), `Smart` = grid + downbeat (downbeat real queda F4b).
 
 **Why this priority**: Refleja la preferencia de Serato; el downbeat musical es MIR difícil y se

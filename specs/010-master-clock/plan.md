@@ -44,7 +44,7 @@ offset en beats contra el reloj.
 - La regla actual (enganche fresco + otro sonando = otro manda) se
   reexpresa: enganchar X con master en auto y otro sonando = el otro sigue
   (o pasa a) maestro. Sin ramas nuevas: es `setSyncMaster(auto)`.
-- Doble sync: el primero en enganchar lidera (coincide con REA Serato).
+- Doble sync: el primero en enganchar lidera (coincide con la referencia de Serato).
 
 ### 5. UI: indicador + botón MASTER por deck
 - Badge MASTER en el deck dueño (como Traktor); click fija/libera.

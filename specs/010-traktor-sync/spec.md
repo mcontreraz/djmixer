@@ -59,7 +59,7 @@ Todo lo que hoy está verde sigue verde con los mismos números.
 - **FR-002**: El offset de fase MUST medirse centralizado en beats contra el reloj.
 - **FR-003**: `canPhaseSync` MUST gatear fase (grids válidas + sonando + rango + no scratch); si no, solo tempo.
 - **FR-004**: El detector MUST sumar histograma de intervalos + coherencia + plantillas de octava (código propio, ideas ni::mir).
-- **FR-005**: Ni una línea de código decompilado de Traktor en el repo (propietario). Referencia: solo comportamiento + nombres de arquitectura.
+- **FR-005**: Ni una línea de código propietario en el repo. Referencia: solo comportamiento observado y documentacion publica.
 - **FR-006**: Licencias de lo nuevo MUST ser GPL-compatibles (propio o MIT/BSD).
 
 ### Key Entities

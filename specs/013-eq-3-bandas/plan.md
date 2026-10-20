@@ -65,7 +65,7 @@ Q_PROPERTY(double eqHigh READ eqHigh WRITE setEqHigh NOTIFY eqChanged)
 - No hace falta audio real decodificado: los tests sintetizan senos y procesan buffers directamente (como hace `waveform_scratch_test` con su WAV generado). Para el bypass exacto a nivel Deck, extraer la lógica a un helper estático testeable o usar un WAV de 1 s generado en el test.
 - Registrar target en `CMakeLists.txt` siguiendo el patrón existente y correr `ctest` antes de cerrar.
 
-## Referencia: cómo lo hace Traktor (REA — `referencia-traktor/EQ-FILTER.md` (no publicado), referencia local **no publicada**)
+## Referencia: cómo lo hace Traktor (referencia local **no publicada**)
 
 - EQ de canal pluggable por modelos (Classic / Xone / P600 / P800 / P900 ISO);
   4 bandas máximo + kill por banda (`onEqualizerBandKill`). Curvas extraídas del

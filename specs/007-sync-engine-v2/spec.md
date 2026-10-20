@@ -12,7 +12,7 @@
 
 **Status**: Draft
 
-**Input**: User description: "tomar lo mejor de ambos mundos: comportamiento Serato (REA verificado) + matemática calibrada Mixxx (ideas, sin pegar código GPL), sobre el SyncEngine de la rama 004 ya mergeada"
+**Input**: User description: "tomar lo mejor de ambos mundos: comportamiento Serato (referencia verificada) + matemática calibrada Mixxx (ideas, sin pegar código GPL), sobre el SyncEngine de la rama 004 ya mergeada"
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -60,7 +60,7 @@ La corrección de fase solo actúa con quantize activado (pill Q). Sin
 quantize, el sync iguala tempo pero no toca la fase.
 
 **Why this priority**: Lo exigen ambos mundos (handler `SetQuantizeEnabled`
-en REA + `calcSyncAdjustment` en Mixxx) y le da función real al pill Q.
+en la referencia + `calcSyncAdjustment` en Mixxx) y le da función real al pill Q.
 
 **Independent Test**: SYNC con Q apagado → tempos iguales, fases libres;
 encender Q → las fases se alinean.

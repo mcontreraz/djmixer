@@ -8,8 +8,8 @@
 
 **Branch**: `004-beat-sync` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
-**Input**: Feature specification + referencias `referencia-serato/beat-sync/` (no publicado) (resumen +
-funciones decompiladas de Serato) — referencia local, **no publicada**. La detección de BPM (003) ya entrega el `BeatGrid`.
+**Input**: Feature specification + referencias de comportamiento del fabricante (no publicadas) —
+referencia local, **no publicada**. La detección de BPM (003) ya entrega el `BeatGrid`.
 
 ## Summary
 
@@ -37,7 +37,7 @@ sencilla sobre `Deck::setPitch` (rate atómico) y `Deck::seek` (seek pendiente).
 
 **Performance Goals**: tick de sync O(1) cada 50 ms; converge en < 3 s; UI responde < 200 ms.
 
-**Constraints**: Constitución I (nada bloqueante en `render()`); III (clean-room: el decompilado
+**Constraints**: Constitución I (nada bloqueante en `render()`); III (clean-room: la referencia interna
 informa *comportamiento* —estados, octava, primario—, nunca código copiado); IV (sin deps).
 
 **Scale/Scope**: 2 decks (A/B). Multi-deck y downbeat musical (Smart real) quedan fuera (F4b).
