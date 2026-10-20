@@ -77,8 +77,14 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 60px;colo
 
 <div class="donate">
   <h3 style="margin-top:0">Donate with USDC</h3>
-  <p style="color:var(--muted);font-size:15px">Stellar (Soroban) network, Circle-native USDC. The account is a 2-of-6 multisig: receiving needs no signature, so donations arrive unattended. Before sending, check the first 6 and last 6 characters and send a small test amount first.</p>
+  <p style="color:var(--muted);font-size:15px">Stellar (Soroban) network, Circle-native USDC. The deposit lands in the project AirTM custody wallet and is credited per memo: send address and memo together (or scan the SEP-7 QR). A transfer without the memo may not be credited: send a small test amount first.</p>
   <div class="addr">GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7</div>
+  <p style="color:var(--muted);font-size:14px">Memo of the deposit sheet (required for the donation to be credited):</p>
+  <div class="addr">4WG9VNC4HF9H1TD4V5AJAN7XB4</div>
+  <div style="display:flex;gap:16px;margin:14px 0;align-items:flex-start;flex-wrap:wrap">
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr.png" alt="QR donacion: direccion + memo (SEP-7)" width="170" height="170" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">direccion + memo (SEP-7)</p></div>
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr-address.png" alt="QR solo direccion" width="120" height="120" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">solo direccion (luego anota el memo)</p></div>
+  </div>
   <p style="color:var(--muted);font-size:14px">Issuer (Circle, Stellar): <code>GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN</code></p>
   <a class="btn" href="https://www.youtube.com/watch?v=m7lIbyha2kQ">▶ YouTube</a>
   <a class="btn ghost" href="https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g">Spotify</a>

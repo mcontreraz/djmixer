@@ -77,8 +77,14 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 60px;colo
 
 <div class="donate">
   <h3 style="margin-top:0">Donar con USDC</h3>
-  <p style="color:var(--muted);font-size:15px">Red Stellar (Soroban), USDC nativo de Circle. La cuenta es multisig 2-de-6: recibir no requiere firma, así que las donaciones entran al instante. Antes de enviar, comprueba los 6 primeros y los 6 últimos caracteres y manda primero un monto pequeño de prueba.</p>
+  <p style="color:var(--muted);font-size:15px">Red Stellar (Soroban), USDC nativo de Circle. El depósito cae en el wallet de custodia AirTM del proyecto y se acredita por memo: envía dirección y memo juntos (o escanea el QR SEP-7). Un depósito sin el memo puede no acreditarse: manda primero un monto pequeño de prueba.</p>
   <div class="addr">GATED25F24BNVPQKSZCTRSBSKGHPZVDQUCM6JXAAQHDRZDVZEWDC7NO7</div>
+  <p style="color:var(--muted);font-size:14px">Memo de la hoja de depósito (obligatorio para que la donación se acredite):</p>
+  <div class="addr">4WG9VNC4HF9H1TD4V5AJAN7XB4</div>
+  <div style="display:flex;gap:16px;margin:14px 0;align-items:flex-start;flex-wrap:wrap">
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr.png" alt="QR donacion: direccion + memo (SEP-7)" width="170" height="170" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">direccion + memo (SEP-7)</p></div>
+    <div><img src="https://mcontreraz.github.io/djmixer/donate-qr-address.png" alt="QR solo direccion" width="120" height="120" style="background:#fff;padding:6px;border-radius:6px"><p style="color:var(--muted);font-size:12px;margin:6px 0 0">solo direccion (luego anota el memo)</p></div>
+  </div>
   <p style="color:var(--muted);font-size:14px">Issuer (Circle, Stellar): <code>GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN</code></p>
   <a class="btn" href="https://www.youtube.com/watch?v=m7lIbyha2kQ">▶ YouTube</a>
   <a class="btn ghost" href="https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g">Spotify</a>
