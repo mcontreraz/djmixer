@@ -1,6 +1,10 @@
 # Implementation Plan: Vestax VCI-100MK2 MIDI + Audio
 
-**Branch**: `011-vestax-vci100mk2-midi-audio` | **Date**: 2026-10-15 | **Spec**: [spec.md](./spec.md)
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
+**Branch**: `011-vestax-vci100mk2-midi-audio` | **Date**: 2026-10-15 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/011-vestax-vci100mk2-midi-audio/spec.md`
 
@@ -21,7 +25,8 @@ el salto a 208 MIDI + 14 HID sin reescribir.
 que se descarta libremidi para el MVP).
 
 **Primary Dependencies**: NUEVA: RtMidi 6.x (MIT, base de QMidi/qmlmidi;
-`brew install rtmidi` o submódulo `third_party/rtmidi`, backend
+`brew install rtmidi`, linkeado por `pkg-config` — no se vendoriza en
+`third_party/` (no publicado), backend
 `__MACOSX_CORE__`, link `CoreMIDI+CoreAudio+CoreFoundation`). Resto ya
 existe: miniaudio 0.11 (enumera y abre devices), TagLib, qmdsp, beatthis.
 
@@ -100,12 +105,12 @@ tests/
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
 RtMidi vs libremidi/Drumstick, mapa MK2 del XML, audio Master/Cue de las
 Vestax, riesgos (canal=deck, jog relativo, DEVICE_DEFAULT, shifts).
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), [contracts/](contracts), [quickstart.md](quickstart.md)
 
 Structs `Binding/DeviceDescriptor/AudioRoute/UserMap`, schemas JSON,
 subset ACI-lite, validación (volcado MIDI Monitor + buffer 4ch + screenshots).

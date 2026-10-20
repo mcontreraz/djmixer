@@ -1,5 +1,9 @@
 # Validación y auditoría de loops por beatgrid (015)
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Fecha**: 2026-10-18 · **Feature**: `015-beatgrid-loop` · **Estado**: F0 auditada.
 Este documento registra la auditoría de la ruta de audio existente, el diseño del
 handoff streaming↔loop y la **deuda RT residual** que la feature 015 no puede
@@ -33,16 +37,16 @@ Mixer::dataCallback (hilo de audio miniaudio)
 
 | Lugar | Operación | Clasificación |
 |---|---|---|
-| `src/deck.cpp:639` | `ma_decoder_uninit` | free/destrucción en audio |
-| `src/deck.cpp:648` | `ma_decoder_init_file` | I/O + alloc en audio |
-| `src/deck.cpp:656` | `std::lock_guard<std::mutex>` | lock en audio |
-| `src/deck.cpp:700` | `ma_decoder_seek_to_pcm_frame` | seek en audio |
-| `src/deck.cpp:723` | `m_mixBuffer.resize` | alloc en audio |
-| `src/deck.cpp:947,958,963` | seek/read/insert | I/O + alloc en audio |
-| `src/deck.cpp:981` | `QDateTime::currentMSecsSinceEpoch` | syscall en audio |
-| `src/deck.cpp:1107,1112` | read/insert | I/O + alloc en audio |
-| `src/deck.cpp:1127` | `m_src.erase` | free en audio |
-| `src/deck.cpp:784` | EOF → `seek(0)` | seek en audio |
+| `deck.cpp:639` (no publicado) | `ma_decoder_uninit` | free/destrucción en audio |
+| `deck.cpp:648` (no publicado) | `ma_decoder_init_file` | I/O + alloc en audio |
+| `deck.cpp:656` (no publicado) | `std::lock_guard<std::mutex>` | lock en audio |
+| `deck.cpp:700` (no publicado) | `ma_decoder_seek_to_pcm_frame` | seek en audio |
+| `deck.cpp:723` (no publicado) | `m_mixBuffer.resize` | alloc en audio |
+| `deck.cpp:947,958,963` (no publicado) | seek/read/insert | I/O + alloc en audio |
+| `deck.cpp:981` (no publicado) | `QDateTime::currentMSecsSinceEpoch` | syscall en audio |
+| `deck.cpp:1107,1112` (no publicado) | read/insert | I/O + alloc en audio |
+| `deck.cpp:1127` (no publicado) | `m_src.erase` | free en audio |
+| `deck.cpp:784` (no publicado) | EOF → `seek(0)` | seek en audio |
 
 ### Deuda RT residual (no resuelta por 015 en su totalidad)
 
@@ -77,14 +81,14 @@ Deuda residual puntual:
 
 ## 4. Oráculos y fixtures (F0)
 
-- `tests/loop_transport_test.cpp`: geometría [A,B) contra un oráculo independiente
+- `loop_transport_test.cpp` (no publicado): geometría [A,B) contra un oráculo independiente
   (`timeAt` por tramos reimplementado a mano). Casos: BPM 123.45 con origen no
   cero, grid variable (`b=2,L=4 → A=1 s, B=3.3 s`), loop corto 1/8 de beat,
   extremos fraccionales, rechazos (grid no creciente, OUT fuera de pista, >64 s)
   y `snapStartBeat`.
-- `tests/loop_state_test.cpp`: cola de intenciones (FIFO, capacidad 63, rechazo
+- `loop_state_test.cpp` (no publicado): cola de intenciones (FIFO, capacidad 63, rechazo
   Busy, Exit prioritario con cola llena, invalidación de seriales anteriores).
-- `tests/loop_rt_test.cpp`: arnés `RtProbe` de conteo de operaciones prohibidas
+- `loop_rt_test.cpp` (no publicado): arnés `RtProbe` de conteo de operaciones prohibidas
   (seek/read/alloc/free/lock) con flag thread_local de hilo de audio.
 
 ## 5. Registro de ejecución (se actualiza por fase)

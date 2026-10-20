@@ -1,10 +1,15 @@
 # Research: REA de Serato para Key Lock + Key Analysis
 
+> **Material de referencia local, no publicado.** La evidencia REA sobre la que
+> se apoya este documento (volcado de cadenas, grafo de dylibs, índice de la
+> REA previa) vive **solo en la máquina de desarrollo**: no está en el repo
+> público. Aquí se publica el **método y la conclusión**, no el inventario de
+> la evidencia. Ver referencia local (../../docs/referencia-local.md, no publicado).
+
 **Fecha**: 2026-10-19 · **Base local**: `23bfe59`.
-Se revisó la evidencia REA ya persistida en el repo
-(`docs/referencia-serato/`) y se volvió a interrogar el volcado de cadenas del
-binario. No se ejecutó una decompilación nueva ni se observaron ejecuciones en
-runtime.
+Se revisó la evidencia REA ya persistida en la máquina de desarrollo y se
+volvió a interrogar el volcado de cadenas del binario. No se ejecutó una
+decompilación nueva ni se observaron ejecuciones en runtime.
 
 ## Limitación de método (honestidad de evidencia)
 
@@ -16,21 +21,24 @@ instalado `/Applications/Serato DJ Pro.app/Contents/MacOS/Serato DJ Pro`
 pudieron ejecutarse**. En su lugar:
 
 1. Se verificó la identidad y arquitectura del binario en el grafo de dylibs ya
-   guardado: `serato-dylib.json` → `evidence_id ev_c485bc207da7fd2e0b685398d74acf71513aba3f62592e5c842376613ddd3c88`,
+   guardado en local (no publicado): `evidence_id ev_c485bc207da7fd2e0b685398d74acf71513aba3f62592e5c842376613ddd3c88`,
    `subject.sha256 = 1df36a8907bf3034b174aeab7c6ceb46a87493f78704c14934eb7210e3fdd2f5`,
    `format = mach-o`, `architecture = arm64` (y `x86_64` en el slice universal).
-2. Se interrogó `serato-strings.txt` (225.056 cadenas del binario, generadas por
-   `strings`) con patrones dirigidos. **Esta es la misma fuente que produciría
-   `nm -C`/`strings`**, y de ella salen los nombres de clases/símbolos
-   demangleados (`serato::audio::KeylockAudioSource`, etc.) que se citan abajo.
+2. Se interrogó el volcado de cadenas del binario (`strings`, persistido en
+   local y **no publicado**) con patrones dirigidos. **Esta es la misma fuente
+   que produciría `nm -C`/`strings`**, y de ella salen los nombres de
+   clases/símbolos demangleados (`serato::audio::KeylockAudioSource`, etc.) que
+   se citan abajo.
 
 Los IDs `KL-*` / `KA-*` de esta tabla identifican esta revisión local; no son
-nuevos Evidence IDs de REA. Las direcciones de línea (`L###`) refieren a
-`docs/referencia-serato/serato-strings.txt`.
+nuevos Evidence IDs de REA. Las direcciones de línea (`L###`) son offsets
+dentro del volcado local: sirven de trazabilidad interna en la máquina de
+desarrollo y **no son verificables desde el repo público**, porque el volcado
+no se distribuye.
 
 ## Evidencia: Key Lock (time-stretch con pitch fijo)
 
-| ID | Observación verificable (cadena + línea) | Conclusión permitida y límite |
+| ID | Observación verificable (cadena + offset local `L###`) | Conclusión permitida y límite |
 |---|---|---|
 | KL-S01 | `transport_pitch_keylock` (L3076) | Existe un control de transporte lógico `pitch_keylock`, distinto del fader de pitch |
 | KL-S02 | `Keylock On` / `Keylock Off` (L2981–2982) | Dos estados con nombre de usuario; UI/estado distinto de "activado por rate" |
@@ -50,7 +58,7 @@ enlazado estáticamente dentro del Mach-O o dentro de `qt/` o los `.bin`.
 
 ## Evidencia: Key Analysis (análisis armónico)
 
-| ID | Observación verificable (cadena + línea) | Conclusión permitida y límite |
+| ID | Observación verificable (cadena + offset local `L###`) | Conclusión permitida y límite |
 |---|---|---|
 | KA-S01 | `analysis_set_key_detection` (L8137) | La detección de key es un ajuste del pipeline de *análisis* de pista (no del playback) |
 | KA-S02 | `keyAnalysisEnabled` / `keyAnalysisEnabledChanged` (L69350, L69344) | Estado on/off observable con NOTIFY |
@@ -69,18 +77,24 @@ enlazado estáticamente dentro del Mach-O o dentro de `qt/` o los `.bin`.
 (Krumhansl-Schmuckler vs otro), ni la frecuencia de afinación de referencia
 (A=440 vs otra), ni el umbral de confianza para declarar "sin key". El hallazgo
 KA-S08 (Chromagram) es la señal más fuerte de la técnica, y **coincide** con lo
-que `third_party/qm-dsp` ya trae (`dsp/keydetection/GetKeyMode`: Chromagram +
+que `qm-dsp` (no publicado) ya trae (`dsp/keydetection/GetKeyMode`: Chromagram +
 correlación de Krumhansl-Schmuckler). No se afirma que Serato use exactamente
 `GetKeyMode`.
 
 ## Fuentes
 
-- `docs/referencia-serato/serato-strings.txt` (volcado `strings`, 225.056 cadenas; base de las tablas).
-- `docs/referencia-serato/serato-dylib.json` (grafo de resolución de dylibs; identidad/arquitectura del binario).
-- `docs/referencia-serato/LEEME.md` y `README.md` (índice y método de la REA previa).
-- `docs/referencia-serato/analisis-profundo/` (intentos de decompilación: fallaron por timeout; no aportan símbolos de key).
-- `src/waveformanalyzer.cpp`, `src/deck.cpp`, `src/deck.h`, `src/waveformcache.h`,
-  `src/DeckPanel.qml`, `third_party/qm-dsp/dsp/keydetection/GetKeyMode.h`.
+Material de referencia **local, no publicado** (ver
+referencia local (../../docs/referencia-local.md, no publicado)):
+
+- Volcado de cadenas del binario (`strings`): base de las tablas KL-*/KA-*.
+- Grafo de resolución de dylibs: identidad y arquitectura del binario.
+- Índice y método de la REA previa.
+- Intentos de decompilación: fallaron por timeout; no aportan símbolos de key.
+
+Material del repo (público y verificable):
+
+- `waveformanalyzer.cpp` (no publicado), `deck.cpp` (no publicado), `deck.h` (no publicado), `waveformcache.h` (no publicado),
+  `DeckPanel.qml` (no publicado), `qm-dsp/dsp/keydetection/GetKeyMode.h` (no publicado).
 
 ## Comparación útil
 
@@ -97,11 +111,16 @@ correlación de Krumhansl-Schmuckler). No se afirma que Serato use exactamente
 
 **Inferencia**, no hallazgo: que Serato tenga un `KeylockAudioSource`, un
 crossfade de keylock y una notación `CAMELOT` no demuestra que use nuestro
-WSOLA, nuestro hop de 10 ms, nuestro crossfade ni nuestro mapeo. El diseño de
+motor de stretch, nuestro crossfade ni nuestro mapeo. El diseño de
 esta feature es propio; la REA solo informa la forma de la API (por deck, modo,
 nodo separado, notación) y valida la elección de Chromagram para la detección.
 
-## Comparación de técnicas de time-stretch (decisión propia)
+## Comparación de técnicas de time-stretch (decisión propia, SUPERADA)
+
+> Esta comparación llevó al prototipo de WSOLA propio. **No es la decisión
+> vigente**: el motor que se despacha es Rubber Band (ver «Decisiones finales
+> del motor», más abajo). Se conserva como registro del razonamiento y del
+> por qué del cambio.
 
 Restricciones impuestas por el repo: C++17/Qt6, PCM interno float estéreo 48 kHz,
 callback de audio RT (cero malloc/locks/I-O), latencia ≤ ~40 ms, bypass
@@ -115,8 +134,9 @@ mezcla (material percusivo + armónico), rango de rate 0.4–1.6.
 | **Phase vocoder (FFT)** | Alto (FFT por frame + IFFT) | Media–alta (ventana de análisis grande) | Mejor en armónicos sostenidos | "Smearing"/phasiness en transientes sin phase-locking; flanger si el bin se reutiliza | Sí pero exigente; FFT en el callback es pesado |
 | **Granular simple (grain + envelope)** | Muy bajo | Baja | Pobre para música | Flanger/comb evidente | Sí |
 
-**Elección: WSOLA** con alineación por correlación cruzada y crossfade
-equal-power, con las siguientes justificaciones RT y de calidad:
+**Elección en ese momento: WSOLA** con alineación por correlación cruzada y
+crossfade equal-power, con las siguientes justificaciones RT y de calidad
+— que el prototipo **no llegó a cumplir** (fallaba en transientes):
 
 1. **Latencia acotada**: hop de análisis `Ha` y ventana de búsqueda `±Δ` fijan
    una latencia predecible `≈ Ha + Δ + (solape de crossfade)`, configurable para
@@ -131,45 +151,52 @@ equal-power, con las siguientes justificaciones RT y de calidad:
    crossfade equal-power evita el comb. Alternativa aceptada: conmutar a
    interpolación lineal dentro de la banda ε (continuidad asegurada por un
    crossfade de rampa corta entre modos).
-5. **Calidad**: WSOLA preserva transientes mejor que un phase vocoder básico y
-   es suficiente para el rango DJ (0.4–1.6); el phase vocoder queda como mejora
-   futura (qm-dsp ya trae `dsp/phasevocoder`, disponible si se decide subir
-   calidad a ratios extremos, fuera de v1).
+5. **Calidad**: se estimaba que WSOLA preservaría transientes mejor que
+   un phase vocoder básico; **el prototipo demostró lo contrario** en el
+   material percusivo, que es el caso que decidía.
 
 El diseño se describe en términos propios (hop, ventana de búsqueda, correlación
 cruzada normalizada, crossfade equal-power); **no** se reproduce pseudocódigo de
 terceros ni se atribuye este algoritmo a Serato.
 
-## Brechas del proyecto actual (en `23bfe59`)
+## Brechas del proyecto antes de implementar
+
+> Instantánea del estado del repo **antes** de implementar la feature. Las
+> referencias de línea apuntan a ese commit (`23bfe59`), que ya no es
+> alcanzable en el historial actual (el historial se reescribió al publicar el
+> repo). Se conserva como registro de qué se encontró y qué se decidió hacer.
 
 | Fuente | Hallazgo | Consecuencia para key lock/key analysis |
 |---|---|---|
-| `src/deck.h:342` | `m_rate` atómico float, rango motor 0.4–1.6 (`setAudioRate`, `src/deck.cpp:856`) | El rate es la única fuente de verdad del tempo; key lock actúa sobre él sin tocar el cursor |
-| `src/deck.cpp:1414–1445` | Path normal usa **remuestreo lineal** frame a frame; `played += rate` | Reemplazar el interpolador lineal por el stage WSOLA cuando `keyLock` está ON y `rate≠1` |
-| `src/deck.cpp:1595–1760` | Scratch usa Hermite + sinc AA propios (`renderScratchRange`) | Scratch queda **fuera** del key lock (gesto vinílico); documentar política de salida |
-| `src/deck.cpp:1397–1400` | Loop renderiza con `loopTransport.render(..., rate, ...)` | Key lock en loop es una interacción aparte; en v1 se declara fuera de alcance (KL-S05 análogo) |
-| `src/deck.cpp:785–791, 1316–1345` | Pitch bend ±5% rampeado 2 s sobre `m_rate` | El bend debe cruzar el mismo stage de stretch; continuidad de pitch durante el barrido es SC |
-| `src/waveformanalyzer.cpp:551–552` | Acumula `monoBuf` (mono f32, cap 2^26) durante el decode | Reutilizar `monoBuf` como entrada de `GetKeyMode` (sin segundo decode) |
-| `src/waveformanalyzer.cpp:214–241` | `readMeta` ya lee `INITIALKEY`/`KEY` de tags → `meta.key` | La detección debe convivir con el tag: precedencia + `keySource` explícito |
-| `src/waveformcache.h:15–19, 53–56` | `TrackMeta` ya tiene `key`; `save/load` ya persisten `meta` | Extender `TrackMeta` con `analyzedKey`/`keySource` y versionar el sidecar de meta |
-| `src/deck.h:114`, `src/deck.cpp:344` | `Deck::key()` devuelve `meta.key` (tag) | Display Camelot ya existe; falta la fuente "análisis" |
-| `src/DeckPanel.qml:20` | `property bool keyLock: false // visual en F0 (motor keylock = F2)` | El botón KEY ya está stubbed; falta cablear al motor y confirmar estado |
-| `src/DeckPanel.qml:123–133, 189–195` | `keyColorFor()` (paleta Camelot 12) y badge de key | Display listo; solo falta alimentarlo con el key analizado |
-| `src/MixerStrip.qml:84` | Knob `KEY` (−12..+12) deshabilitado | Es **key shift** (transposición), no key lock; fuera de v1 |
-| `third_party/qm-dsp/dsp/keydetection/GetKeyMode.h` | `GetKeyMode::Config(sampleRate, tuningFrequency)`, `process(double*)` → índice 0–24, `getKeyStrengths()` | API disponible y ya compilada en `qmdsp` (CMake glob `dsp/*/*.cpp`) |
+| `deck.h` (no publicado) | `m_rate` atómico float, rango motor 0.4–1.6 (`setAudioRate`) | El rate es la única fuente de verdad del tempo; key lock actúa sobre él sin tocar el cursor |
+| `deck.cpp` (no publicado) | Path normal usa **remuestreo lineal** frame a frame; `played += rate` | Sustituir el interpolador lineal por el motor de stretch cuando `keyLock` está ON |
+| `deck.cpp` (no publicado) | Scratch usa Hermite + sinc AA propios (`renderScratchRange`) | Scratch queda **fuera** del key lock (gesto vinílico); documentar política de salida |
+| `deck.cpp` (no publicado) | Loop renderiza con `loopTransport.render(..., rate, ...)` | Interacción aparte; **resuelto en v1**: el motor también entra en el path del loop |
+| `deck.cpp` (no publicado) | Pitch bend ±5% rampeado 2 s sobre `m_rate` | El bend debe cruzar el mismo motor de stretch; continuidad de pitch durante el barrido es SC |
+| `waveformanalyzer.cpp` (no publicado) | Acumula `monoBuf` (mono f32, cap 2^26) durante el decode | Reutilizar `monoBuf` como entrada de `GetKeyMode` (sin segundo decode) |
+| `waveformanalyzer.cpp` (no publicado) | `readMeta` ya lee `INITIALKEY`/`KEY` de tags → `meta.key` | La detección debe convivir con el tag: precedencia + `keySource` explícito |
+| `waveformcache.h` (no publicado) | `TrackMeta` ya tiene `key`; `save/load` ya persisten `meta` | Extender `TrackMeta` con `analyzedKey`/`keySource` y versionar el sidecar de meta |
+| `deck.h` (no publicado), `deck.cpp` (no publicado) | `Deck::key()` devuelve `meta.key` (tag) | Display Camelot ya existe; falta la fuente "análisis" |
+| `DeckPanel.qml` (no publicado) | `property bool keyLock: false` (solo visual) | El botón KEY está cableado al slot; el LED refleja el estado solicitado |
+| `DeckPanel.qml` (no publicado) | `keyColorFor()` (paleta Camelot 12) y badge de key | Display listo; alimentado con el key analizado |
+| `MixerStrip.qml` (no publicado) | Knob `KEY` (−12..+12) deshabilitado | Es **key shift** (transposición), no key lock; fuera de v1 |
+| `qm-dsp/dsp/keydetection/GetKeyMode.h` (no publicado) | `GetKeyMode::Config(sampleRate, tuningFrequency)`, `process(double*)` → índice 0–24, `getKeyStrengths()` | API disponible y ya compilada en `qmdsp` (CMake glob `dsp/*/*.cpp`) |
 
 ## Decisiones de diseño
 
 1. **Key lock por deck, dos modos**: OFF = Varispeed (comportamiento actual,
    pitch baja/sube con tempo); ON = time-stretch (pitch constante). No hay
    Pitch-Shift independiente en v1.
-2. **Técnica**: WSOLA con correlación cruzada + crossfade equal-power, buffers
-   preasignados, bypass exacto a `rate==1`.
-3. **Alcance del path**: solo el path normal de reproducción (`render` no-scratch).
-   Scratch mantiene su resampler; la combinación key lock+loop se declara fuera
-   de v1 y se documenta como brecha.
+2. **Técnica**: **sustituida**. Se empezó por WSOLA con correlación cruzada +
+   crossfade equal-power, buffers preasignados y bypass exacto a `rate==1`;
+   el motor que se despacha es Rubber Band (`04e8de0`), con el motor siempre en
+   el camino con KEY ON.
+3. **Alcance del path**: **ampliado**. Se declaraba fuera de v1 la combinación
+   key lock + loop; quedó implementada (`1a99941`): la ventana del loop se lee
+   a `rate=1.0` y se alimenta al motor. El scratch sigue fuera (usa su propio
+   resampler).
 4. **Detección**: `qm-dsp GetKeyMode` (Chromagram + Krumhansl-Schmuckler) sobre
-   `monoBuf`, con afinación A=440 Hz y umbral de confianza para rechazar
+   `monoBuf`, con afinación A=440 Hz y umbral de confianza (0.5) para rechazar
    "sin key".
 5. **Mapeo Camelot**: tabla determinista propia (teoría musical) `GetKeyMode` →
    notación `1A–12B`; display primario en Camelot.
@@ -178,18 +205,18 @@ terceros ni se atribuye este algoritmo a Serato.
 7. **Caché**: el key analizado se persiste en `WaveformCache` (sidecar) junto a
    BPM/grid, con revisión de meta versionada.
 
-## Registro de preguntas (para confirmar antes de implementar)
+## Registro de preguntas (cerradas en la implementación)
 
-| Pregunta | Estado | Criterio propuesto |
+| Pregunta | Estado | Criterio |
 |---|---|---|
-| Latencia máxima aceptable | Abierta | ≤ 40 ms (brief); WSOLA con `Ha=10ms, Δ=10ms` queda ~20–30 ms. Confirmar si 40 ms es techo o se puede bajar |
-| Calidad objetivo | Abierta | "Transparente a rate≈1; artefactos tolerables a 0.5–1.5 en música de mezcla". WSOLA cumple; phase vocoder solo si se exige más |
-| Rango de rate cubierto | Abierta | 0.4–1.6 (clamp del motor); confirmar si hay que cubrir spin extremo (scratch queda fuera) |
-| Comportamiento al togglear | Abierta | Crossfade corto (~5–10 ms) entre bypass y stretch; confirmar duración |
-| Interacción key lock × loop | Abierta (v1 fuera) | ¿Key lock debe aplicar dentro de loops activos en una fase posterior? |
+| Latencia máxima aceptable | **Cerrada** | ≤ 40 ms (brief); medido 1024 muestras ≈ 21.3 ms a 48 kHz con la configuración real del deck |
+| Calidad objetivo | **Cerrada** | "Transparente a rate≈1; artefactos tolerables a 0.5–1.5 en música de mezcla". Rubber Band en modo real-time con transientes mixtos es el motor probado en mezcla real |
+| Rango de rate cubierto | **Cerrada** | 0.4–1.6 (clamp del motor); el spin extremo (scratch) queda fuera |
+| Comportamiento al togglear | **Cerrada** | Crossfade de 1024 frames (≈21.3 ms a 48 kHz), simétrico, de rampa propia. La prueba de "no hace clic" está cerrada (`a0a837e`, con umbral y prueba de la prueba) |
+| Interacción key lock × loop | **Cerrada** | El motor aplica dentro del loop activo (`1a99941`) |
 | Key shift (±12 semitonos) | Abierta (v1 fuera) | El knob KEY de `MixerStrip` sugiere transposición; ¿es parte de esta feature o de otra? |
 | Toggle de key analysis en UI | Abierta | v1: siempre activo en análisis; el toggle `keyAnalysisEnabled` (KA-S02) queda como extensión |
-| Precedencia tag vs análisis | Abierta | Tag gana; ¿mostrar análisis como tooltip/alternativa? |
+| Precedencia tag vs análisis | **Cerrada** | Tag gana; `keySource` queda publicado para auditar la procedencia |
 
 No se bloquea una implementación original por no conocer el DSP propietario de
 Serato; se impide etiquetarla como réplica exacta.
@@ -212,7 +239,7 @@ Evidencia del binario instalado (símbolos C++ completos, `nm`/`strings`):
 
 **Key lock — engine Elastique Pro V3 (zplane):**
 - `CElastiqueProV3Direct` / `CElastiqueProCore` / `ElastiqueProxyImpl<CElastiqueProV3DirectIf>` (294 símbolos Elastique): el key lock de Traktor corre sobre el engine comercial **Elastique Pro V3**.
-- `PSOLASynthForElastiqueProV3::CPSOLASynthesis` — síntesis **PSOLA** (pitch-synchronous overlap-add, dominio temporal). Es la versión profesional de la MISMA familia que el WSOLA elegido para esta app: el diseño de la spec queda validado por el patrón, sin copiar nada.
+- `PSOLASynthForElastiqueProV3::CPSOLASynthesis` — síntesis **PSOLA** (pitch-synchronous overlap-add, dominio temporal). Es la versión profesional de una familia de overlap-add; el motor que usa esta app es **Rubber Band** (phase vocoder con reset de fase en transientes), de otra familia, pero el patrón general —stretch temporal por deck con toggle— queda validado por la referencia, sin copiar nada.
 - `TrackPlayer::onTimeStretchOn` / `RemixPlayer::onTimeStretchOn` + `TimeStretchingModule`: el toggle es **por player/deck** y activa el modo time-stretch (key lock) vs varispeed — igual semántica que `SetDeckKeyLock` de Serato.
 - `PreferenceDialogPage::KeyLockRange` + `KeyLockWidget`: Traktor expone un **rango de key lock** configurable en preferencias (referencia para una futura preferencia de rango, fuera del alcance v1 de esta spec).
 
@@ -226,7 +253,7 @@ Evidencia del binario instalado (símbolos C++ completos, `nm`/`strings`):
 
 | Aspecto | Serato | Traktor | Decisión de esta app |
 |---|---|---|---|
-| Key lock | KeylockAudioSource, modo time-stretch por deck | Elastique Pro V3 (PSOLA), toggle por player | WSOLA propio, toggle por deck (misma familia PSOLA/WSOLA) |
+| Key lock | KeylockAudioSource, modo time-stretch por deck | Elastique Pro V3 (PSOLA), toggle por player | Rubber Band (GPL), toggle por deck, con crossfade propio de 1024 frames |
 | Key analysis | Chromagram + musicalKey + Camelot | KeyDetection integrada + Camelot | qm-dsp KeyDetector (chroma) + Camelot |
 | Preferencias | — | KeyLockRange | fuera del alcance v1 (documentado) |
 
@@ -257,22 +284,34 @@ Hallazgos clave:
 - Rubber Band R3 (2022) agregó el modo de mayor calidad; el modo
   real-time con ventanas cortas da latencias aptas para mezcla.
 
-**Decisión de la spec (actualizada 2026-10-19, tras definir el modelo de
-negocio):** **WSOLA propio como motor primario**. El plan Pro cerrado
-(docs/business-model.md) exige un árbol 100% libre de GPL: Rubber Band
-(GPL) forzaría su licencia comercial en el Pro, mientras que un WSOLA
-propio es cero dependencias y queda Pro-ready desde el día uno. Calidad
-adecuada para v1 (misma familia PSOLA/WSOLA que Elastique Pro V3 de
-Traktor); Rubber Band queda documentado como mejora futura si algún día
-se paga su licencia comercial. Se elimina el gate de benchmark F1 (motor
-único: WSOLA propio).
+**Decisión de la spec (2026-10-19, tras definir el modelo de negocio) —
+SUPERADA por la implementación:** se llegó a elegir **WSOLA propio como motor
+primario** con el razonamiento de que el plan Pro cerrado
+(`docs/business-model.md`) exige un árbol 100% libre de GPL y un motor propio
+sería cero dependencias. Ese razonamiento no se sostuvo al prototipar: el
+prototipo **fallaba en transientes** (interferencia tipo saturación en los
+beats), que es el caso más difícil del stretch naive. El motor que se despacha
+es hoy Rubber Band (GPL) y la ruta del Pro **sustituye** el motor, no lo
+licencia (ver `docs/business-model.md`).
 
 
 ## Decisiones finales del motor (implementación F0-F2, 2026-10-19)
 
-- Motor: **Rubber Band R3** (engine default, `OptionProcessRealTime |
-  OptionTransientsMixed`), linkeado vía pkg-config — la decisión de la
-  comparativa (FINER probado y descartado por latencia de toggle).
+Estas son las decisiones **vigentes**; mandan sobre cualquier párrafo anterior
+de este documento.
+
+- Motor: **Rubber Band** (GPL-2.0-or-later), enlazado por pkg-config **sin
+  versión fijada** (el repo no fija la versión de la librería), en modo
+  `OptionProcessRealTime | OptionTransientsMixed` con
+  `setMaxProcessSize(512)`. El engine FINER se probó y se descartó por latencia
+  de toggle (`117c768` → `64cf46b`).
+- Cambio de motor: commit `04e8de0` ("motor de key lock → Rubber Band"), que
+  también **borró** el módulo propio de stretch (header-only) y el fichero de
+  test de DSP que lo acompañaban. Ninguno de los dos existe hoy en el repo.
+- Latencia medida del motor: `getLatency()` = **1024 muestras ≈ 21.3 ms a
+  48 kHz** (independiente del ratio 0.5–1.5), por debajo del techo de 40 ms.
+  Se guarda en `Deck::m_klLatencyOut` y se usa para compensar la fase audible
+  en sync.
 - Integración: `setTimeRatio(1.0 / rate)` (¡el ratio es duración salida /
   entrada — invertirlo aceleraba al bajar el pitch!); alimentación con
   acumulador output×tasa (drift cero); consulta de `available()` antes de
@@ -284,3 +323,118 @@ se paga su licencia comercial. Se elimina el gate de benchmark F1 (motor
 - Toggles de KEY: motor "siempre caliente" (se alimenta y se descarta su
   salida cuando está off) + crossfades de entrada/salida de 1024 muestras
   contra el path directo.
+- El key lock **sí** aplica dentro del loop activo: la ventana del loop se lee
+  a `rate=1.0` (raw) y se alimenta al motor (commit `1a99941`).
+
+
+## Desfase del motor y crossfade del toggle de KEY — decisión del CTO (DJM-36, 2026-10-19)
+
+Esta sección **manda** sobre el párrafo "Latencia medida del motor" de
+"Decisiones finales del motor" (que queda matizado) y sobre FR-004/FR-007/SC-003
+de `spec.md`.
+
+### Qué se midió (no estimado)
+
+Sonda independiente contra el **mismo** build de Rubber Band que usa el deck
+(`OptionProcessRealTime | OptionTransientsMixed`, `setMaxProcessSize(512)`,
+48 kHz, 2 canales), con dos experimentos:
+
+1. **Mapeo de contenido**: una ráfaga de 480 Hz en la fuente (frame 24000)
+   feeding el motor con `setTimeRatio(1/1.2)`. La ráfaga aparece en el
+   **índice de salida 19987** ≈ 24000/1.2 = 20000 (error < 15 muestras).
+   → El motor **sí** entrega el contenido en su sitio: el desfase no está en
+   el mapeo, está en **cuándo** está disponible la salida.
+2. **Disponibilidad**, simulando el path real del deck (alimentar
+   `frameCount × rate` muestras por bloque y consumir exactamente `frameCount`
+   por bloque, como hace `Deck::render`): la salida del motor llega tarde.
+
+| rate | desfase medido (frames de dispositivo) | en ms |
+|---|---|---|
+| 1.0 | +1794 (estable) | 37.4 ms |
+| 1.2 | +1301 … +1598 (jitter ~±150) | 27.1 … 33.3 ms |
+
+La medición de QA en el binario vivo coincide: el tono se fija **~37 ms**
+después del toggle en el loop y **~27 ms** en el path normal
+([DJM-34](/DJM/issues/DJM-34), [DJM-41](/DJM/issues/DJM-41)).
+
+La sonda que produce estos números está en el repo:
+`keylock_latency_probe.cpp` (no publicado) (compilar con
+`clang++ -O2 -std=c++17 -o /tmp/keylock_probe tools/keylock_latency_probe.cpp $(pkg-config --cflags --libs rubberband)`).
+Reproduce el desfase, el `getLatency()` declarado y la afinación de cada ruta.
+
+`getLatency()` (= `getStartDelay()` = 1024 ≈ 21.3 ms) describe el **retardo de
+salida inicial** del motor, no su latencia efectiva en streaming: el motor
+necesita su ventana de análisis (≈1800 muestras de entrada) antes de poder
+entregar el bloque que le toca. Por eso:
+
+- el desfase real es **27–37 ms**, no 21.3 ms;
+- la compensación de sync (`cursor − rate × m_klLatencyOut`, `deck.cpp`) queda
+  **corta en ~330 muestras de fuente (≈7 ms a rate 1.2)** → un deck con KEY y
+  otro sin KEY se comparan con ~7 ms de error de fase audible en un mix
+  sincronizado.
+
+### El batido de 96 Hz NO es un problema de alineación
+
+Medido con Goertzel sobre las dos rutas con el mismo material:
+
+| ruta | 480 Hz | 576 Hz |
+|---|---|---|
+| path directo (resample lineal a `rate=1.2`) | 0.000 | **0.208** |
+| motor (`setTimeRatio(1/1.2)`) | **0.250** | 0.000 |
+
+`setTimeRatio` cambia la **duración**, no la afinación (el pitch scale es otro
+parámetro). El key lock funciona *por eso*: con KEY ON el motor conserva el
+tono (480 Hz) mientras el tempo escala; con KEY OFF el path directo es
+varispeed (576 Hz).
+
+Consecuencia: **el crossfade de FR-007 suma dos afinaciones** (480 Hz y
+576 Hz) y por eso late a |576−480| = **96 Hz**. Alinear las dos rutas en el
+tiempo **no removes el batido**: es consecuencia de la arquitectura del
+crossfade, no del desfase. La correlación entre el tramo de bypass y el de
+stretch que pedía DJM-36 **no puede ser el oráculo**: son señales de distinta
+afinación (su correlación es ~0 aunque estén perfectamente alineadas).
+
+### Decisión
+
+**Opción B — alimentar el motor con `Δ` muestras de fuente por delante del
+cursor**, con `Δ` **calibrado** (no `getLatency()`):
+
+- La calibración se mide **una vez, en el hilo de UI, al construir el deck**
+  (una ráfaga por el motor: el hilo de audio no calcula, no asigna, no bloquea
+  ni hace I/O).
+- El motor se alimenta desde `cursor + Δ`; su salida queda así en fase con el
+  path directo y el crossfade mezcla **el mismo instante** de material.
+- La compensación de sync pasa a usar el retardo **calibrado**, lo que
+  corrige de paso el error de fase de ~7 ms.
+
+**Por qué B y no A**: A (retrasar el path directo)-costaría el retardo del motor
+(≈30 ms) en **la latencia de salida de todos los decks, siempre**, incluso con
+KEY OFF: elfeeling del jog y la respuesta del sync de la Lite se degradan y el
+techo de 40 ms de SC-007 queda consumido por el.path de KEY OFF.
+
+**Por qué B y no C**: el "tropiezo" (el contenido se desliza ~30 ms hacia
+adelante durante el crossfade) es audible y el key lock es **esencial**
+(está en la Lite por `docs/promise.md`): no se puede aceptar y documentar como
+defecto conocido en una función esencial.
+
+**Lo que esta decisión NO arregla**: el batido de 96 Hz (mixar dos
+afinaciones). Va a su propio ticket con un rediseño de la transición (camino
+único con un *glide* de los parámetros del motor, sin sumar dos señales de
+distinta afinación). Para la Lite v1 el artefacto se **documenta** y SC-003
+pasa de "verificado" a "parcialmente verificado" (sin salto de amplitud; con
+batido documentado).
+
+### Criterio de verificación (el oráculo que sustituye a SC-003)
+
+| id | criterio | hoy |
+|---|---|---|
+| **C1** (sin deslizamiento) | a `rate = 1.0` (donde ambas rutas tienen la misma afinación) la **correlación cruzada** de la salida antes y después del toggle debe tener su pico en **lag 0 ± 64 frames (1.33 ms)** | pico en ~1794 frames → **falla** |
+| **C2** (sin salto de amplitud) | el `maxStep` actual del crossfade, con su "prueba de la prueba" a 0 frames | pasa |
+| **C3** (batido medido, no escondido) | la profundidad de modulación de amplitud durante la transición a `rate=1.2` se **mide y se publica**; para la v1 el criterio es que no empeore (≤ +20 % del valor medido hoy) | sin publicar |
+| **C4** (fase de sync) | la posición publicada por un deck con KEY y otro sin KEY sobre el mismo material coincide dentro de **2 ms** | ~7 ms a `rate=1.2` → **falla** |
+
+C1 y C4 son los que fallan hoy y son los que exige el arreglo. C1 es, en
+formaExecutable, la "correlación entre el tramo de bypass y el de stretch" que
+pedía DJM-36 — sólo que **a `rate = 1.0`**, que es el único caso en que la
+correlación significa algo.
+

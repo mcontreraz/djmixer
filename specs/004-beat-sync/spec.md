@@ -1,5 +1,11 @@
 # Feature Specification: Beat Sync
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature Branch**: `004-beat-sync`
 
 **Created**: 2026-10-13
@@ -9,6 +15,10 @@
 **Input**: User description: "Beat sync estilo Serato usando las referencias REA
 (docs/referencia-serato/beat-sync/). Alinear tempo y fase entre dos decks; el primero en sync
 es el primario. La detección de BPM ya vive en 003."
+
+Las `referencia-serato/beat-sync/` (no publicado) que cita el enunciado son
+referencia local, no publicada: solo existen en la máquina de desarrollo
+(ver `referencia-local.md` (no publicado) (../../docs/referencia-local.md, no publicado)).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -113,7 +123,7 @@ solo beat o beat+downbeat.
 
 ### Key Entities
 
-- **SyncEngine** (`src/syncengine.h/.cpp`): deck primario, estados por deck, lazo de corrección.
+- **SyncEngine** (`syncengine.h/.cpp` (no publicado)): deck primario, estados por deck, lazo de corrección.
 - **BeatGrid** (existente, 003): BPM + `beats[]` + fase; la referencia de beat.
 - **Deck** (extensión): estado de sync + `rate` atómico (ya expuesto como `pitch`).
 

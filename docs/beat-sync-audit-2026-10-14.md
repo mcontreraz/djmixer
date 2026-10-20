@@ -22,12 +22,18 @@
 
 ## Referencias REA reutilizadas y límites
 
+> **Material de referencia local, no publicado.** Los artefactos REA que se
+> nombran abajo viven en `referencia-serato/` (no publicado) y `referencia-traktor/` (no publicado)
+> **solo en la máquina de desarrollo**: no forman parte del repo público (ver
+> referencia local (referencia-local.md, no publicado)). Se citan para dejar trazabilidad
+> del método; lo que se publica aquí es la conclusión, no la evidencia.
+
 La revisión reutilizó los artefactos guardados; no abrió ni ejecutó Serato/Traktor:
 
-- `referencia-serato/replica/beatsync-native/FUN_100420cdc.c`: rutas distintas Simple/Smart y conversión de error a desplazamiento temporal.
-- `referencia-serato/replica/beatsync-native/FUN_1010c1c4c.c`: ciclo 4/2/8 según octava.
-- `referencia-serato/replica/beatsync-native/README.md`, secciones de octava y limitaciones: umbrales 4/3 y 2/3; frecuencia de tick y precisión de audio **no medidas**.
-- `referencia-traktor/decompiled/SyncUnit_computePhaseSyncOffsetInBeats.c`: offset envuelto por un período parametrizable; la decompilación es incompleta. No demuestra por sí sola PLL, ausencia de seeks o implementación exacta del reloj.
+- Rutas distintas para Simple/Smart y conversión del error a desplazamiento temporal (decompilación local no publicada, `referencia-serato/replica/beatsync-native/FUN_100420cdc.c`).
+- Ciclo 4/2/8 según la octava (decompilación local no publicada, `referencia-serato/replica/beatsync-native/FUN_1010c1c4c.c`).
+- Las secciones de octava y limitaciones fijan umbrales 4/3 y 2/3; la frecuencia de tick y la precisión de audio **no medidas** (notas locales no publicadas, `referencia-serato/replica/beatsync-native/README.md`).
+- El offset va envuelto por un período parametrizable; la decompilación es incompleta (fichero local no publicado, `referencia-traktor/decompiled/SyncUnit_computePhaseSyncOffsetInBeats.c`). No demuestra por sí sola PLL, ausencia de seeks o implementación exacta del reloj.
 - En la búsqueda local de `docs` y `specs` no apareció código ni un análisis REA de Mixxx, solo atribuciones. No se afirma equivalencia con esos tres productos.
 
 La ejecución por bloque es una decisión de diseño propia validada en este motor; no se presenta como implementación recuperada de un binario propietario.

@@ -1,8 +1,12 @@
 # 012 — Decodificación MP3 / FLAC / MP4
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 ## Contexto
 
-La app decodifica con miniaudio embebido (`third_party/miniaudio.h`), cuyo
+La app decodifica con miniaudio embebido (`miniaudio.h` (no publicado)), cuyo
 resumen oficial declara solo tres decodificadores build-in: **WAV, MP3 y
 FLAC**. Esta feature asegura esa cobertura y añade **MP4/M4A (AAC)**.
 

@@ -119,7 +119,7 @@ for needle in \
   "not investments" \
   "no token" \
   "taxable income" \
-  "SUNAT" \
+  "SII" \
   "not giving tax advice"
 do
   if has "$needle"; then

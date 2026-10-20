@@ -1,6 +1,10 @@
 # Implementation Plan: Waveform Heatmap
 
-**Branch**: `001-waveform-heatmap` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
+**Branch**: `001-waveform-heatmap` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/001-waveform-heatmap/spec.md`
 
@@ -15,7 +19,7 @@ espectrales con banco de filtros biquad propio.
 
 **Language/Version**: C++17 + QML (Qt 6.5+)
 
-**Primary Dependencies**: Qt6 Quick/QuickDialogs2, miniaudio (`third_party/`, existente).
+**Primary Dependencies**: Qt6 Quick/QuickDialogs2, miniaudio (`third_party/` (no publicado), existente).
 Sin FFT externa: banco de 3 biquads (lowpass 250 Hz / bandpass / highpass 4 kHz)
 para energía por banda. Essentia/aubio quedan para beatgrid (otra feature).
 
@@ -84,6 +88,6 @@ resources.qrc               # (sin cambios: no hay assets nuevos)
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → [research.md](research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](data-model.md), [contracts/](contracts), [quickstart.md](quickstart.md)

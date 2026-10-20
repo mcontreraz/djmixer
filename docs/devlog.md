@@ -1,5 +1,9 @@
 # Notas de desarrollo — DJMixer
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 Fecha: 2026-10-19 · Documento de avance para visitantes, donantes y betatesters.
 No es un plan: es lo que existe, lo que se ha medido y lo que falta.
 
@@ -22,7 +26,7 @@ quiera ser DJ pueda empezar **sin pagar mensualidades ni comprar software caro**
   Growth) orquestados con Paperclip, con una persona humana como dueño y
   decisor.
 
-![Vista principal: dos decks, EQ de 3 bandas, mixer strip y waveform RGB con marcadores de beat](media/03-decks.png)
+![Vista principal: dos decks, EQ de 3 bandas, mixer strip y waveform RGB con marcadores de beat](../media/03-decks.png)
 
 *Dos decks con la misma pista cargada: 129.26 BPM detectados, tonalidad 5B en
 Camelot, 8 hot cues por deck, grilla de auto-loops, EQ de 3 bandas + filtro +
@@ -44,13 +48,13 @@ FX por canal, y el waveform con los marcadores de beat del grid.*
 | MIDI | Mapeo completo, sensibilidad de jog, pitch-bend |
 | Decodificacion | MP3, FLAC, AAC, MP4/M4A, Opus (el Opus dentro de un video se muda de contenedor por stream-copy, sin recodificar) |
 
-![Biblioteca con 6 pistas, columna de BPM y de tonalidad](media/01-biblioteca.png)
+![Biblioteca con 6 pistas, columna de BPM y de tonalidad](../media/01-biblioteca.png)
 
 *La biblioteca analiza sola: BPM y tonalidad de cada pista, con el cache en
 disco. Las pistas de esta captura son audio sintetico de prueba, no musica
 real.*
 
-![SyncLab con el demo sintetico: DOWNBEAT ALINEADO](media/02-synclab.png)
+![SyncLab con el demo sintetico: DOWNBEAT ALINEADO](../media/02-synclab.png)
 
 *SyncLab: el motor de sincronizacion con un downbeat de A y otro de B, la fase
 del compas y el desplazamiento medido en milisegundos. En el demo sintetico
@@ -83,7 +87,7 @@ entre callbacks de audio con sinc por tasa de sampleo.
 
 **4. Los loops caen exactos sobre el beatgrid.** El resize es diferido: se
 redimensiona cuando el loop llega al final del ciclo, no en caliente, y por
-eso no hay click ni hueco. El mecanismo esta en `src/looptransport.cpp` con
+eso no hay click ni hueco. El mecanismo esta en `looptransport.cpp` (no publicado) con
 la geometria musical en unidades explicitas (beats, frames, segundos).
 
 **5. El sync se valida contra un oracle, no contra la propia salida.** El
@@ -94,6 +98,18 @@ desfase se lee en milisegundos.
 reales.** El motor y la integracion estan, y el repo lo dice con todas sus
 letras: cuando falla, el grid lo lleva la app y el fallo esta a la vista. No
 se marca como verificado lo que no se ha verificado.
+
+**7. La latencia de cola del hilo de audio se mide, no se supone.** El
+callback real —el que renderiza la mezcla— cronometra cada render con un
+reloj monotono y acumula p50/p99/max, mas un contador de xruns (renders que
+pasaron la deadline del buffer del dispositivo). Ademas se mide el hueco real
+entre callbacks —el reloj del dispositivo— y se cuenta aparte cuando un
+callback llega tarde: un render puede ser rapidisimo y aun asi el hardware
+quedarse sin datos si el sistema no dejo despertar al hilo de audio. Sin
+reservas y sin locks: la muestra va a un buffer circular fijo y los
+percentiles se calculan fuera del hilo de audio. Es un hook de test, no un
+panel. Detalle, semantica del xrun y cifras de referencia en
+`render-stats.md` (no publicado).
 
 ## Numeros
 
@@ -129,6 +145,5 @@ Orden real: **donaciones → release sin firmar → firma cuando haya propina.**
 Detalles, redes y direccion de donacion: [`FUNDING.md`](../FUNDING.md).
 
 El codigo fuente completo se publica junto con el primer binario (obligacion
-de GPL-2.0-or-later). Hasta entonces el repositorio del código fuente es
-privado: este devlog, las capturas y las especificaciones son lo que se puede
-leer hoy.
+de GPL-2.0-or-later). Hasta entonces el repositorio es privado: este
+devlog, las capturas y el compromiso son lo que se puede leer hoy.

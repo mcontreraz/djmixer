@@ -1,5 +1,9 @@
 # Feature Specification: Vestax VCI-100MK2 — MIDI + Audio
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Feature Branch**: `011-vestax-vci100mk2-midi-audio`
 
 **Created**: 2026-10-15
@@ -148,6 +152,6 @@ motor `UserIoEngine`, importador XML local, matriz gold/silver/unmapped.
 
 - MK2 concreta del usuario: USB class-compliant en macOS (MIDI + audio CoreAudio sin driver), como declara el XML.
 - Stack fijo: C++17, Qt 6.5, miniaudio existente, RtMidi como única dependencia nueva (MIT, justificada en plan).
-- XMLs de Serato son referencia local (`<tmp local>`, `docs/referencia-serato/`) y nunca se commitean (Constitución III).
+- XMLs de Serato son referencia local (`<tmp local>`, `referencia-serato/` (no publicado)) y nunca se commitean (Constitución III).
 - EQ/FX/sampler/stems de la MK2 quedan en reserva (no hay DSP aún): se parsean, no se actúan.
 - Solo lectura de archivos del usuario; mappings de usuario en `QSettings`, no en el repo.

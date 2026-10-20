@@ -122,10 +122,10 @@
     <p>O que existe construído, e como. As specs completas estão em <code>specs/</code>, com plano, tarefas e contratos.</p>
     <table>
       <tr><th>Área</th><th>Estado</th><th>Detalhe técnico</th></tr>
-            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem <code>malloc</code>, sem locks, sem tocar a UI. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
+            <tr><td>Engine de áudio</td><td>Pronto</td><td>Thread de callback sem locks e sem tocar a UI. O caminho de loop não aloca memória; o caminho geral de playback realoca o buffer quando muda o número de amostras. Cache de PCM, seqlock, filas SPSC. 48 kHz.</td></tr>
       <tr><td>Decks</td><td>Pronto</td><td>2 decks + crossfader, cue, seek, PFL, 8 hot cues por deck com sidecar <code>.hotcues</code> persistente.</td></tr>
       <tr><td>Tempo</td><td>Pronto</td><td>Pitch/tempo, modo vinil, pitch-bend contínuo, key lock (tempo sem mudar o tom).</td></tr>
-      <tr><td>Key lock</td><td>Pronto</td><td>Motor WSOLA próprio + Rubber Band R3 em realtime, com crossfade de entrada e saída.</td></tr>
+      <tr><td>Key lock</td><td>Pronto</td><td>Motor Rubber Band (GPL-2.0-or-later) em realtime, com crossfade de entrada e saída. O protótipo de WSOLA próprio foi descartado.</td></tr>
       <tr><td>Key</td><td>Pronto</td><td>Detecção de tonalidade com nomenclatura Camelot, cacheada por faixa.</td></tr>
       <tr><td>Beats</td><td>Em validação</td><td>Detecção de BPM e downbeat, beatgrid, importação de grids do Serato. O detector automático segue em validação contra faixas reais.</td></tr>
       <tr><td>Loops</td><td>Pronto</td><td>Auto-loops 1/8…16 beats sobre o beatgrid, resize diferido (nunca a quente).</td></tr>

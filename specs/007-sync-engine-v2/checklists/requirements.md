@@ -1,8 +1,14 @@
 # Specification Quality Checklist: Sync Engine v2
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../../docs/referencia-local.md, no publicado).
+
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-10-13
-**Feature**: [spec.md](./spec.md)
+**Feature**: [spec.md](../spec.md)
 
 ## Content Quality
 
@@ -31,4 +37,4 @@
 
 ## Notes
 
-- Orígenes citados con archivo: bandas en Mixxx `bpmcontrol.cpp`, estados en `beat-sync.md`/`FUN_100524bf4.c`. Sin markers.
+- Orígenes citados con archivo: bandas en Mixxx `bpmcontrol.cpp`, estados en `beat-sync.md`/`FUN_100524bf4.c`. Sin markers. Los dos últimos son **referencia local, no publicada** (ver la nota de este documento).

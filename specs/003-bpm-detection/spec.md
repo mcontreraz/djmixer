@@ -1,5 +1,9 @@
 # Feature Specification: BPM Detection
 
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
 **Feature Branch**: `003-bpm-detection`
 
 **Created**: 2026-10-13
@@ -129,7 +133,7 @@ y el header su título/artista (no los valores de ejemplo).
 
 ### Key Entities
 
-- **BeatGrid** (`src/beatgrid.h`, ya existe): `bpm`, `beats[]`, `downbeat`, `valid`, `phaseAt(t)`, `nextBeatAtOrAfter(t)`.
+- **BeatGrid** (`beatgrid.h` (no publicado), ya existe): `bpm`, `beats[]`, `downbeat`, `valid`, `phaseAt(t)`, `nextBeatAtOrAfter(t)`.
 - **TrackMeta**: título, artista, key (Camelot) leídos de tags; vacíos si no hay tag.
 
 ## Success Criteria *(mandatory)*

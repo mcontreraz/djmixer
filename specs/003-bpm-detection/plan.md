@@ -1,6 +1,10 @@
 # Implementation Plan: BPM Detection
 
-**Branch**: `003-bpm-detection` | **Date**: 2026-10-13 | **Spec**: [spec.md](./spec.md)
+> Las rutas al arbol de codigo —las marcadas como *(no publicado)*— no se
+> pueden abrir aqui: el repositorio de codigo se publica completo junto
+> con el primer binario (obligacion de GPL-2.0-or-later).
+
+**Branch**: `003-bpm-detection` | **Date**: 2026-10-13 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `/specs/003-bpm-detection/spec.md`.
 
@@ -9,7 +13,7 @@
 Detección de tempo **en una sola pasada** (el mismo decode del worker F2), emitiendo **nodos** de
 onset de forma streaming: el bucle de decode acumula un envolvente de onsets (energía de graves +
 flujo positivo) y, al terminar, una **autocorrelación** lo convierte en BPM + `beats[]`. El
-resultado puebla el `BeatGrid` que ya existe (`src/beatgrid.h`) y se cachea en el sidecar v5 ya
+resultado puebla el `BeatGrid` que ya existe (`beatgrid.h` (no publicado)) y se cachea en el sidecar v5 ya
 integrado. Cero dependencias nuevas, cero segundo decode.
 
 ## Technical Context
@@ -85,14 +89,14 @@ CMakeLists.txt           # sin cambios (no hay archivos nuevos)
 
 ## Phases
 
-### Phase 0: Outline & Research → [research.md](./research.md)
+### Phase 0: Outline & Research → `research.md` (no se generó: la spec 003 se cerró con `plan.md` y `spec.md`)
 
 Decisiones: función de onset (graves + flujo), autocorrelación + rango 70–180 + plegado de octava,
 cálculo de fase (offset que maximiza energía de onsets), integración "una pasada y nodos".
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → `data-model.md`, `contracts/`, `quickstart.md` (no se generaron: la spec 003 se cerró con `plan.md` y `spec.md`)
 
-### Phase 2: Tasks → [tasks.md](./tasks.md)
+### Phase 2: Tasks → `tasks.md` (no se generó: la spec 003 se cerró con `plan.md` y `spec.md`)
 
 ## Riesgos y decisiones abiertas
 

@@ -1,8 +1,15 @@
 # Research: Traktor-parity Sync (010)
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 ## R0. Qué se toma y qué no — DECIDIDO
 
-De `docs/referencia-traktor/` se toman ARQUITECTURA y COMPORTAMIENTO:
+De `referencia-traktor/` (no publicado) (referencia local, **no publicada**) se toman
+ARQUITECTURA y COMPORTAMIENTO:
 MasterClock con dueño, SyncUnit con offset en beats, gates de phase-sync,
 pipeline por etapas (transientes → histograma → coherencia → plantillas).
 NO se toma código: los 11 `.c` decompilados son obra propietaria de NI;

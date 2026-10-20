@@ -66,4 +66,4 @@ src/
 
 ### Phase 0: Outline & Research → [research.md](./research.md)
 
-### Phase 1: Design & Contracts → [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md)
+### Phase 1: Design & Contracts → [data-model.md](./data-model.md), `contracts/` (no se generó), [quickstart.md](./quickstart.md)

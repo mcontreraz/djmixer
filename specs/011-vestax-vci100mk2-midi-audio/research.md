@@ -1,10 +1,17 @@
 # Research: VCI-100MK2 MIDI + Audio
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature**: `011-vestax-vci100mk2-midi-audio` | **Date**: 2026-10-15
 
 ## R0. Cómo lo hace Serato (evidencia REA, solo lectura)
 
-- `docs/referencia-serato/replica/hardware-fx/README.md` HW-04: 3 capas
+- `referencia-serato/replica/hardware-fx/README.md` (no publicado) (referencia local, **no publicada**)
+  HW-04: 3 capas
   `Descriptor → Transporte → Acción ACI`. `hardware-contracts.json:171496` +
   `<artefacto local recuperado>/midi/midi_vestax_vci_100_mk2.xml`
   (93.670 B, sha `a7e822a0…`, 173 `control` = 123 Note On + 50 CC, 326 `userio`, 71 `case/condition`).

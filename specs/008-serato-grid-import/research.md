@@ -1,10 +1,17 @@
 # Research: Serato Grid Import
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Feature**: `008-serato-grid-import` | **Date**: 2026-10-13
 
 ## R0. Payload BeatGrid v1 — DECIDIDO
 
-Formato recuperado en `docs/referencia-serato/replica/beatgrid-datos/serializer-v1.md`:
+Formato recuperado en `referencia-serato/replica/beatgrid-datos/serializer-v1.md` (no publicado)
+(referencia local, **no publicada**):
 
 - Cabecera: `01 00` + N uint32 BE (con reinterpretación syncsafe si la longitud no cuadra).
 - Records de 8 B: float32 BE (tiempo s) + uint32 BE (beats hasta próximo marker).

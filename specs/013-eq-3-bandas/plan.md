@@ -1,19 +1,25 @@
 # Plan de implementación: EQ de 3 bandas (HI/MID/LOW)
 
+> **Material de referencia local, no publicado.** Las rutas `referencia-*/` (no publicado)
+> y los nombres de fichero sueltos de ese material que se citan aquí viven
+> **solo en la máquina de desarrollo**: no están en el repo público. Lo que se
+> publica es el método y la conclusión. Ver
+> referencia local (../../docs/referencia-local.md, no publicado).
+
 **Spec**: `specs/013-eq-3-bandas/spec.md` · **Rama**: `013-eq-3-bandas`
 
 ## Contexto (estado actual)
 
-- `Biquad` RBJ ya existe en `src/audioformat.h` (impl. en `src/waveformanalyzer.cpp`): lowpass/highpass, estado por instancia, `process()` por muestra. El EQ solo necesita 3 fábricas nuevas.
-- `Deck::render(frameCount, crossGain)` (`src/deck.cpp:635`) deja el bloque en `m_mixBuffer`; luego mide pico pre-fader (`:749`) y aplica `gain = m_channelGain * crossGain` (`:760`). Punto de inserción del EQ: entre resample/scratch y el pico (línea ~746), así el vúmetro queda post-EQ pre-fader.
+- `Biquad` RBJ ya existe en `audioformat.h` (no publicado) (impl. en `waveformanalyzer.cpp` (no publicado)): lowpass/highpass, estado por instancia, `process()` por muestra. El EQ solo necesita 3 fábricas nuevas.
+- `Deck::render(frameCount, crossGain)` (`deck.cpp:635` (no publicado)) deja el bloque en `m_mixBuffer`; luego mide pico pre-fader (`:749`) y aplica `gain = m_channelGain * crossGain` (`:760`). Punto de inserción del EQ: entre resample/scratch y el pico (línea ~746), así el vúmetro queda post-EQ pre-fader.
 - El path scratch (`renderScratchRange`) también vuelca en `m_mixBuffer` → el EQ cubre ambos caminos con la misma inserción.
 - `MixerStrip.qml` (144 px): columna por canal = número + [fader vertical 28 px + vúmetro 12 segmentos] fillHeight + botón CUE 25 px. Hay ~40 px verticales libres para la fila de knobs por encima del fader.
 - `components/Knob.qml` existe pero es **visual y no funcional** (48×60, Canvas estático, sin drag). Se reemplaza por un knob funcional compacto.
-- Tests: patrón `tests/*.cpp` + target en CMakeLists; `waveform_scratch_test` tiene una falla preexistente de comparación de píxeles (no relacionada; verificar que no empeore).
+- Tests: patrón `*.cpp` (no publicado) + target en CMakeLists; `waveform_scratch_test` tiene una falla preexistente de comparación de píxeles (no relacionada; verificar que no empeore).
 
 ## Diseño DSP
 
-### 1. Fábricas Biquad (RBJ cookbook) — `src/audioformat.h` + `src/waveformanalyzer.cpp`
+### 1. Fábricas Biquad (RBJ cookbook) — `audioformat.h` (no publicado) + `waveformanalyzer.cpp` (no publicado)
 
 ```cpp
 static Biquad lowShelf (float f0, float gainDb, float sampleRateHz, float slopeS = 1.0f);
@@ -52,14 +58,14 @@ Q_PROPERTY(double eqHigh READ eqHigh WRITE setEqHigh NOTIFY eqChanged)
 - `MixerStrip.qml`: fila de 3 knobs (HI, MID, LOW) arriba del fader de cada canal, compactos (~20 px + label 8 px). Ancho de canal ~62 px → 3 × 18 px + 2 × 3 px spacing = 60 px. Orden horizontal HI→MID→LOW (equivalente al orden vertical de un mixer clásico).
 - Binding: `value: channel.deck.eqHigh` / `onValueEdited: channel.deck.setEqHigh(v)` (o `onMoved` como el fader).
 
-### 4. Tests — `tests/eq_dsp_test.cpp` (nuevo target CTest)
+### 4. Tests — `eq_dsp_test.cpp` (no publicado) (nuevo target CTest)
 
 - **T-UNIT**: para cada banda, seno a f0/decenas/decenas → ganancia medida vs teórica (SC-001); identidad con 0 dB (SC-002 a nivel Biquad).
 - **T-SUAVIZADO**: simular bloques con cambio de target → verificar que la ganancia converge en ~30 ms y que el máximo salto por muestra ≤ 1e-3 (SC-003, sin clicks).
 - No hace falta audio real decodificado: los tests sintetizan senos y procesan buffers directamente (como hace `waveform_scratch_test` con su WAV generado). Para el bypass exacto a nivel Deck, extraer la lógica a un helper estático testeable o usar un WAV de 1 s generado en el test.
 - Registrar target en `CMakeLists.txt` siguiendo el patrón existente y correr `ctest` antes de cerrar.
 
-## Referencia: cómo lo hace Traktor (REA — `docs/referencia-traktor/EQ-FILTER.md`)
+## Referencia: cómo lo hace Traktor (REA — `referencia-traktor/EQ-FILTER.md` (no publicado), referencia local **no publicada**)
 
 - EQ de canal pluggable por modelos (Classic / Xone / P600 / P800 / P900 ISO);
   4 bandas máximo + kill por banda (`onEqualizerBandKill`). Curvas extraídas del
@@ -75,13 +81,13 @@ Q_PROPERTY(double eqHigh READ eqHigh WRITE setEqHigh NOTIFY eqChanged)
 
 | Archivo | Cambio |
 |---|---|
-| `src/audioformat.h` | +3 fábricas Biquad |
-| `src/waveformanalyzer.cpp` | implementación RBJ de las 3 fábricas |
-| `src/deck.h` | props `eqLow/eqMid/eqHigh`, atomics, 6 Biquads, buffer helpers |
-| `src/deck.cpp` | setters + aplicación/suavizado en `render()` + constantes de frecuencia |
-| `src/components/Knob.qml` | reescritura funcional (drag, reset, tooltip) |
-| `src/MixerStrip.qml` | 3 knobs por canal |
-| `tests/eq_dsp_test.cpp` + `CMakeLists.txt` | test de respuesta/suavizado |
+| `audioformat.h` (no publicado) | +3 fábricas Biquad |
+| `waveformanalyzer.cpp` (no publicado) | implementación RBJ de las 3 fábricas |
+| `deck.h` (no publicado) | props `eqLow/eqMid/eqHigh`, atomics, 6 Biquads, buffer helpers |
+| `deck.cpp` (no publicado) | setters + aplicación/suavizado en `render()` + constantes de frecuencia |
+| `components/Knob.qml` (no publicado) | reescritura funcional (drag, reset, tooltip) |
+| `MixerStrip.qml` (no publicado) | 3 knobs por canal |
+| `eq_dsp_test.cpp` (no publicado) + `CMakeLists.txt` | test de respuesta/suavizado |
 
 ## Riesgos y decisiones abiertas
 
