@@ -4,16 +4,15 @@
 para todo el mundo, para siempre.**
 
 Este repositorio es el **sitio público** del proyecto: la página de financiación,
-las capturas de la app, las notas de desarrollo y las especificaciones técnicas.
-El código fuente está en un repositorio privado hasta la primera release; el
-source completo se publica con el primer binario, porque es lo que exige la
-licencia GPL-2.0-or-later.
+las capturas de la app y el compromiso de la Lite. El código fuente, las notas
+de desarrollo y las especificaciones técnicas viven en un repositorio privado
+hasta la primera release; el source completo se publica con el primer binario,
+porque es lo que exige la licencia GPL-2.0-or-later.
 
 - 🌐 **Sitio:** https://mcontreraz.github.io/djmixer
 - 💛 **Apoyar el proyecto:** [`FUNDING.md`](FUNDING.md) · USDC en Stellar
-- 📜 **El compromiso (canónico):** [`docs/promise.md`](docs/promise.md)
-- 📓 **Notas de desarrollo:** [`docs/devlog.md`](docs/devlog.md)
-- 📐 **Especificaciones:** [`specs/INDEX.md`](specs/INDEX.md)
+- 📜 **El compromiso (canónico):** versionado en el repositorio del proyecto (privado hasta la primera release)
+- 📓 **Notas de desarrollo y especificaciones técnicas:** en el repositorio del proyecto (privado hasta la primera release)
 
 ![Dos decks con una pista cargada, BPM y tonalidad detectados, hot cues, loops y EQ de tres bandas](media/03-decks.png)
 

@@ -104,7 +104,7 @@
   <section id="promise">
     <h2>The promise</h2>
     <div class="card"><p><strong>The Lite edition launches free for everyone and stays that way.</strong> No price, no fee, no subscription, no trial that expires. It is not a launch promotion: it is the reason the project exists - so any DJ who wants to be a DJ can start without monthly fees or expensive software.</p><p style="margin-bottom:0"><strong>A paid Pro will exist</strong>, for what a DJ needs once they grow (stems, recording, DVS, advanced key analysis) and never for the essentials of mixing.</p></div>
-    <p class="note">The commitment is versioned in the repository (<code>docs/promise.md</code>) and overrides any other text. The complete source ships with the first binary: that is a GPL obligation, not a marketing promise.</p>
+    <p class="note">The commitment is versioned in the project repository, which is private until the first release, and overrides any other text. The complete source ships with the first binary: that is a GPL obligation, not a marketing promise.</p>
   </section>
 
   <section id="shots">
@@ -119,7 +119,7 @@
 
   <section id="specs">
     <h2>Technical specifications</h2>
-    <p>What is built, and how. The 17 complete specs are in <code>specs/</code>, with their plan, tasks and contracts.</p>
+    <p>What is built, and how. The complete technical specs are not published yet: the code repository is private until the first release. What you can see here is what works, what does not work yet, and how it is funded.</p>
     <table>
       <tr><th>Area</th><th>State</th><th>Technical detail</th></tr>
             <tr><td>Engine</td><td>Done</td><td>Callback thread with no locks and no UI access. The loop path does not allocate; the general playback path reallocates the buffer when the sample count changes. PCM cache, seqlock, SPSC queues. 48 kHz.</td></tr>
@@ -183,7 +183,7 @@
 
   <section>
     <h2>The team</h2>
-    <p>One human (a Chilean software engineer, music lover) and four AI agents orchestrated with Paperclip: CTO, Coder, QA and Growth. The whole history, the specs and the test suite are in the repository; the live numbers are in <code>specs/INDEX.md</code> and <code>ctest -N</code>, not here.</p>
+    <p>One human (a Chilean software engineer, music lover) and four AI agents orchestrated with Paperclip: CTO, Coder, QA and Growth. The history and the test suite live in the project repository. The numbers are not pinned here: they move with every commit.</p>
     <p>The source repository is private until the first release. What is public today: this site, the screenshots, the dev notes and the specifications.</p>
   </section>
 

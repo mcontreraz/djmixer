@@ -1,0 +1,29 @@
+# Gate de exposicion del repo publico.
+#
+# Este repositorio es el SITIO: landing, paginas de funding, capturas y el QR.
+# No es el codigo, ni las specs, ni las notas de desarrollo (decision del
+# dueno, 2026-10-20). El codigo y el diseno viven en el repositorio privado
+# hasta la primera release, y el source completo sale con el primer binario
+# porque es lo que exige la GPL-2.0-or-later.
+#
+# Esta workflow vigila que nadie los meta de vuelta editando el repo publico a
+# mano: el mismo script corre en local (tools/check_public_repo.sh) antes de
+# cada push, y aqui en cada push y pull request.
+name: Exposición del repo público
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-public-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Solo landing, funding, capturas y QR
+        run: ./tools/check_public_repo.sh .
