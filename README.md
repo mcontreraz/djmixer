@@ -94,7 +94,7 @@ completo en la versión Lite — gratis, para todo el mundo, para siempre.
 
 - ▶ https://www.youtube.com/watch?v=m7lIbyha2kQ
 - https://open.spotify.com/track/2lzdEocFpWso7knzCtL46g
-- Canal: https://www.youtube.com/@ElReingeniero
+- Canal: https://www.youtube.com/@McDiscJockey
 
 El proyecto de software y el proyecto musical son el mismo: las funciones
 deterministas con las que un DJ juzga el software de verdad —beat matching que
